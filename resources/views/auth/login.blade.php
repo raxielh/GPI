@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <title>{{ env('APP_NAME') }}</title>
     <meta charset="UTF-8">
