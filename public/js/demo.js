@@ -18,7 +18,8 @@ function skinChanger() {
 
         var existTheme = $('.right-sidebar .demo-choose-skin li.active').data('theme');
         $('.right-sidebar .demo-choose-skin li').removeClass('active');
-        $body.removeClass('theme-' + existTheme);
+        $body.removeClass();
+        //alert('theme-' + existTheme);
         $this.addClass('active');
 
         $body.addClass('theme-' + $this.data('theme'));

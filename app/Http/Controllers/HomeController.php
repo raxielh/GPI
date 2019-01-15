@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -25,4 +27,21 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function cambiar_tema(Request $request)
+    {
+        DB::table('color')
+                        ->where('users_id',Auth::id())
+                        ->update(
+                            array(
+                                'color' => $request->color
+                            )
+                        );
+
+        return response()->json(['success'=>'Data is successfully']);
+    }
+
+
+
+
 }

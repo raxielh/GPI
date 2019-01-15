@@ -23,7 +23,7 @@
             <div class="body">
                 <form method="POST" action="{{ route('login') }}" id="sign_in">
                     @csrf
-                    <div class="msg">Sign in to start your session</div>
+                    <div class="msg">{{ env('DESC_LOGIN') }}</div>
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">person</i>
@@ -60,9 +60,9 @@
                         </div>
                     </div>
                     <div class="row m-t-15 m-b--20">
-                        <div class="col-xs-6">
+                        <div class="col-xs-3">
                         </div>
-                        <div class="col-xs-6 align-right">
+                        <div class="col-xs-9 align-right">
                             <a href="{{ route('password.request') }}">Olvidaste tu Contraseña?</a>
                         </div>
                     </div>
@@ -74,8 +74,6 @@
     <script src="{{ URL::asset('./plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('./plugins/bootstrap/js/bootstrap.js') }}"></script>
     <script src="{{ URL::asset('./plugins/node-waves/waves.js') }}"></script>
-    <script src="{{ URL::asset('./plugins/jquery-validation/jquery.validate.js') }}"></script>
-    <script src="{{ URL::asset('./plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('./plugins/jquery-validation/jquery.validate.js') }}"></script>
     <script src="{{ URL::asset('./js/admin.js') }}"></script>
     <script src="{{ URL::asset('./js/pages/examples/sign-in.js') }}"></script>
