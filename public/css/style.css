@@ -8134,7 +8134,7 @@ fieldset[disabled] .form-control {
     .dataTables_wrapper .dt-buttons a.dt-button {
       background-color: #607D8B;
       color: #fff;
-      padding: 7px 12px;
+      padding: 3px 12px;
       margin-right: 5px;
       text-decoration: none;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);

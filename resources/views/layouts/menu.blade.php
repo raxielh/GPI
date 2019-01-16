@@ -1,14 +1,15 @@
 <div class="menu">
-        <ul class="list">
+    <ul class="list">
 
-            <li class="header">Navegación</li>
+        <li class="header">Navegación</li>
 
-            <li class="active">
-                <a href="{{ route('home') }}">
-                    <i class="material-icons">home</i>
-                    <span>Inicio</span>
-                </a>
-            </li>
+        <li class="{{ Request::is('home*') ? 'active' : '' }}">
+            <a href="{{ route('home') }}"> <i class="material-icons">home</i> <span>Inicio</span> </a>
+        </li>
 
-        </ul>
-    </div>
+        <li class="{{ Request::is('usuarios*') ? 'active' : '' }}">
+            <a href="{{ route('usuarios.index') }}"> <i class="material-icons">person_pin</i> <span>Usuarios</span> </a>
+        </li>
+
+    </ul>
+</div>

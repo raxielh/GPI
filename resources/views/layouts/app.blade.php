@@ -14,6 +14,27 @@
     <link href="{{ URL::asset('./plugins/animate-css/animate.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('./css/style.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('./css/themes/all-themes.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('./css/responsive.bootstrap.css') }}" rel="stylesheet" />
+    <script src="{{ URL::asset('./plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('./plugins/bootstrap/js/bootstrap.js') }}"></script>
+    <script src="{{ URL::asset('./plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
+    <script src="{{ URL::asset('./plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
+    <script src="{{ URL::asset('./plugins/node-waves/waves.js') }}"></script>
+    <script src="{{ URL::asset('./plugins/jquery-validation/jquery.validate.js') }}"></script>
+    <script src="{{ URL::asset('./plugins/jquery-datatable/jquery.dataTables.js') }}"></script>
+    <script src="{{ URL::asset('./plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
+    <script src="{{ URL::asset('./plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ URL::asset('./plugins/jquery-datatable/extensions/export/buttons.flash.min.js') }}"></script>
+    <script src="{{ URL::asset('./plugins/jquery-datatable/extensions/export/jszip.min.js') }}"></script>
+    <script src="{{ URL::asset('./plugins/jquery-datatable/extensions/export/pdfmake.min.js') }}"></script>
+    <script src="{{ URL::asset('./plugins/jquery-datatable/extensions/export/vfs_fonts.js') }}"></script>
+    <script src="{{ URL::asset('./plugins/jquery-datatable/extensions/export/buttons.html5.min.js') }}"></script>
+    <script src="{{ URL::asset('./plugins/jquery-datatable/extensions/export/buttons.print.min.js') }}"></script>
+    <script src="{{ URL::asset('./js/pages/tables/jquery-datatable.js') }}"></script>
+    <script src="{{ URL::asset('./js/twbsPagination.js') }}"></script>
+    <script src="{{ URL::asset('./js/bootstrap-notify.js') }}"></script>
+    <script src="{{ URL::asset('./js/dataTables.responsive.js') }}"></script>
+    <script src="{{ URL::asset('./js/notificacion.js') }}"></script>
 </head>
 
 <body class="theme-{{ Theme_Color() }}">
@@ -105,15 +126,6 @@
             @yield('content')
         </div>
     </section>
-
-
-
-    <script src="{{ URL::asset('./plugins/jquery/jquery.min.js') }}"></script>
-    <script src="{{ URL::asset('./plugins/bootstrap/js/bootstrap.js') }}"></script>
-    <script src="{{ URL::asset('./plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
-    <script src="{{ URL::asset('./plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
-    <script src="{{ URL::asset('./plugins/node-waves/waves.js') }}"></script>
-    <script src="{{ URL::asset('./plugins/jquery-validation/jquery.validate.js') }}"></script>
     <script src="{{ URL::asset('./js/admin.js') }}"></script>
     <script src="{{ URL::asset('./js/demo.js') }}"></script>
     <script src="{{ URL::asset('./js/app.js') }}"></script>
