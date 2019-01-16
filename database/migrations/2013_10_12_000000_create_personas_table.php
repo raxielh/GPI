@@ -19,8 +19,8 @@ class CreatePersonasTable extends Migration
             $table->string('apellidos');
             $table->integer('tipoidentificacion_id')->unsigned();
             $table->string('identificacion')->unique();
-            $table->integer('fijo');
-            $table->integer('celular');
+            $table->string('fijo');
+            $table->string('celular');
             $table->string('direccion');
             $table->timestamps();
             $table->foreign('tipoidentificacion_id')->references('id')->on('tipoidentificacion');
@@ -31,8 +31,8 @@ class CreatePersonasTable extends Migration
             'apellidos' => 'Garcia Hoyos',
             'tipoidentificacion_id' => 1,
             'identificacion' => '1067879307',
-            'fijo' => 7898442,
-            'celular' => 3106763499,
+            'fijo' => '7898442',
+            'celular' => '3106763499',
             'direccion' => 'Cr 8c #10-83',
         ]);
     }

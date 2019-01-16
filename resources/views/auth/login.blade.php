@@ -29,7 +29,7 @@
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                            <input type="text" class="form-control" name="email" placeholder="Correo" required autofocus value="{{ old('email') }}">
+                            <input type="text" class="form-control" name="email" placeholder="Usuario / Correo" required autofocus value="{{ old('email') }}">
 
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
