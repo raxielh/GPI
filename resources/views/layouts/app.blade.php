@@ -15,6 +15,9 @@
     <link href="{{ URL::asset('./css/style.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('./css/themes/all-themes.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('./css/responsive.bootstrap.css') }}" rel="stylesheet" />
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat');
+    </style>
     <script src="{{ URL::asset('./plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('./plugins/bootstrap/js/bootstrap.js') }}"></script>
     <script src="{{ URL::asset('./plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
@@ -67,7 +70,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="#">{{ env('APP_NAME') }}</a>
+                <a class="navbar-brand" href="#" style="font-family: 'Montserrat', sans-serif;font-size: 30px;font-weight: bold;">{{ env('APP_NAME') }}</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">

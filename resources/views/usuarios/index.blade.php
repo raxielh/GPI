@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{ $Modulo='Usuario' }}
+<div style="display:none">{{ $Modulo='Usuario' }}</div>
 
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -123,9 +123,13 @@
            {
                 CargarDatos();
                 $('#Crear').modal('hide')
-                Notificacion(data.success,'glyphicon glyphicon-thumbs-up');
+                Notificacion(data.success,'glyphicon glyphicon-thumbs-up','success');
                 $("#frm")[0].reset();
-           }
+                console.log(data);
+           },
+            error : function(e) {
+                Notificacion(e.responseJSON.message,'glyphicon glyphicon-thumbs-down','danger');
+            }
        });
     });
 

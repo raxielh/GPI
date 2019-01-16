@@ -1,10 +1,10 @@
-function Notificacion(msg,icon){
+function Notificacion(msg,icon,tipo){
     $.notify({
         icon: icon,
         title: 'Mensaje! ',
         message: msg,
     },{
-        type: "success",
+        type: tipo,
         placement: {
             from: "top",
             align: "right"

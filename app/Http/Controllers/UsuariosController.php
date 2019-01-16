@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Usuarios;
 
 
-
 class UsuariosController extends Controller
 {
     public function __construct()
@@ -29,7 +28,7 @@ class UsuariosController extends Controller
                                 DB::table('users')->get()
                             )->addColumn('action', function ($users) {
                                 return '
-                                <a href="#edit-'.$users->id.'" class="btn bg-cyan btn-xs waves-effect"><i class="material-icons">mode_edit</i></a>
+                                <a href="'.env('APP_URL').'usuarios/'.$users->id.'/edit" class="btn bg-cyan btn-xs waves-effect"><i class="material-icons">mode_edit</i></a>
                                 <a href="#" class="btn bg-red btn-xs waves-effect"><i class="material-icons">delete</i></a>
                                 ';
                             })
@@ -39,6 +38,13 @@ class UsuariosController extends Controller
 
     public function store(Request $request)
     {
+
+        $this->validate($request,[
+            'name'=>'required',
+            'email'=>'required',
+            'password'=>'required',
+        ]);
+
         $user = new Usuarios;
         $user->name = $request->name;
         $user->email = $request->email;
@@ -47,6 +53,25 @@ class UsuariosController extends Controller
         $user->save();
 
         return response()->json(['success'=>'Usuario creado con exito']);
+
+    }
+
+    public function edit($id)
+    {
+        $Usuarios=Usuarios::find($id);
+        return view('usuarios.edit',compact('Usuarios'));
+    }
+
+    public function update(Request $request, $id)    {
+
+        $this->validate($request,[
+            'name'=>'required',
+            'email'=>'required',
+        ]);
+
+        Usuarios::find($id)->update($request->all());
+
+        return response()->json(['success'=>'Usuario editado con exito']);
     }
 
 }
