@@ -29,7 +29,7 @@ class UsuariosController extends Controller
                             )->addColumn('action', function ($users) {
                                 return '
                                 <a href="'.env('APP_URL').'usuarios/'.$users->id.'/edit" class="btn bg-cyan btn-xs waves-effect"><i class="material-icons">mode_edit</i></a>
-                                <a href="#" class="btn bg-red btn-xs waves-effect"><i class="material-icons">delete</i></a>
+                                <a href="#" onclick="Delete('.$users->id.')" class="btn bg-red btn-xs waves-effect"><i class="material-icons">delete</i></a>
                                 ';
                             })
                             //->editColumn('id', 'ID: {{$id}}')
@@ -62,7 +62,8 @@ class UsuariosController extends Controller
         return view('usuarios.edit',compact('Usuarios'));
     }
 
-    public function update(Request $request, $id)    {
+    public function update(Request $request, $id)
+    {
 
         $this->validate($request,[
             'name'=>'required',
@@ -72,6 +73,14 @@ class UsuariosController extends Controller
         Usuarios::find($id)->update($request->all());
 
         return response()->json(['success'=>'Usuario editado con exito']);
+    }
+
+    public function destroy($id)
+    {
+        $Usuarios = Usuarios::findOrFail($id);
+        $Usuarios->delete();
+
+        return response()->json(['success'=>'Usuario borrado con exito']);
     }
 
 }

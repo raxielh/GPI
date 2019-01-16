@@ -15,18 +15,21 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('username')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->integer('personas_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('personas_id')->references('id')->on('personas');
         });
 
         DB::table('users')->insert([
-            'name' => 'Super Root',
+            'username' => 'raxielh',
             'email' => 'rodrigo@gmail.com',
-            'password' => '$2y$10$4w9KrJDA9yjzSM0MAnM2SuBYjx5LYgrau6HSjH3WZ36XMGpRlncQy'
+            'password' => '$2y$10$4w9KrJDA9yjzSM0MAnM2SuBYjx5LYgrau6HSjH3WZ36XMGpRlncQy',
+            'personas_id' => 1
         ]);
     }
 

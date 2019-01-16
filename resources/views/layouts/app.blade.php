@@ -15,6 +15,7 @@
     <link href="{{ URL::asset('./css/style.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('./css/themes/all-themes.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('./css/responsive.bootstrap.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('./css/sweetalert2.css') }}" rel="stylesheet" />
     <style>
         @import url('https://fonts.googleapis.com/css?family=Montserrat');
     </style>
@@ -38,6 +39,7 @@
     <script src="{{ URL::asset('./js/bootstrap-notify.js') }}"></script>
     <script src="{{ URL::asset('./js/dataTables.responsive.js') }}"></script>
     <script src="{{ URL::asset('./js/notificacion.js') }}"></script>
+    <script src="{{ URL::asset('./js/sweetalert2.js') }}"></script>
 </head>
 
 <body class="theme-{{ Theme_Color() }}">
