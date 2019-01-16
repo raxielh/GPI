@@ -18,8 +18,13 @@
                         <thead>
 
                             <tr>
-                                <th>Usuario</th>
-                                <th>Correo</th>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>Tipo Identificacion</th>
+                                <th>Identificacion</th>
+                                <th>Fijo</th>
+                                <th>Celular</th>
+                                <th>Direccion</th>
                                 <th>Acciones</th>
                             </tr>
 
@@ -50,8 +55,8 @@
                 <div class="col-sm-12">
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="name" autofocus spellcheck="false">
-                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" name="nombres" autofocus>
+                            <label class="form-label">Nombres</label>
                         </div>
                     </div>
                 </div>
@@ -59,8 +64,8 @@
                 <div class="col-sm-12">
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="email" spellcheck="false">
-                            <label class="form-label">Correo</label>
+                            <input type="text" class="form-control" name="apellidos" >
+                            <label class="form-label">Apellidos</label>
                         </div>
                     </div>
                 </div>
@@ -68,11 +73,48 @@
                 <div class="col-sm-12">
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="password" class="form-control" name="password" spellcheck="false">
-                            <label class="form-label">Contraseña</label>
+                            {!! Form::select('tipoidentificacion_id',$tipo, null, ['class' => 'form-control show-tick']) !!}
                         </div>
                     </div>
                 </div>
+
+                <div class="col-sm-12">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="number" class="form-control" name="identificacion" >
+                            <label class="form-label">Identificacion</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="number" class="form-control" name="fijo" >
+                            <label class="form-label">Telefono Fijo</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="number" class="form-control" name="celular" >
+                            <label class="form-label">Celular</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="direccion" >
+                            <label class="form-label">Direccion</label>
+                        </div>
+                    </div>
+                </div>
+
+
 
             </div>
 
@@ -87,6 +129,62 @@
 </form>
 </div>
 
+
+<div class="modal fade" id="CrearUsuario" tabindex="-1" role="dialog" style="display: none;">
+    <form method="post" autocomplete="off" id="frm_user">
+    @csrf
+
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title" id="defaultModalLabel">Crear Usuario</h4>
+                </div>
+
+                <div class="modal-body">
+
+                    <input type="hidden" value="" id="personas_id" name="personas_id">
+
+                    <div class="col-sm-12">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" class="form-control" name="username" autofocus spellcheck="false">
+                                <label class="form-label">Usuario</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" class="form-control" name="email" spellcheck="false">
+                                <label class="form-label">Correo</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="password" class="form-control" name="password" spellcheck="false">
+                                <label class="form-label">Contraseña</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link waves-effect" id="save_user">Guardar</button>
+                    <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Cancelar</button>
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+    </div>
 
 <script>
     $('.table').hide();
@@ -105,10 +203,15 @@
             processing: true,
             serverSide: true,
             destroy: true,
-            ajax: '{!! route("listado_usuarios") !!}',
+            ajax: '{!! route("listado_personas") !!}',
             columns: [
-                        { data: 'username', name: 'username' },
-                        { data: 'email', name: 'email' },
+                        { data: 'nombres', name: 'nombres' },
+                        { data: 'apellidos', name: 'apellidos' },
+                        { data: 'tipo', name: 'tipo' },
+                        { data: 'identificacion', name: 'identificacion' },
+                        { data: 'fijo', name: 'fijo' },
+                        { data: 'celular', name: 'celular' },
+                        { data: 'direccion', name: 'direccion' },
                         { data: 'action', name: 'action', orderable: false, searchable: false }
                     ]
         });
@@ -116,7 +219,8 @@
     }
 
     $('#save').click(function(){
-        var url = "{{ route('usuarios.store') }}";
+        //console.log($("#frm").serialize());
+        var url = "{{ route('personas.store') }}";
         $.ajax({
            type: "POST",
            url: url,
@@ -127,7 +231,7 @@
                 CargarDatos();
                 $('#Crear').modal('hide')
                 $("#frm")[0].reset();
-                console.log(data);
+                //console.log(data);
            },
             error : function(e) {
                 Notificacion(e.responseJSON.message,'glyphicon glyphicon-thumbs-down','danger');
@@ -135,6 +239,23 @@
        });
     });
 
+    $('#save_user').click(function(){
+        var url = "{{ route('usuarios.store') }}";
+        $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#frm_user").serialize(),
+           success: function(data)
+           {
+                Notificacion(data.success,'glyphicon glyphicon-thumbs-up','success');
+                $('#CrearUsuario').modal('hide')
+                $("#frm_user")[0].reset();
+           },
+            error : function(e) {
+                Notificacion(e.responseJSON.message,'glyphicon glyphicon-thumbs-down','danger');
+            }
+       });
+    });
 
     function Delete(i)
     {
@@ -150,7 +271,7 @@
             if (result.value) {
 
                 $.ajax({
-                    url: "{{ url('usuarios') }}/"+i,
+                    url: "{{ url('personas') }}/"+i,
                     type: "DELETE",
                     dataType: "JSON",
                     data: {
@@ -170,6 +291,11 @@
           })
     }
 
+    function Usuario(i)
+    {
+        $('#personas_id').val(i);
+        $('#CrearUsuario').modal('show');
+    }
 
 
 </script>

@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('./plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('./plugins/bootstrap-select/css/bootstrap-select.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('./plugins/node-waves/waves.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('./plugins/animate-css/animate.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('./css/style.css') }}" rel="stylesheet">
@@ -72,7 +73,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="#" style="font-family: 'Montserrat', sans-serif;font-size: 30px;font-weight: bold;">{{ env('APP_NAME') }}</a>
+                <a class="navbar-brand" href="#" style="font-family: 'Montserrat', sans-serif;font-size: 25px;font-weight: bold;">{{ env('APP_NAME') }}</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">

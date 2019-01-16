@@ -19,9 +19,9 @@ class CreatePersonasTable extends Migration
             $table->string('apellidos');
             $table->integer('tipoidentificacion_id')->unsigned();
             $table->string('identificacion')->unique();
-            $table->string('fijo');
-            $table->string('celular');
-            $table->string('direccion');
+            $table->string('fijo')->nullable();
+            $table->string('celular')->nullable();
+            $table->string('direccion')->nullable();
             $table->timestamps();
             $table->foreign('tipoidentificacion_id')->references('id')->on('tipoidentificacion');
         });

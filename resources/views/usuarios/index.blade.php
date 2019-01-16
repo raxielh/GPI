@@ -8,7 +8,7 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="header"><h2>{{ $Modulo }}s
-                <button type="button" class="btn bg-{{ Theme_Color() }} waves-effect btn-xs" data-toggle="modal" data-target="#Crear"><i class="material-icons">add</i></button>
+                <!--<button type="button" class="btn bg-{{ Theme_Color() }} waves-effect btn-xs" data-toggle="modal" data-target="#Crear"><i class="material-icons">add</i></button>-->
             </h2></div>
             <div class="body">
                 <div class="table-responsive">
@@ -33,7 +33,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="Crear" tabindex="-1" role="dialog" style="display: none;">
+<div class="modal fade" id="Roles" tabindex="-1" role="dialog" style="display: none;">
 <form method="post" autocomplete="off" id="frm">
 @csrf
 
@@ -42,10 +42,12 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h4 class="modal-title" id="defaultModalLabel">Crear {{ $Modulo }}</h4>
+                <h4 class="modal-title" id="defaultModalLabel">Asignar Rol</h4>
             </div>
 
             <div class="modal-body">
+
+                <input type="text" id="users_id" name="users_id">
 
                 <div class="col-sm-12">
                     <div class="form-group form-float">
@@ -56,28 +58,10 @@
                     </div>
                 </div>
 
-                <div class="col-sm-12">
-                    <div class="form-group form-float">
-                        <div class="form-line">
-                            <input type="text" class="form-control" name="email" spellcheck="false">
-                            <label class="form-label">Correo</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-12">
-                    <div class="form-group form-float">
-                        <div class="form-line">
-                            <input type="password" class="form-control" name="password" spellcheck="false">
-                            <label class="form-label">Contraseña</label>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-link waves-effect" id="save">Guardar</button>
+                <button type="button" class="btn btn-link waves-effect" id="save_roles">Guardar</button>
                 <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Cancelar</button>
             </div>
 
@@ -115,27 +99,6 @@
         $('.table').fadeIn(700);
     }
 
-    $('#save').click(function(){
-        var url = "{{ route('usuarios.store') }}";
-        $.ajax({
-           type: "POST",
-           url: url,
-           data: $("#frm").serialize(),
-           success: function(data)
-           {
-                Notificacion(data.success,'glyphicon glyphicon-thumbs-up','success');
-                CargarDatos();
-                $('#Crear').modal('hide')
-                $("#frm")[0].reset();
-                console.log(data);
-           },
-            error : function(e) {
-                Notificacion(e.responseJSON.message,'glyphicon glyphicon-thumbs-down','danger');
-            }
-       });
-    });
-
-
     function Delete(i)
     {
         Swal({
@@ -171,6 +134,11 @@
     }
 
 
+    function Roles(i)
+    {
+        $('#users_id').val(i);
+        $('#Roles').modal('show');
+    }
 
 </script>
 

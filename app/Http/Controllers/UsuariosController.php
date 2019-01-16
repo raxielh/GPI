@@ -28,6 +28,7 @@ class UsuariosController extends Controller
                                 DB::table('users')->get()
                             )->addColumn('action', function ($users) {
                                 return '
+                                <a href="#" onclick="Roles('.$users->id.')" class="btn bg-indigo btn-xs waves-effect"><i class="material-icons">assignment_ind</i></a>
                                 <a href="'.env('APP_URL').'usuarios/'.$users->id.'/edit" class="btn bg-cyan btn-xs waves-effect"><i class="material-icons">mode_edit</i></a>
                                 <a href="#" onclick="Delete('.$users->id.')" class="btn bg-red btn-xs waves-effect"><i class="material-icons">delete</i></a>
                                 ';
@@ -40,13 +41,14 @@ class UsuariosController extends Controller
     {
 
         $this->validate($request,[
-            'name'=>'required',
+            'username'=>'required',
             'email'=>'required',
             'password'=>'required',
         ]);
 
         $user = new Usuarios;
-        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->personas_id = $request->personas_id;
         $user->email = $request->email;
         $user->password = bcrypt( $request->password );
 

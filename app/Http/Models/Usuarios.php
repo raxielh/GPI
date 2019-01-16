@@ -10,7 +10,8 @@ class Usuarios extends Model
     protected $table = 'users';
 
     public $fillable = [
-        'name',
+        'username',
+        'personas_id',
         'email'
     ];
 
