@@ -7,6 +7,10 @@
             <a href="{{ route('home') }}"> <i class="material-icons">home</i> <span>Inicio</span> </a>
         </li>
 
+        <li class="{{ Request::is('personas*') ? 'active' : '' }}">
+            <a href="{{ route('personas.index') }}"> <i class="material-icons">accessibility</i> <span>Personas</span> </a>
+        </li>
+
         <li class="{{ Request::is('usuarios*') ? 'active' : '' }}">
             <a href="{{ route('usuarios.index') }}"> <i class="material-icons">person_pin</i> <span>Usuarios</span> </a>
         </li>

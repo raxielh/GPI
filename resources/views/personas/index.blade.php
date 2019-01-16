@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div style="display:none">{{ $Modulo='Usuario' }}</div>
+<div style="display:none">{{ $Modulo='Persona' }}</div>
 
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
