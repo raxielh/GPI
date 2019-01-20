@@ -9,13 +9,16 @@ class Personas extends Model
     protected $table = 'personas';
 
     public $fillable = [
-        'nombres',
-        'apellidos',
+        'primer_nombre',
+        'segundo_nombre',
+        'primer_apellido',
+        'segundo_apellido',
         'tipoidentificacion_id',
         'identificacion',
         'fijo',
         'celular',
         'direccion',
+        'generos_id',
     ];
 
 }

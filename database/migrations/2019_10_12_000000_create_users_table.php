@@ -20,16 +20,19 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('personas_id')->unsigned();
+            $table->integer('rolesmaestros_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('personas_id')->references('id')->on('personas');
+            $table->foreign('rolesmaestros_id')->references('id')->on('rolesmaestros');
         });
 
         DB::table('users')->insert([
             'username' => 'raxielh',
             'email' => 'rodrigo@gmail.com',
             'password' => '$2y$10$4w9KrJDA9yjzSM0MAnM2SuBYjx5LYgrau6HSjH3WZ36XMGpRlncQy',
-            'personas_id' => 1
+            'personas_id' => 1,
+            'rolesmaestros_id' => 1
         ]);
     }
 

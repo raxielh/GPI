@@ -15,8 +15,8 @@ class CreateTipoidentificacionTable extends Migration
     {
         Schema::create('tipoidentificacion', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descripcion_larga');
-            $table->string('descripcion_corta');
+            $table->string('descripcion_larga')->unique();
+            $table->string('descripcion_corta')->unique();
             $table->timestamps();
         });
 

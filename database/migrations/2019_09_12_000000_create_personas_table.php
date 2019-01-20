@@ -15,22 +15,30 @@ class CreatePersonasTable extends Migration
     {
         Schema::create('personas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombres');
-            $table->string('apellidos');
+            $table->string('primer_nombre');
+            $table->string('segundo_nombre')->nullable();
+            $table->string('primer_apellido');
+            $table->string('segundo_apellido')->nullable();
             $table->integer('tipoidentificacion_id')->unsigned();
             $table->string('identificacion')->unique();
+            $table->integer('generos_id')->unsigned();
             $table->string('fijo')->nullable();
             $table->string('celular')->nullable();
             $table->string('direccion')->nullable();
             $table->timestamps();
             $table->foreign('tipoidentificacion_id')->references('id')->on('tipoidentificacion');
+            $table->foreign('generos_id')->references('id')->on('generos');
+            $table->unique(['tipoidentificacion_id', 'identificacion'], 'indice_tipoidentificacion_identificacion');
         });
 
         DB::table('personas')->insert([
-            'nombres' => 'Rodrigo Junior',
-            'apellidos' => 'Garcia Hoyos',
+            'primer_nombre' => 'Rodrigo',
+            'segundo_nombre' => 'Junior',
+            'primer_apellido' => 'Garcia',
+            'segundo_apellido' => 'Hoyos',
             'tipoidentificacion_id' => 1,
             'identificacion' => '1067879307',
+            'generos_id' => 1,
             'fijo' => '7898442',
             'celular' => '3106763499',
             'direccion' => 'Cr 8c #10-83',

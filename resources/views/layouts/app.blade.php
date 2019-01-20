@@ -17,9 +17,6 @@
     <link href="{{ URL::asset('./css/themes/all-themes.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('./css/responsive.bootstrap.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('./css/sweetalert2.css') }}" rel="stylesheet" />
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Montserrat');
-    </style>
     <script src="{{ URL::asset('./plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('./plugins/bootstrap/js/bootstrap.js') }}"></script>
     <script src="{{ URL::asset('./plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
@@ -41,14 +38,21 @@
     <script src="{{ URL::asset('./js/dataTables.responsive.js') }}"></script>
     <script src="{{ URL::asset('./js/notificacion.js') }}"></script>
     <script src="{{ URL::asset('./js/sweetalert2.js') }}"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat');
+        #cargando{
+            display:none;
+            z-index: 99999999999;
+        }
+    </style>
 </head>
 
 <body class="theme-{{ Theme_Color() }}">
-    <!-- Page Loader -->
-    <div class="page-loader-wrapper">
+
+    <div class="page-loader-wrapper" style="background: #191919b3;" id="cargando">
         <div class="loader">
             <div class="preloader">
-                <div class="spinner-layer pl-red">
+                <div class="spinner-layer pl-{{ Theme_Color() }}">
                     <div class="circle-clipper left">
                         <div class="circle"></div>
                     </div>
@@ -57,7 +61,24 @@
                     </div>
                 </div>
             </div>
-            <p>Please wait...</p>
+            <p style="color:#fff">Cargando...</p>
+        </div>
+    </div>
+
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-{{ Theme_Color() }}">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Cargando...</p>
         </div>
     </div>
     <!-- #END# Page Loader -->

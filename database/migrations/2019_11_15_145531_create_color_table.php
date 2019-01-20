@@ -22,8 +22,8 @@ class CreateColorTable extends Migration
         });
 
         DB::table('color')->insert([
-            'color' => 'blue',
-            'users_id' => 1
+            'color' => 'indigo',
+            'users_id' => 1,
         ]);
     }
 

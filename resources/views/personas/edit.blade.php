@@ -19,33 +19,59 @@
                     <form method="post" autocomplete="off" id="frm">
                         @csrf
 
-                            <div class="col-sm-12">
+                            <div class="col-sm-3">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="nombres" autofocus value="{{$Personas->nombres}}">
-                                        <label class="form-label">Nombres</label>
+                                        <input type="text" class="form-control" name="primer_nombre" autofocus value="{{$Personas->primer_nombre}}">
+                                        <label class="form-label">primer_nombre</label>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-12">
+                            <div class="col-sm-3">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="apellidos" value="{{$Personas->apellidos}}">
-                                        <label class="form-label">Apellidos</label>
+                                        <input type="text" class="form-control" name="segundo_nombre" autofocus value="{{$Personas->segundo_nombre}}">
+                                        <label class="form-label">segundo_nombre</label>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-12">
+                            <div class="col-sm-3">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        {!! Form::select('tipoidentificacion_id',$tipo, null, ['class' => 'form-control show-tick']) !!}
+                                        <input type="text" class="form-control" name="primer_apellido" value="{{$Personas->primer_apellido}}">
+                                        <label class="form-label">Primer Apellido</label>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-12">
+                            <div class="col-sm-3">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control" name="segundo_apellido" value="{{ $Personas->segundo_apellido }}">
+                                        <label class="form-label">Segundo Apellido</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        {!! Form::select('generos_id',$generos,$Personas->generos_id, ['class' => 'form-control show-tick']) !!}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        {!! Form::select('tipoidentificacion_id',$tipo,$Personas->tipoidentificacion_id, ['class' => 'form-control show-tick']) !!}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number" class="form-control" name="identificacion" value="{{$Personas->identificacion}}">
@@ -54,7 +80,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-12">
+                            <div class="col-sm-4">
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number" class="form-control" name="fijo" value="{{$Personas->fijo}}">
@@ -63,7 +89,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-12">
+                            <div class="col-sm-4">
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number" class="form-control" name="celular" value="{{$Personas->celular}}">
@@ -72,7 +98,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-12">
+                            <div class="col-sm-4">
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" class="form-control" name="direccion" value="{{$Personas->direccion}}">
@@ -81,7 +107,7 @@
                                 </div>
                             </div>
 
-                            <div style="text-align:right">
+                            <div class="col-sm-12" style="text-align:right">
                                 <button type="button" class="btn btn-link waves-effect" id="save">Guardar</button>
                             </div>
 
@@ -103,9 +129,11 @@
            data: $("#frm").serialize(),
            success: function(data)
            {
+                console.log(data);
                 Notificacion(data.success,'glyphicon glyphicon-thumbs-up','warning');
            },
            error : function(e) {
+                console.log(data);
                 Notificacion(e.responseJSON.message,'glyphicon glyphicon-thumbs-down','danger');
            }
        });
