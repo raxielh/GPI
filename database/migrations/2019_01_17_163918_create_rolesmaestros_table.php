@@ -15,12 +15,16 @@ class CreateRolesmaestrosTable extends Migration
     {
         Schema::create('rolesmaestros', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descripcion')->unique();
+            $table->string('nombre_largo')->unique();
+            $table->string('nombre_corto')->unique();
+            $table->string('descripcion');
             $table->timestamps();
         });
 
         DB::table('rolesmaestros')->insert([
-            'descripcion' => 'Super Admin',
+            'nombre_largo' => 'Super Admin',
+            'nombre_corto' => 'SAdmin',
+            'descripcion' => 'Dios del Sistema',
         ]);
     }
 

@@ -12,6 +12,7 @@ class Usuarios extends Model
     public $fillable = [
         'username',
         'personas_id',
+        'rolesmaestros_id',
         'email'
     ];
 

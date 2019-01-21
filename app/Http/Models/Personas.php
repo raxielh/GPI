@@ -21,4 +21,6 @@ class Personas extends Model
         'generos_id',
     ];
 
+    protected $guarded = ['id'];
+
 }

@@ -16,19 +16,15 @@
                         <thead>
 
                             <tr>
-                                <th>Usuario</th>
-                                <th>Correo</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Identificacion</th>
-                                <th>Rol</th>
+                                <th>Nombre corto</th>
+                                <th>Nombre largo</th>
+                                <th>Descripcion</th>
                                 <th>Acciones</th>
                             </tr>
 
                         </thead>
 
                     </table>
-
 
                 </div>
             </div>

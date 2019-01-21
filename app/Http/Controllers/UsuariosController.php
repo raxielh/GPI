@@ -6,29 +6,45 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Validator;
 
 use App\Models\Usuarios;
 
 
 class UsuariosController extends Controller
 {
+    private $modulo_url;
+    private $modulo_nombre;
+
     public function __construct()
     {
         $this->middleware('auth');
+        $this->modulo_url = 'usuarios';
+        $this->modulo_nombre = 'Usuario';
     }
 
     public function index()
     {
-        return view('usuarios.index');
+        $modulo_url=$this->modulo_url;
+        $modulo_nombre=$this->modulo_nombre;
+
+        $personas= DB::table('personas')->selectRaw("id, CONCAT(primer_nombre,' ',primer_apellido,' ',identificacion) as full_name")->pluck('full_name','id');
+        $rolesmaestros= DB::table('rolesmaestros')->pluck('nombre_largo','id');
+
+        return view($this->modulo_url.'.index',compact('modulo_url','modulo_nombre','personas','rolesmaestros'));
     }
 
-    public function listado_usuarios()
+    public function listado()
     {
         return Datatables::of(
-                                DB::table('users')->get()
+                                DB::table('users')
+                                ->join('personas', 'users.personas_id', '=', 'personas.id')
+                                ->join('rolesmaestros', 'users.rolesmaestros_id', '=', 'rolesmaestros.id')
+                                ->select('users.*','personas.primer_nombre','personas.primer_apellido','personas.identificacion','rolesmaestros.nombre_largo')
+                                ->orderBy('users.id', 'desc')
+                                ->get()
                             )->addColumn('action', function ($users) {
                                 return '
-                                <a href="#" onclick="Roles('.$users->id.')" class="btn bg-indigo btn-xs waves-effect"><i class="material-icons">assignment_ind</i></a>
                                 <a href="'.env('APP_URL').'usuarios/'.$users->id.'/edit" class="btn bg-cyan btn-xs waves-effect"><i class="material-icons">mode_edit</i></a>
                                 <a href="#" onclick="Delete('.$users->id.')" class="btn bg-red btn-xs waves-effect"><i class="material-icons">delete</i></a>
                                 ';
@@ -40,41 +56,62 @@ class UsuariosController extends Controller
     public function store(Request $request)
     {
 
-        $this->validate($request,[
-            'username'=>'required',
-            'email'=>'required',
+        $rules = array(
+            'username'=>'required|unique:users',
+            'email'=>'required|unique:users|email',
             'password'=>'required',
-        ]);
+        );
+     
+        $validator = Validator::make($request->all(),$rules);
+
+        if ($validator->fails())
+        {
+            return response()->json(['error'=>$validator->getMessageBag()->toArray()]);
+        }
 
         $user = new Usuarios;
         $user->username = $request->username;
         $user->personas_id = $request->personas_id;
+        $user->rolesmaestros_id = $request->rolesmaestros_id;
         $user->email = $request->email;
         $user->password = bcrypt( $request->password );
 
         $user->save();
 
-        return response()->json(['success'=>'Usuario creado con exito']);
+        return response()->json(['success'=>$this->modulo_nombre.' creado con exito']);
 
     }
 
     public function edit($id)
     {
+        $modulo_url=$this->modulo_url;
+        $modulo_nombre=$this->modulo_nombre;
+
+        $personas= DB::table('personas')->selectRaw("id, CONCAT(primer_nombre,' ',primer_apellido,' ',identificacion) as full_name")->pluck('full_name','id');
+        $rolesmaestros= DB::table('rolesmaestros')->pluck('nombre_largo','id');
+
         $Usuarios=Usuarios::find($id);
-        return view('usuarios.edit',compact('Usuarios'));
+        return view('usuarios.edit',compact('Usuarios','modulo_url','modulo_nombre','personas','rolesmaestros'));
     }
 
     public function update(Request $request, $id)
     {
-
-        $this->validate($request,[
-            'name'=>'required',
+        //dd($request->all());
+        $rules = array(
+            'username'=>'required',
             'email'=>'required',
-        ]);
+        );
+     
+        $validator = Validator::make($request->all(),$rules);
+
+        if ($validator->fails())
+        {
+            return response()->json(['error'=>$validator->getMessageBag()->toArray()]);
+        }
 
         Usuarios::find($id)->update($request->all());
-
-        return response()->json(['success'=>'Usuario editado con exito']);
+        
+        return response()->json(['success'=>$this->modulo_nombre.' editado con exito']);
     }
 
     public function destroy($id)

@@ -7,7 +7,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h4 class="modal-title" id="defaultModalLabel">Crear {{ $Modulo }}</h4>
+                <h4 class="modal-title" id="defaultModalLabel">Crear {{ $modulo_nombre }}</h4>
             </div>
 
             <div class="modal-body">
@@ -105,7 +105,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-link waves-effect" id="save">Guardar</button>
+                <button type="button" class="btn btn-link waves-effect" id="save_crear">Guardar</button>
                 <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Cancelar</button>
             </div>
 

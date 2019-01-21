@@ -44,6 +44,15 @@
             display:none;
             z-index: 99999999999;
         }
+        .alert-danger{
+            z-index:999999999999999999999999 !important;
+        }
+        .alert-success{
+            z-index:999999999999999999999999 !important;
+        }
+        .alert-warning{
+            z-index:999999999999999999999999 !important;
+        }
     </style>
 </head>
 
