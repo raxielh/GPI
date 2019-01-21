@@ -40,7 +40,7 @@ class RolesMaestrosController extends Controller
     public function listado()
     {
         return Datatables::of(
-                                DB::table('rolesmaestros')->orderBy('id', 'desc')->get()
+                                DB::table('rolesmaestros')->where('id','<>',1)->orderBy('id', 'desc')->get()
                             )->addColumn('action', function ($datos) {
                                 return '
                                 <a href="'.env('APP_URL').'rolesmaestros/'.$datos->id.'/edit" class="btn bg-cyan btn-xs waves-effect"><i class="material-icons">mode_edit</i></a>
@@ -106,6 +106,13 @@ class RolesMaestrosController extends Controller
      */
     public function edit($id)
     {
+        $sa = DB::table('rolesmaestros')->where('id',$id)->get();
+        $esSAdmin=($sa[0]->id);
+
+        if($esSAdmin==1){
+            return redirect('rolesmaestros');
+        }
+        
         $modulo_url=$this->modulo_url;
         $modulo_nombre=$this->modulo_nombre;
 

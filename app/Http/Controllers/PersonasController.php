@@ -39,6 +39,7 @@ class PersonasController extends Controller
         return Datatables::of(
                             DB::table('personas')
                             ->join('tipoidentificacion', 'personas.tipoidentificacion_id', '=', 'tipoidentificacion.id')
+                            ->where('personas.id','<>',1)
                             ->select('personas.*','tipoidentificacion.descripcion_corta as tipo')
                             ->orderBy('personas.id', 'desc')
                             ->get()
@@ -92,18 +93,31 @@ class PersonasController extends Controller
 
     public function edit($id)
     {
+        $sa = DB::table('personas')->where('id',$id)->get();
+        $esSAdmin=($sa[0]->id);
+
+        if($esSAdmin==1){
+            return redirect('personas');
+        }
+        
         $modulo_url=$this->modulo_url;
         $modulo_nombre=$this->modulo_nombre;
-
+    
         $tipo= DB::table('tipoidentificacion')->pluck('descripcion_larga','id');
         $generos= DB::table('generos')->pluck('descripcion_larga','id');
-
+    
         $Personas=Personas::find($id);
         return view($this->modulo_url.'.edit',compact('Personas','tipo','generos','modulo_url','modulo_nombre'));
     }
 
     public function update(Request $request, $id)
     {
+        $sa = DB::table('personas')->where('id',$id)->get();
+        $esSAdmin=($sa[0]->id);
+
+        if($esSAdmin==1){
+            return response()->json(['success'=>'SuperAdministrador no se puede borrar']);
+        }
 
         $rules = array(
             'primer_nombre'=>'required',
@@ -127,6 +141,13 @@ class PersonasController extends Controller
 
     public function destroy($id)
     {
+        $sa = DB::table('personas')->where('id',$id)->get();
+        $esSAdmin=($sa[0]->id);
+
+        if($esSAdmin==1){
+            return response()->json(['success'=>'SuperAdministrador no se puede borrar']);
+        }
+
         $Personas = Personas::findOrFail($id);
         $Personas->delete();
 

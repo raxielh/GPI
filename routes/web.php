@@ -17,3 +17,6 @@ Route::get('/listado_rolesmaestros', 'RolesMaestrosController@listado')->name('l
 
 Route::resource('companias', 'CompaniaController');
 Route::get('/listado_companias', 'CompaniaController@listado')->name('listado_companias');
+
+Route::resource('sedes', 'SedesController');
+Route::get('/listado_sedes', 'SedesController@listado')->name('listado_sedes');

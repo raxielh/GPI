@@ -18,7 +18,7 @@ class CreateUsuarioSedeTable extends Migration
             $table->integer('users_id')->unsigned();
             $table->integer('sedes_id')->unsigned();
             $table->timestamps();
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('sedes_id')->references('id')->on('sedes');
             $table->unique(['users_id', 'sedes_id'], 'indice_sede_usuario');
         });

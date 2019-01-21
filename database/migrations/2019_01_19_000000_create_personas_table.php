@@ -43,6 +43,20 @@ class CreatePersonasTable extends Migration
             'celular' => '3106763499',
             'direccion' => 'Cr 8c #10-83',
         ]);
+
+        DB::table('personas')->insert([
+            'primer_nombre' => 'Nombre prueba',
+            'segundo_nombre' => 'Segundo nombre prueba',
+            'primer_apellido' => 'Apellido prueba',
+            'segundo_apellido' => 'Segundo apellido prueba',
+            'tipoidentificacion_id' => 1,
+            'identificacion' => '10678793',
+            'generos_id' => 1,
+            'fijo' => '79789',
+            'celular' => '3106763499',
+            'direccion' => 'Cr 8c #10-73',
+        ]);
+
     }
 
     /**

@@ -29,7 +29,7 @@ class UsuariosController extends Controller
         $modulo_nombre=$this->modulo_nombre;
 
         $personas= DB::table('personas')->selectRaw("id, CONCAT(primer_nombre,' ',primer_apellido,' ',identificacion) as full_name")->pluck('full_name','id');
-        $rolesmaestros= DB::table('rolesmaestros')->pluck('nombre_largo','id');
+        $rolesmaestros= DB::table('rolesmaestros')->where('id','<>',1)->pluck('nombre_largo','id');
 
         return view($this->modulo_url.'.index',compact('modulo_url','modulo_nombre','personas','rolesmaestros'));
     }
@@ -40,6 +40,7 @@ class UsuariosController extends Controller
                                 DB::table('users')
                                 ->join('personas', 'users.personas_id', '=', 'personas.id')
                                 ->join('rolesmaestros', 'users.rolesmaestros_id', '=', 'rolesmaestros.id')
+                                ->where('rolesmaestros.id','<>',1)
                                 ->select('users.*','personas.primer_nombre','personas.primer_apellido','personas.identificacion','rolesmaestros.nombre_largo')
                                 ->orderBy('users.id', 'desc')
                                 ->get()
@@ -78,17 +79,28 @@ class UsuariosController extends Controller
 
         $user->save();
 
+        DB::table('usuario_sede')->insert(
+            ['users_id' => $user->id, 'sedes_id' => 1]
+        );
+
         return response()->json(['success'=>$this->modulo_nombre.' creado con exito']);
 
     }
 
     public function edit($id)
     {
+        $sa = DB::table('personas')->where('id',$id)->get();
+        $esSAdmin=($sa[0]->id);
+
+        if($esSAdmin==1){
+            return redirect('usuarios');
+        }
+
         $modulo_url=$this->modulo_url;
         $modulo_nombre=$this->modulo_nombre;
 
         $personas= DB::table('personas')->selectRaw("id, CONCAT(primer_nombre,' ',primer_apellido,' ',identificacion) as full_name")->pluck('full_name','id');
-        $rolesmaestros= DB::table('rolesmaestros')->pluck('nombre_largo','id');
+        $rolesmaestros= DB::table('rolesmaestros')->where('rolesmaestros.id','<>',1)->pluck('nombre_largo','id');
 
         $Usuarios=Usuarios::find($id);
         return view('usuarios.edit',compact('Usuarios','modulo_url','modulo_nombre','personas','rolesmaestros'));
@@ -96,7 +108,13 @@ class UsuariosController extends Controller
 
     public function update(Request $request, $id)
     {
-        //dd($request->all());
+        $sa = DB::table('personas')->where('id',$id)->get();
+        $esSAdmin=($sa[0]->id);
+
+        if($esSAdmin==1){
+            return response()->json(['success'=>'SuperAdministrador no se puede borrar']);
+        }
+
         $rules = array(
             'username'=>'required',
             'email'=>'required',
@@ -116,6 +134,13 @@ class UsuariosController extends Controller
 
     public function destroy($id)
     {
+        $sa = DB::table('personas')->where('id',$id)->get();
+        $esSAdmin=($sa[0]->id);
+
+        if($esSAdmin==1){
+            return response()->json(['success'=>'SuperAdministrador no se puede borrar']);
+        }
+
         $Usuarios = Usuarios::findOrFail($id);
         $Usuarios->delete();
 

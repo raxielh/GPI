@@ -53,6 +53,10 @@
         .alert-warning{
             z-index:999999999999999999999999 !important;
         }
+        .pagination li.active a {
+            background-color: #333 !important;
+            color:#fff;
+        }
     </style>
 </head>
 

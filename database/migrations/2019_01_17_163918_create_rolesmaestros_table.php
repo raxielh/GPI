@@ -26,6 +26,12 @@ class CreateRolesmaestrosTable extends Migration
             'nombre_corto' => 'SAdmin',
             'descripcion' => 'Dios del Sistema',
         ]);
+
+        DB::table('rolesmaestros')->insert([
+            'nombre_largo' => 'Administrador',
+            'nombre_corto' => 'Admin',
+            'descripcion' => 'Administrador del Sistema',
+        ]);
     }
 
     /**
