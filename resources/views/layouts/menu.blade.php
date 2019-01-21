@@ -7,6 +7,10 @@
             <a href="{{ route('home') }}"> <i class="material-icons">home</i> <span>Inicio</span> </a>
         </li>
 
+        <li class="{{ Request::is('companias*') ? 'active' : '' }}">
+            <a href="{{ route('companias.index') }}"> <i class="material-icons">business</i> <span>Compañias</span> </a>
+        </li>
+
         <li class="{{ Request::is('rolesmaestros*') ? 'active' : '' }}">
             <a href="{{ route('rolesmaestros.index') }}"> <i class="material-icons">assignment_ind</i> <span>Roles</span> </a>
         </li>
