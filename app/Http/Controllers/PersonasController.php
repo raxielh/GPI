@@ -19,6 +19,7 @@ class PersonasController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('cors');
         $this->modulo_url = 'personas';
         $this->modulo_nombre = 'Persona';
     }

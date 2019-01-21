@@ -19,6 +19,7 @@ class UsuariosController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('cors');
         $this->modulo_url = 'usuarios';
         $this->modulo_nombre = 'Usuario';
     }

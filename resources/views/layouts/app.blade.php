@@ -56,6 +56,7 @@
         .pagination li.active a {
             background-color: #333 !important;
             color:#fff;
+            border-radius: 25px;
         }
     </style>
 </head>

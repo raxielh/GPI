@@ -25,6 +25,7 @@ class SedesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('cors');
         $this->modulo_url = 'sedes';
         $this->modulo_nombre = 'Sede';
     }

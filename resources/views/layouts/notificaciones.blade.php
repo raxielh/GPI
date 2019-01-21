@@ -4,7 +4,7 @@
             <span class="label-count">1</span>
         </a>
         <ul class="dropdown-menu">
-            <li class="header">NOTIFICACIONES</li>
+            <li class="header">Mis Notificaciones</li>
             <li class="body">
                 <ul class="menu">
 
@@ -25,7 +25,7 @@
                 </ul>
             </li>
             <li class="footer">
-                <a href="javascript:void(0);">Ver todas las notificaciones</a>
+                <a href="javascript:void(0);">Ver todas</a>
             </li>
         </ul>
 </li>

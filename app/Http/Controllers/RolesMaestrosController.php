@@ -25,6 +25,7 @@ class RolesMaestrosController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('cors');
         $this->modulo_url = 'rolesmaestros';
         $this->modulo_nombre = 'Role';
     }

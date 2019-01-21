@@ -5,7 +5,7 @@
             <span class="label-count">1</span>
         </a>
         <ul class="dropdown-menu">
-            <li class="header">ACTIVIDADES</li>
+            <li class="header">Mis Actividades</li>
             <li class="body">
                 <ul class="menu tasks">
 
@@ -25,7 +25,7 @@
                 </ul>
             </li>
             <li class="footer">
-                <a href="javascript:void(0);">Ver todas las actividades</a>
+                <a href="javascript:void(0);">Ver todas</a>
             </li>
         </ul>
 </li>
