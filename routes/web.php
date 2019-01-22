@@ -20,3 +20,6 @@ Route::get('/listado_companias', 'CompaniaController@listado')->name('listado_co
 
 Route::resource('sedes', 'SedesController');
 Route::get('/listado_sedes', 'SedesController@listado')->name('listado_sedes');
+
+Route::resource('permisos', 'PermisosController');
+Route::get('/listado_permisos', 'PermisosController@listado')->name('listado_permisos');
