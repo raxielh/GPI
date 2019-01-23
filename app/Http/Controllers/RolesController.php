@@ -5,9 +5,9 @@ use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Validator;
-use App\Models\Permisos;
+use App\Models\Roles;
 
-class PermisosController extends Controller
+class RolesController extends Controller
 {
         
         private $modulo_url;
@@ -18,8 +18,8 @@ class PermisosController extends Controller
             
             $this->middleware("auth");
             $this->middleware("cors");
-            $this->modulo_url = 'permisos';
-            $this->modulo_nombre = 'Permiso';
+            $this->modulo_url = 'roles';
+            $this->modulo_nombre = 'Role';
         }
 
         public function index()
@@ -35,12 +35,12 @@ class PermisosController extends Controller
         {
             
             return Datatables::of(
-                DB::table('permisos')->orderBy("id","desc")->get()
+                DB::table('roles')->orderBy("id","desc")->get()
             )->addColumn("action", function ($datos) {
                 return '
                         
                     <a href="#" onclick="Ver('.$datos->id.')" class="btn bg-pink btn-xs waves-effect"><i class="material-icons">search</i></a>
-                    <a href="'.env('APP_URL').'permisos/'.$datos->id.'/edit" class="btn bg-cyan btn-xs waves-effect"><i class="material-icons">mode_edit</i></a>
+                    <a href="'.env('APP_URL').'roles/'.$datos->id.'/edit" class="btn bg-cyan btn-xs waves-effect"><i class="material-icons">mode_edit</i></a>
                     <a href="#" onclick="Delete('.$datos->id.')" class="btn bg-red btn-xs waves-effect"><i class="material-icons">delete</i></a>
 
                 ';
@@ -52,11 +52,11 @@ class PermisosController extends Controller
         public function show($id)
         {
             
-            $permisos=DB::table('permisos')
+            $roles=DB::table('roles')
             ->where('id',$id)
             ->get();
     
-            return response()->json(['success'=>$permisos]);
+            return response()->json(['success'=>$roles]);
 
         }
 
@@ -72,7 +72,7 @@ class PermisosController extends Controller
                 return response()->json(['error'=>$validator->getMessageBag()->toArray()]);
             }
 
-            Permisos::create($request->all());
+            Roles::create($request->all());
     
             return response()->json(['success'=>$this->modulo_nombre.' creado con exito']);
 
@@ -84,8 +84,8 @@ class PermisosController extends Controller
             $modulo_url=$this->modulo_url;
             $modulo_nombre=$this->modulo_nombre;
 
-            $permisos=Permisos::find($id);
-            return view($this->modulo_url.'.edit',compact('permisos','modulo_url','modulo_nombre'));
+            $roles=Roles::find($id);
+            return view($this->modulo_url.'.edit',compact('roles','modulo_url','modulo_nombre'));
  
         }
 
@@ -101,15 +101,15 @@ class PermisosController extends Controller
                 return response()->json(['error'=>$validator->getMessageBag()->toArray()]);
             }
 
-            Permisos::find($id)->update($request->all());
+            Roles::find($id)->update($request->all());
             return response()->json(['success'=>$this->modulo_nombre.' actualizado con exito']);      
  
         }
 
         public function destroy($id)
         {
-            $Permisos = Permisos::findOrFail($id);
-            $Permisos->delete();
+            $Roles = Roles::findOrFail($id);
+            $Roles->delete();
 
             return response()->json(['success'=>$this->modulo_nombre.' borrado con exito']);      
  

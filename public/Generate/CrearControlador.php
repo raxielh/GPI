@@ -94,6 +94,17 @@ $delete="$".$nombre_controlador." = ".$nombre_controlador."::findOrFail($#id);
 $delete= str_replace("#","",$delete);
 
 
+
+$show="
+            $#".$uri."=DB::table('".$uri."')
+            ->where('id',$#id)
+            ->get();
+    
+            return response()->json(['success'=>$$uri]);
+";
+$show= str_replace("#","",$show);
+
+
 $path = "../../app/Http/Controllers/".$nombre_archivo;
 
 if(file_exists($path))
@@ -129,6 +140,11 @@ class ".$nombre_controlador."Controller extends Controller
         public function listado()
         {
             ".$listado."
+        }
+
+        public function show(".$id.")
+        {
+            ".$show."
         }
 
         public function store(Request ".$request.")

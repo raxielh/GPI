@@ -148,8 +148,12 @@
             </div>
 
             <!-- Menu -->
-            @include('layouts.menu')
-            <!-- #Menu -->
+            <div class="menu">
+                <ul class="list">
+                    @include('layouts.menu')
+                    <!-- #Menu -->
+                </ul>
+            </div>
 
             <!-- Footer -->
             @include('layouts.footer')

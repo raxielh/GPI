@@ -19,17 +19,9 @@
             ordering: false,
             ajax: '{{ $url_table }}',
             columns: [
-                        { data: 'descripcion', name: 'descripcion' },
-{ data: 'crear', name: 'crear' },
-{ data: 'leer', name: 'leer' },
-{ data: 'editar', name: 'editar' },
-{ data: 'borrar', name: 'borrar' },
-{ data: 'proceso1', name: 'proceso1' },
-{ data: 'descripcion_proceso1', name: 'descripcion_proceso1' },
-{ data: 'proceso2', name: 'proceso2' },
-{ data: 'descripcion_proceso2', name: 'descripcion_proceso2' },
-{ data: 'proceso3', name: 'proceso3' },
-{ data: 'descripcion_proceso3', name: 'descripcion_proceso3' },
+                        { data: 'rolesmaestros_id', name: 'rolesmaestros_id' },
+{ data: 'menus_id', name: 'menus_id' },
+{ data: 'permisos_id', name: 'permisos_id' },
 
                         { data: 'action', name: 'action', orderable: false, searchable: false }
                     ]

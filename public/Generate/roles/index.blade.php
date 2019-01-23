@@ -16,17 +16,9 @@
                         <thead>
 
                             <tr>
-                                <th>Descripcion</th>
-<th>Crear</th>
-<th>Leer</th>
-<th>Editar</th>
-<th>Borrar</th>
-<th>Proceso1</th>
-<th>Descripcion Proceso1</th>
-<th>Proceso2</th>
-<th>Descripcion Proceso2</th>
-<th>Proceso3</th>
-<th>Descripcion Proceso3</th>
+                                <th>rolesmaestros_id</th>
+<th>menus_id</th>
+<th>permisos_id</th>
 <th>Acciones</th>
                             </tr>
 

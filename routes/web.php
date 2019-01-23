@@ -23,3 +23,6 @@ Route::get('/listado_sedes', 'SedesController@listado')->name('listado_sedes');
 
 Route::resource('permisos', 'PermisosController');
 Route::get('/listado_permisos', 'PermisosController@listado')->name('listado_permisos');
+
+Route::resource('roles', 'RolesController');
+Route::get('/listado_roles', 'RolesController@listado')->name('listado_roles');

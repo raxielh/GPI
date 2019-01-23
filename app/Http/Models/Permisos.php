@@ -9,12 +9,17 @@ class Permisos extends Model
     protected $table = 'permisos';
 
     public $fillable = [
-         
         'descripcion',
-        'nit',
-        'representante_legal',
-        'telefono',
-        'logo'
+'crear',
+'leer',
+'editar',
+'borrar',
+'proceso1',
+'descripcion_proceso1',
+'proceso2',
+'descripcion_proceso2',
+'proceso3',
+'descripcion_proceso3',
 
     ];
 

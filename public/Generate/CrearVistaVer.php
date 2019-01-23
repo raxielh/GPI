@@ -21,18 +21,15 @@ $vista= <<<EOT
 
                 <div class="modal-body">
 
-                    <div class="col-sm-12 col-md-6">
-                        <label>Primer Nombre</label>
-                        <div class="form-group">
-                            <p id="v_primer_nombre"></p>
-                        </div>
-                    </div>
+                    $ver
 
 
                 </div>
-
+                
                 <div class="modal-footer">
+                <div class="col-md-12">
                     <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Cancelar</button>
+                </div>
                 </div>
 
             </div>

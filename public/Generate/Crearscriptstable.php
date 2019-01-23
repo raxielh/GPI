@@ -8,6 +8,15 @@ $nombre_archivo = $nombre_controlador.'.php';
 $request='$request';
 $id='$id';
 
+
+$dtf;
+foreach ($fields as $v2)
+{
+        $dtf=$dtf."{ data: '".$v2."', name: '".$v2."' },\n";
+}
+
+//echo $dtf;
+
 $vista= <<<EOT
 @php
     $#-url_table=route("listado_".$#-modulo_url) ;
@@ -30,12 +39,7 @@ $vista= <<<EOT
             ordering: false,
             ajax: '{{ $#-url_table }}',
             columns: [
-                        { data: 'username', name: 'username' },
-                        { data: 'email', name: 'email' },
-                        { data: 'primer_nombre', name: 'primer_nombre' },
-                        { data: 'primer_apellido', name: 'primer_apellido' },
-                        { data: 'identificacion', name: 'identificacion' },
-                        { data: 'nombre_largo', name: 'nombre_largo' },
+                        $dtf
                         { data: 'action', name: 'action', orderable: false, searchable: false }
                     ]
         });
