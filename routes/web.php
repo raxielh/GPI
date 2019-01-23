@@ -27,4 +27,10 @@ Route::get('/listado_permisos', 'PermisosController@listado')->name('listado_per
 Route::resource('roles', 'RolesController');
 Route::get('/listado_roles', 'RolesController@listado')->name('listado_roles');
 
+Route::resource('menus', 'MenusController');
+Route::get('/listado_menus', 'MenusController@listado')->name('listado_menus');
+
+Route::resource('tipomenus', 'TipomenusController');
+Route::get('/listado_tipomenus', 'TipomenusController@listado')->name('listado_tipomenus');
+
 Route::resource('mensaje', 'MensajeController');

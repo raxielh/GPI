@@ -16,11 +16,12 @@
                         <thead>
 
                             <tr>
-                                <th>Descripcion</th>
-<th>Crear</th>
-<th>Leer</th>
-<th>Editar</th>
-<th>Borrar</th>
+                                <th>id_padre</th>
+<th>descripcion</th>
+<th>icono</th>
+<th>ruta</th>
+<th>tipomenu_id</th>
+<th>orden</th>
 <th>Acciones</th>
                             </tr>
 

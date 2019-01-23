@@ -16,11 +16,7 @@
                         <thead>
 
                             <tr>
-                                <th>Descripcion</th>
-<th>Crear</th>
-<th>Leer</th>
-<th>Editar</th>
-<th>Borrar</th>
+                                <th>descripcion</th>
 <th>Acciones</th>
                             </tr>
 

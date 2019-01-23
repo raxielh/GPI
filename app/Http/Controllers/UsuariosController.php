@@ -84,6 +84,10 @@ class UsuariosController extends Controller
             ['users_id' => $user->id, 'sedes_id' => 1]
         );
 
+        DB::table('color')->insert(
+            ['users_id' => $user->id, 'color' => 'deep-orange']
+        );
+
         return response()->json(['success'=>$this->modulo_nombre.' creado con exito']);
 
     }

@@ -19,11 +19,12 @@
             ordering: false,
             ajax: '{{ $url_table }}',
             columns: [
-                        { data: 'descripcion', name: 'descripcion' },
-{ data: 'crear', name: 'crear' },
-{ data: 'leer', name: 'leer' },
-{ data: 'editar', name: 'editar' },
-{ data: 'borrar', name: 'borrar' },
+                        { data: 'id_padre', name: 'id_padre' },
+{ data: 'descripcion', name: 'descripcion' },
+{ data: 'icono', name: 'icono' },
+{ data: 'ruta', name: 'ruta' },
+{ data: 'tipomenu_id', name: 'tipomenu_id' },
+{ data: 'orden', name: 'orden' },
 
                         { data: 'action', name: 'action', orderable: false, searchable: false }
                     ]

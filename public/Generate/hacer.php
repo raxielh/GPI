@@ -1,21 +1,16 @@
 <?php 
 
-$nombre_controlador='Roles';
-$uri="roles";
-$modulo_nombre="'Role'";
+$nombre_controlador='Tipomenus';
+$uri="tipomenus";
+$modulo_nombre="'tipomenus'";
 $icon='transfer_within_a_station';
 
 $fields = array(
-                'rolesmaestros_id',
-                'menus_id',
-                'permisos_id',
-
+                'descripcion',
         );
 
 $muestra = array(
-            'rolesmaestros_id',
-            'menus_id',
-            'permisos_id',
+                'descripcion',
         );
 
 $x;

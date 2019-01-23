@@ -20,10 +20,6 @@
             ajax: '{{ $url_table }}',
             columns: [
                         { data: 'descripcion', name: 'descripcion' },
-{ data: 'crear', name: 'crear' },
-{ data: 'leer', name: 'leer' },
-{ data: 'editar', name: 'editar' },
-{ data: 'borrar', name: 'borrar' },
 
                         { data: 'action', name: 'action', orderable: false, searchable: false }
                     ]
