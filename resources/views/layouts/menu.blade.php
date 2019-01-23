@@ -16,8 +16,12 @@
     <a href="{{ route('sedes.index') }}"> <i class="material-icons">domain</i> <span>Sedes</span> </a>
 </li>
 
-<li class="{{ Request::is('rolesmaestros*') ? 'active' : '' }}">
-    <a href="{{ route('rolesmaestros.index') }}"> <i class="material-icons">assignment_ind</i> <span>Roles</span> </a>
+<li class="{{ Request::is('nombreroles*') ? 'active' : '' }}">
+    <a href="{{ route('nombreroles.index') }}"> <i class="material-icons">assignment_ind</i> <span>Nombre de Roles</span> </a>
+</li>
+
+<li class="{{ Request::is('roles*') ? 'active' : '' }}">
+    <a href="{{ route('roles.index') }}"> <i class="material-icons">transfer_within_a_station</i> <span>Roles</span> </a>
 </li>
 
 <li class="{{ Request::is('personas*') ? 'active' : '' }}">
@@ -28,6 +32,6 @@
     <a href="{{ route('usuarios.index') }}"> <i class="material-icons">person_pin</i> <span>Usuarios</span> </a>
 </li>
 
-<li class="{{ Request::is('roles*') ? 'active' : '' }}">
-    <a href="{{ route('roles.index') }}"> <i class="material-icons">transfer_within_a_station</i> <span>Roles</span> </a>
+<li class="{{ Request::is('mensaje*') ? 'active' : '' }}">
+    <a href="{{ route('mensaje.index') }}"> <i class="material-icons">message</i> <span>Buzon</span> </a>
 </li>

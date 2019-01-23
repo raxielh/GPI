@@ -12,8 +12,8 @@ Route::get('/listado_usuarios', 'UsuariosController@listado')->name('listado_usu
 Route::resource('personas', 'PersonasController');
 Route::get('/listado_personas', 'PersonasController@listado')->name('listado_personas');
 
-Route::resource('rolesmaestros', 'RolesMaestrosController');
-Route::get('/listado_rolesmaestros', 'RolesMaestrosController@listado')->name('listado_rolesmaestros');
+Route::resource('nombreroles', 'RolesMaestrosController');
+Route::get('/listado_nombreroles', 'RolesMaestrosController@listado')->name('listado_nombreroles');
 
 Route::resource('companias', 'CompaniaController');
 Route::get('/listado_companias', 'CompaniaController@listado')->name('listado_companias');
@@ -26,3 +26,5 @@ Route::get('/listado_permisos', 'PermisosController@listado')->name('listado_per
 
 Route::resource('roles', 'RolesController');
 Route::get('/listado_roles', 'RolesController@listado')->name('listado_roles');
+
+Route::resource('mensaje', 'MensajeController');

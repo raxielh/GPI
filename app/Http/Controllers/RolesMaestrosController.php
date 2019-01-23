@@ -26,8 +26,8 @@ class RolesMaestrosController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('cors');
-        $this->modulo_url = 'rolesmaestros';
-        $this->modulo_nombre = 'Role';
+        $this->modulo_url = 'nombreroles';
+        $this->modulo_nombre = 'Nombre Role';
     }
 
     public function index()
@@ -44,7 +44,7 @@ class RolesMaestrosController extends Controller
                                 DB::table('rolesmaestros')->where('id','<>',1)->orderBy('id', 'desc')->get()
                             )->addColumn('action', function ($datos) {
                                 return '
-                                <a href="'.env('APP_URL').'rolesmaestros/'.$datos->id.'/edit" class="btn bg-cyan btn-xs waves-effect"><i class="material-icons">mode_edit</i></a>
+                                <a href="'.env('APP_URL').'nombreroles/'.$datos->id.'/edit" class="btn bg-cyan btn-xs waves-effect"><i class="material-icons">mode_edit</i></a>
                                 <a href="#" onclick="Delete('.$datos->id.')" class="btn bg-red btn-xs waves-effect"><i class="material-icons">delete</i></a>
                                 ';
                             })

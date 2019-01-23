@@ -90,7 +90,8 @@ class UsuariosController extends Controller
 
     public function edit($id)
     {
-        $sa = DB::table('personas')->where('id',$id)->get();
+        
+        $sa = DB::table('users')->where('id',$id)->get();
         $esSAdmin=($sa[0]->id);
 
         if($esSAdmin==1){
@@ -109,7 +110,7 @@ class UsuariosController extends Controller
 
     public function update(Request $request, $id)
     {
-        $sa = DB::table('personas')->where('id',$id)->get();
+        $sa = DB::table('users')->where('id',$id)->get();
         $esSAdmin=($sa[0]->id);
 
         if($esSAdmin==1){
@@ -135,7 +136,7 @@ class UsuariosController extends Controller
 
     public function destroy($id)
     {
-        $sa = DB::table('personas')->where('id',$id)->get();
+        $sa = DB::table('users')->where('id',$id)->get();
         $esSAdmin=($sa[0]->id);
 
         if($esSAdmin==1){
