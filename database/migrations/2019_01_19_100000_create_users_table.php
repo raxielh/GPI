@@ -34,6 +34,14 @@ class CreateUsersTable extends Migration
             'personas_id' => 1,
             'rolesmaestros_id' => 1
         ]);
+
+        DB::table('users')->insert([
+            'username' => 'root',
+            'email' => 'root@gmail.com',
+            'password' => '$2y$10$4w9KrJDA9yjzSM0MAnM2SuBYjx5LYgrau6HSjH3WZ36XMGpRlncQy',
+            'personas_id' => 1,
+            'rolesmaestros_id' => 1
+        ]);
     }
 
     /**
