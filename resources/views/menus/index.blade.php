@@ -16,6 +16,7 @@
                         <thead>
 
                             <tr>
+                                <th>id</th>
                                 <th>id_padre</th>
 <th>descripcion</th>
 <th>icono</th>

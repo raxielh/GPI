@@ -37,9 +37,11 @@
     <script src="{{ URL::asset('./js/dataTables.responsive.js') }}"></script>
     <script src="{{ URL::asset('./js/notificacion.js') }}"></script>
     <script src="{{ URL::asset('./js/sweetalert2.js') }}"></script>
-
+    <script src="{{ URL::asset('./js/jquery.nestable.js') }}"></script>
     <script src="{{ URL::asset('../js/tinymce/tinymce.min.js') }}"></script>
     <script>tinymce.init({ selector:'textarea' });</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css" />
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Montserrat');
         #cargando{

@@ -19,6 +19,7 @@
             ordering: false,
             ajax: '{{ $url_table }}',
             columns: [
+                        { data: 'id', name: 'id' },
                         { data: 'id_padre', name: 'id_padre' },
 { data: 'descripcion', name: 'descripcion' },
 { data: 'icono', name: 'icono' },

@@ -10,10 +10,13 @@ class Roles extends Model
 
     public $fillable = [
         'rolesmaestros_id',
-'menus_id',
-'permisos_id',
+        'menus_id',
+        'permisos_id',
 
     ];
 
     protected $guarded = ['id'];
+
+
+
 }

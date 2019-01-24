@@ -16,7 +16,7 @@ class MenusController extends Controller
         public function __construct()
         {
             
-            $this->middleware("auth");
+            //$this->middleware("auth");
             $this->middleware("cors");
             $this->modulo_url = 'menus';
             $this->modulo_nombre = 'Menu';
@@ -113,6 +113,68 @@ class MenusController extends Controller
 
             return response()->json(['success'=>$this->modulo_nombre.' borrado con exito']);      
  
+        }
+
+        public function dibujar_menu_g(){
+
+            $menu1= DB::table('menus')->get()->toArray();
+
+
+            $data = array();
+            $tmp = array();
+            foreach ($menu1 as $row) {
+                $tmp['id'] = $row->id;
+                $tmp['id_padre'] = $row->id_padre;
+                $tmp['descripcion'] = $row->descripcion;
+                $tmp['icono'] = $row->icono;
+                $tmp['tipomenu_id'] = $row->tipomenu_id;
+                $tmp['href'] = $row->ruta;
+                array_push($data, $tmp); 
+            }
+
+            $itemsByReference = array();
+
+
+
+            
+            foreach($data as $item) {
+
+                if ($item["id"]== $item["id_padre"])
+                {
+                    $itemsByReference[$item['id']] = $item;
+                    $itemsByReference[$item['id']]['nodes'] = array();
+                }else {
+
+                //    $itemsByReference[$item['id']] = $item;
+                  //  $itemsByReference[$item['id']]['nodes'] = array();
+
+                  $item2=$item;
+                  
+                  if ($item["tipomenu_id"] == 1)
+                  {
+                      //$itemsByReference[$item['id']]['nodes'] = array();
+                      $item2['nodes'] = array();
+                  }
+                  
+                    $itemsByReference [$item['id_padre']]['nodes'][] = $item2;
+
+/*
+                  
+                    */
+                }
+
+               
+            }
+/*
+            foreach($data as $key => $item)  {
+
+                if($item['id_padre'] && isset($itemsByReference[$item['id_padre']])) {
+                    $itemsByReference [$item['id_padre']]['nodes'][] = $item;
+                }
+            }
+*/
+            return response()->json([$itemsByReference]);
+
         }
 
 

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use App\Models\Roles;
+use App\Models\Menus;
 
 class RolesController extends Controller
 {
@@ -24,10 +25,14 @@ class RolesController extends Controller
 
         public function index()
         {
+
+            $menu1= DB::table('menus')->get();
+
+            $rolesmaestros= DB::table('rolesmaestros')->pluck('nombre_largo','id')->toArray();
             
             $modulo_url=$this->modulo_url;
             $modulo_nombre=$this->modulo_nombre;
-            return view($this->modulo_url.".index",compact("modulo_url","modulo_nombre"));
+            return view($this->modulo_url.".index",compact("modulo_url","modulo_nombre","rolesmaestros","menu1"));
 
         }
 
@@ -114,7 +119,6 @@ class RolesController extends Controller
             return response()->json(['success'=>$this->modulo_nombre.' borrado con exito']);      
  
         }
-
 
     
 }

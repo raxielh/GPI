@@ -10,13 +10,15 @@ class Menus extends Model
 
     public $fillable = [
         'id_padre',
-'descripcion',
-'icono',
-'ruta',
-'tipomenu_id',
-'orden',
+        'descripcion',
+        'icono',
+        'ruta',
+        'tipomenu_id',
+        'orden',
 
     ];
 
     protected $guarded = ['id'];
+
+
 }

@@ -45,6 +45,7 @@ class PermisosController extends Controller
 
                 ';
             })
+            //->editColumn('crear', 'ID: {{ $id }}}')
             ->make(true);
 
         }

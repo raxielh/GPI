@@ -1,42 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="row clearfix">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card">
-            <div class="header"><h2>{{ $modulo_nombre }}s
-                <button type="button" class="btn bg-{{ Theme_Color() }} waves-effect btn-xs" data-toggle="modal" data-target="#Crear"><i class="material-icons">add</i></button>
-            </h2></div>
-            <div class="body">
-                <div class="table-responsive">
-
-                    <table class="table table-bordered table-striped table-hover">
-
-                        <thead>
-
-                            <tr>
-                                <th>rolesmaestros_id</th>
-<th>menus_id</th>
-<th>permisos_id</th>
-<th>Acciones</th>
-                            </tr>
-
-                        </thead>
-
-                    </table>
-
-                </div>
-            </div>
+<div class="card">
+    <div class="header"><h2>{{ $modulo_nombre }}s</div>
+    <div class="body" style="min-height: 900px;height: auto;">
+        <div class="col-md-12">
+            {!! Form::select('rolesmaestros',[' ' => 'Seleccione un nombre de Rol...']+$rolesmaestros, null, 
+                                        [
+                                            'class' => 'form-control show-tick',
+                                            'data-show-subtext'=>"true",
+                                            'data-live-search'=>"true"
+                                        ]) !!}
         </div>
+        <div class="col-md-6">
+            <h5>Menu de opciones</h5>
+
+            <div id="treeview_json"></div>
+
+
+
+        </div>
+        <div class="col-md-6">
+            <h5>Menu asignado</h5>
+        </div>
+        <div style="color:#fff">.</div>
     </div>
 </div>
 
-@include($modulo_url.'.modales_ver')
-@include($modulo_url.'.modales_save')
-@include($modulo_url.'.scripts_table')
-@include($modulo_url.'.scripts_ver')
-@include($modulo_url.'.scripts_crear')
-@include($modulo_url.'.scripts_borrar')
+
 @include($modulo_url.'.scripts')
 @endsection
