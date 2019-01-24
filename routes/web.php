@@ -29,6 +29,7 @@ Route::get('/listado_roles', 'RolesController@listado')->name('listado_roles');
 
 Route::resource('menus', 'MenusController');
 Route::get('/dibujar_menu_g', 'MenusController@dibujar_menu_g')->name('dibujar_menu_g');
+Route::get('/dibujar_menu', 'MenusController@dibujar_menu')->name('dibujar_menu');
 Route::get('/listado_menus', 'MenusController@listado')->name('listado_menus');
 
 Route::resource('tipomenus', 'TipomenusController');
