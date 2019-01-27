@@ -16,7 +16,7 @@ class MenusController extends Controller
         public function __construct()
         {
 
-            //$this->middleware("auth");
+            $this->middleware("auth");
             $this->middleware("cors");
             $this->modulo_url = 'menus';
             $this->modulo_nombre = 'Menu';
@@ -25,12 +25,43 @@ class MenusController extends Controller
         public function index()
         {
 
-            $menu = DB::table('menus')->where('id', '<>' , 0)->orderBy('orden', 'ASC')->get()->toArray();
+            $menu = DB::table('menus')
+            ->where('id', '<>' , 0)
+            //->orderBy('id_padre', 'ASC')
+            ->orderBy('orden', 'ASC')
+            ->get();
             $tipomenus = DB::table('tipomenus')->pluck('descripcion','id');
 
             $modulo_url=$this->modulo_url;
             $modulo_nombre=$this->modulo_nombre;
+
+            //return ($menu);
+
             return view($this->modulo_url.".index",compact("modulo_url","modulo_nombre","menu","tipomenus"));
+
+        }
+
+        public function up($id)
+        {
+
+            $o=DB::table('menus')->where('id',$id)->get();
+            $menu = DB::table('menus')
+            ->where('id',$id)
+            ->update(['orden' => $o[0]->orden+1]);
+
+            return redirect(env('APP_URL').'menus');
+
+        }
+
+        public function down($id)
+        {
+
+            $o=DB::table('menus')->where('id',$id)->get();
+            $menu = DB::table('menus')
+            ->where('id',$id)
+            ->update(['orden' => $o[0]->orden-1]);
+
+            return redirect(env('APP_URL').'menus');
 
         }
 
@@ -75,7 +106,19 @@ class MenusController extends Controller
                 return response()->json(['error'=>$validator->getMessageBag()->toArray()]);
             }
 
-            Menus::create($request->all());
+            //Menus::create($request->all());
+
+            $o=DB::table('menus')->where('id_padre',$request->id_padre)->count();
+
+            $Menus = new Menus;
+            $Menus->id_padre = $request->id_padre;
+            $Menus->descripcion = $request->descripcion;
+            $Menus->icono = $request->icono;
+            $Menus->tipomenu_id = $request->tipomenu_id;
+            $Menus->ruta = $request->ruta;
+            $Menus->orden = $o;
+    
+            $Menus->save();
 
             return response()->json(['success'=>$this->modulo_nombre.' creado con exito']);
 
@@ -117,10 +160,20 @@ class MenusController extends Controller
             return response()->json(['success'=>$this->modulo_nombre.' borrado con exito']);
 
         }
+/*
+        public function dibujar_menu_g($padre){
 
+            $menu1= DB::table('menus')
+            ->where('id_padre',$padre)
+            ->orderBy('orden', 'ASC')->get();
+            return response()->json($menu1);
+        }
+*/
         public function dibujar_menu_g(){
 
-            $menu1= DB::table('menus')->get()->toArray();
+            $menu1= DB::table('menus')
+            //->orderBy('id_padre', 'ASC')
+            ->orderBy('orden', 'ASC')->get();
 
 
             $data1 = array();
@@ -153,29 +206,29 @@ class MenusController extends Controller
                 {
                     
                         $id = $node['id'];
+
+                        
                         
                         /* Puede que exista el children creado si los hijos entran antes que el padre */
                         $tipomenu_id=$node['tipomenu_id'];
                         if($tipomenu_id==1){
-                            $node['nodes'] = (isset($tree['nodes'][$id]))?$tree['nodes'][$id]['nodes']:array();
+                            //nodes
+                            $node['children'] = (isset($tree['children'][$id]))?$tree['children'][$id]['children']:array();
                         }
 
                         //var_dump($node);
 
-                        $tree['nodes'][$id] = $node;
+                        //$tree['children'][$id] = $node;
+                        $tree['children'][$id] = $node;
 
-                        
-                        
-
-
-                                              
+                                      
 
                         if ($node['id_padre'] == $rootId)
-                            $tree['root'][$id] = &$tree['nodes'][$id];
+                            $tree['root'][$id] = &$tree['children'][$id];
                         else
                         {
                             //if($tipomenu_id==1){
-                                $tree['nodes'][$node['id_padre']]['nodes'][$id] = &$tree['nodes'][$id];
+                                $tree['children'][$node['id_padre']]['children'][$id] = &$tree['children'][$id];
                             //}
                         }
 

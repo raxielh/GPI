@@ -25,6 +25,15 @@ class CreateMenusTable extends Migration
             $table->foreign('tipomenu_id')->references('id')->on('tipomenus');
             $table->foreign('id_padre')->references('id')->on('menus');
         });
+
+
+
+
+
+
+
+
+
     }
 
     /**

@@ -3,41 +3,6 @@
 @endphp
 <script>
 
-
-
-var tree = [
-  {
-    text: "Parent 1",
-    nodes: [
-      {
-        text: "Child 1",
-        nodes: [
-          {
-            text: "Grandchild 1"
-          },
-          {
-            text: "Grandchild 2",
-						nodes: [
-							{
-								text: "Grandchild 1"
-							},
-							{
-								text: "Grandchild 2"
-							}
-						]
-          }
-        ]
-      },
-      {
-        text: "Child 2"
-      }
-    ]
-  },
-];
-
-
-
-
 	$(document).ready(function(){ 
 			$.ajax({
 			type: "GET",  

@@ -68,6 +68,8 @@
         .swal2-popup .swal2-styled.swal2-cancel {
             font-size: 1.5em;
         }
+
+
     </style>
 </head>
 

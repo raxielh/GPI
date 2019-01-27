@@ -1,291 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-li{
-    font-size:16px;
-    margin:1em;
-}
-ul{
-    margin:0px;
-    padding-left:6px;
-}
-.tree { margin: 1em; }
-
-.tree input {
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-  }
-
-.tree input ~ ul { display: none; }
-
-.tree input:checked ~ ul { display: block; }
-
-/* ————————————————————–
-  Tree rows
-*/
-.tree li {
-  line-height: 1.2;
-  position: relative;
-  padding: 0 0 1em 1em;
-  }
-
-.tree ul li { padding: 1em 0 0 1em;margin:0px; }
-
-.tree > li:last-child { padding-bottom: 0; }
-
-/* ————————————————————–
-  Tree labels
-*/
-.tree_label {
-  position: relative;
-  display: inline-block;
-  background: #fff;
-  }
-
-label.tree_label { cursor: pointer; }
-
-label.tree_label:hover { color: #666; }
-
-/* ————————————————————–
-  Tree expanded icon
-*/
-label.tree_label:before {
-  background: #000;
-  color: #fff;
-  position: relative;
-  z-index: 1;
-  float: left;
-  margin: 0 1em 0 -2em;
-  width: 1em;
-  height: 1em;
-  border-radius: 1em;
-  content: '+';
-  text-align: center;
-  line-height: .9em;
-  }
-
-:checked ~ label.tree_label:before { content: '–'; }
-
-/* ————————————————————–
-  Tree branches
-*/
-.tree li:before {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: -.5em;
-  display: block;
-  width: 0;
-  border-left: 1px solid #777;
-  content: "";
-  }
-
-.tree_label:after {
-  position: absolute;
-  top: 0;
-  left: -1.5em;
-  display: block;
-  height: 0.5em;
-  width: 1em;
-  border-bottom: 1px solid #777;
-  border-left: 1px solid #777;
-  border-radius: 0 0 0 .3em;
-  content: '';
-  }
-
-label.tree_label:after { border-bottom: 0; }
-
-:checked ~ label.tree_label:after {
-  border-radius: 0 .3em 0 0;
-  border-top: 1px solid #777;
-  border-right: 1px solid #777;
-  border-bottom: 0;
-  border-left: 0;
-  bottom: 0;
-  top: 0.5em;
-  height: auto;
-  }
-
-.tree li:last-child:before {
-  height: 1em;
-  bottom: auto;
-  }
-
-.tree > li:last-child:before { display: none; }
-
-.tree_custom {
-  display: block;
-  background: #eee;
-  padding: 1em;
-  border-radius: 0.3em;
-}
-li{
-    list-style:none;
+<style type="text/css">
+.dd{position:relative;display:block;margin:0;padding:0;max-width:600px;list-style:none;font-size:13px;line-height:20px}.dd-list{display:block;position:relative;margin:0;padding:0;list-style:none}.dd-list .dd-list{padding-left:30px}.dd-empty,.dd-item,.dd-placeholder{display:block;position:relative;margin:0;padding:0;min-height:20px;font-size:13px;line-height:20px}.dd-handle{display:block;height:60px;margin:5px 0;padding:5px 10px;color:#333;text-decoration:none;font-weight:700;border:1px solid #ccc;background:#fafafa;border-radius:3px;box-sizing:border-box}.dd-handle:hover{color:#2ea8e5;background:#fff}.dd-item>button{position:relative;cursor:pointer;float:left;width:25px;height:20px;margin:5px 0;padding:0;text-indent:100%;white-space:nowrap;overflow:hidden;border:0;background:0 0;font-size:12px;line-height:1;text-align:center;font-weight:700}.dd-item>button:before{display:block;position:absolute;width:100%;text-align:center;text-indent:0}.dd-item>button.dd-expand:before{content:'+'}.dd-item>button.dd-collapse:before{content:'-'}.dd-expand{display:none}.dd-collapsed .dd-collapse,.dd-collapsed .dd-list{display:none}.dd-collapsed .dd-expand{display:block}.dd-empty,.dd-placeholder{margin:5px 0;padding:0;min-height:30px;background:#f2fbff;border:1px dashed #b6bcbf;box-sizing:border-box;-moz-box-sizing:border-box}.dd-empty{border:1px dashed #bbb;min-height:100px;background-color:#e5e5e5;background-size:60px 60px;background-position:0 0,30px 30px}.dd-dragel{position:absolute;pointer-events:none;z-index:9999}.dd-dragel>.dd-item .dd-handle{margin-top:0}.dd-dragel .dd-handle{box-shadow:2px 4px 6px 0 rgba(0,0,0,.1)}.dd-nochildren .dd-placeholder{display:none}
+a:hover{
+    text-decoration:none;
 }
 </style>
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="header"><h2>{{ $modulo_nombre }}s
-                <button type="button" class="btn bg-{{ Theme_Color() }} waves-effect btn-xs" data-toggle="modal" data-target="#Crear"><i class="material-icons">add</i></button>
+                <button type="button" class="btn bg-{{ Theme_Color() }} waves-effect btn-xs" data-toggle="modal" data-target="#Crear" style="display:none"><i class="material-icons">add</i></button>
             </h2></div>
             <div class="body">
+                <div class="dd">
+
+                @php
+                    $res = fetchCategoryTreeList();
+                    foreach ($res as $r) {
+                        echo  $r;
+                    }
+                @endphp
             
-            <ul class="tree">
-            @foreach ($menu as $m0)
-                @if($m0->id_padre==0)
-                <li>
-
-                    {{ $m0->descripcion }}
-                    
-                    <a class="btn bg-teal btn-xs waves-effect"><i class="material-icons" onclick="add({{ $m0->id }})">add</i></a>
-                    <a class="btn bg-pink btn-xs waves-effect" href="{{ env('APP_URL')}}/menus/{{  $m0->id }}/edit"><i class="material-icons">mode_edit</i></a>
-        
-                    <ul>
-                    @foreach ($menu as $m1)
-                        @if($m1->id_padre==$m0->id)
-                        <li id="m-{{ $m1->id }}">
-                            {{ $m1->descripcion }} 
-                            <a class="btn bg-teal btn-xs waves-effect"><i class="material-icons"  onclick="add({{ $m1->id }})">add</i></a>
-                            <a class="btn bg-pink btn-xs waves-effect" href="{{ env('APP_URL')}}/menus/{{  $m1->id }}/edit"><i class="material-icons">mode_edit</i></a>
-                            <a onclick="Delete({{ $m1->id }})" class="btn bg-red btn-xs waves-effect"><i class="material-icons">close</i></a>
-                            <a class="btn bg-blue btn-xs waves-effect"><i class="material-icons">keyboard_arrow_down</i></a>
-                            <a class="btn bg-indigo btn-xs waves-effect"><i class="material-icons">keyboard_arrow_up</i></a>
-                            <ul>
-                            @foreach ($menu as $m2)
-                                @if($m2->id_padre==$m1->id)
-                                <li>
-                                    {{ $m2->descripcion }}
-
-                            <a class="btn bg-teal btn-xs waves-effect"><i class="material-icons"  onclick="add({{ $m2->id }})">add</i></a>
-                            <a class="btn bg-pink btn-xs waves-effect" href="{{ env('APP_URL')}}/menus/{{  $m2->id }}/edit"><i class="material-icons">mode_edit</i></a>
-                            <a onclick="Delete({{ $m2->id }})" class="btn bg-red btn-xs waves-effect"><i class="material-icons">close</i></a>
-                            <a class="btn bg-blue btn-xs waves-effect"><i class="material-icons">keyboard_arrow_down</i></a>
-                            <a class="btn bg-indigo btn-xs waves-effect"><i class="material-icons">keyboard_arrow_up</i></a>
-
-                                    <ul>
-                                    @foreach ($menu as $m3)
-                                        @if($m3->id_padre==$m2->id)
-                                        <li>
-                                            {{ $m3->descripcion }}
-
-                            <a class="btn bg-teal btn-xs waves-effect"><i class="material-icons"  onclick="add({{ $m3->id }})">add</i></a>
-                            <a class="btn bg-pink btn-xs waves-effect" href="{{ env('APP_URL')}}/menus/{{  $m3->id }}/edit"><i class="material-icons">mode_edit</i></a>
-                            <a onclick="Delete({{ $m3->id }})" class="btn bg-red btn-xs waves-effect"><i class="material-icons">close</i></a>
-                            <a class="btn bg-blue btn-xs waves-effect"><i class="material-icons">keyboard_arrow_down</i></a>
-                            <a class="btn bg-indigo btn-xs waves-effect"><i class="material-icons">keyboard_arrow_up</i></a>
-
-                                            <ul>
-                                            @foreach ($menu as $m4)
-                                                @if($m4->id_padre==$m3->id)
-                                                <li>
-                                                    {{ $m4->descripcion }}
-
-                            <a class="btn bg-teal btn-xs waves-effect"><i class="material-icons"  onclick="add({{ $m4->id }})">add</i></a>
-                            <a class="btn bg-pink btn-xs waves-effect" href="{{ env('APP_URL')}}/menus/{{  $m4->id }}/edit"><i class="material-icons">mode_edit</i></a>
-                            <a onclick="Delete({{ $m4->id }})" class="btn bg-red btn-xs waves-effect"><i class="material-icons">close</i></a>
-                            <a class="btn bg-blue btn-xs waves-effect"><i class="material-icons">keyboard_arrow_down</i></a>
-                            <a class="btn bg-indigo btn-xs waves-effect"><i class="material-icons">keyboard_arrow_up</i></a>
-                                
-                                                    <ul>
-                                                    @foreach ($menu as $m5)
-                                                        @if($m5->id_padre==$m4->id)
-                                                        <li>
-                                                            {{ $m5->descripcion }}
-
-                            <a class="btn bg-teal btn-xs waves-effect"><i class="material-icons"  onclick="add({{ $m5->id }})">add</i></a>
-                            <a class="btn bg-pink btn-xs waves-effect" href="{{ env('APP_URL')}}/menus/{{  $m5->id }}/edit"><i class="material-icons">mode_edit</i></a>
-                            <a onclick="Delete({{ $m5->id }})" class="btn bg-red btn-xs waves-effect"><i class="material-icons">close</i></a>
-                            <a class="btn bg-blue btn-xs waves-effect"><i class="material-icons">keyboard_arrow_down</i></a>
-                            <a class="btn bg-indigo btn-xs waves-effect"><i class="material-icons">keyboard_arrow_up</i></a>
-
-                                                            <ul>
-                                                            @foreach ($menu as $m6)
-                                                                @if($m6->id_padre==$m5->id)
-                                                                <li>
-                                                                    {{ $m6->descripcion }}
-                            <a class="btn bg-teal btn-xs waves-effect"><i class="material-icons"  onclick="add({{ $m6->id }})">add</i></a>
-                            <a class="btn bg-pink btn-xs waves-effect" href="{{ env('APP_URL')}}/menus/{{  $m6->id }}/edit"><i class="material-icons">mode_edit</i></a>
-                            <a onclick="Delete({{ $m6->id }})" class="btn bg-red btn-xs waves-effect"><i class="material-icons">close</i></a>
-                            <a class="btn bg-blue btn-xs waves-effect"><i class="material-icons">keyboard_arrow_down</i></a>
-                            <a class="btn bg-indigo btn-xs waves-effect"><i class="material-icons">keyboard_arrow_up</i></a>
-                                                                    <ul>
-                                                                    @foreach ($menu as $m7)
-                                                                        @if($m7->id_padre==$m6->id)
-                                                                        <li>
-                                                                            {{ $m7->descripcion }}
-
-                            <a class="btn bg-teal btn-xs waves-effect"><i class="material-icons"  onclick="add({{ $m7->id }})">add</i></a>
-                            <a class="btn bg-pink btn-xs waves-effect" href="{{ env('APP_URL')}}/menus/{{  $m7->id }}/edit"><i class="material-icons">mode_edit</i></a>
-                            <a onclick="Delete({{ $m7->id }})" class="btn bg-red btn-xs waves-effect"><i class="material-icons">close</i></a>
-                            <a class="btn bg-blue btn-xs waves-effect"><i class="material-icons">keyboard_arrow_down</i></a>
-                            <a class="btn bg-indigo btn-xs waves-effect"><i class="material-icons">keyboard_arrow_up</i></a>
-
-                                                                            <ul>
-                                                                            @foreach ($menu as $m8)
-                                                                                @if($m8->id_padre==$m7->id)
-                                                                                <li>
-                                                                                    {{ $m8->descripcion }}
-
-                            <a class="btn bg-teal btn-xs waves-effect"><i class="material-icons"  onclick="add({{ $m8->id }})">add</i></a>
-                            <a class="btn bg-pink btn-xs waves-effect" href="{{ env('APP_URL')}}/menus/{{  $m8->id }}/edit"><i class="material-icons">mode_edit</i></a>
-                            <a onclick="Delete({{ $m8->id }})" class="btn bg-red btn-xs waves-effect"><i class="material-icons">close</i></a>
-                            <a class="btn bg-blue btn-xs waves-effect"><i class="material-icons">keyboard_arrow_down</i></a>
-                            <a class="btn bg-indigo btn-xs waves-effect"><i class="material-icons">keyboard_arrow_up</i></a>
-
-                                                                                    <ul>
-                                                                                    @foreach ($menu as $m9)
-                                                                                        @if($m9->id_padre==$m8->id)
-                                                                                        <li>
-                                                                                            {{ $m9->descripcion }}
-
-                            <a class="btn bg-teal btn-xs waves-effect"><i class="material-icons"  onclick="add({{ $m9->id }})">add</i></a>
-                            <a class="btn bg-pink btn-xs waves-effect" href="{{ env('APP_URL')}}/menus/{{  $m9->id }}/edit"><i class="material-icons">mode_edit</i></a>
-                            <a onclick="Delete({{ $m9->id }})" class="btn bg-red btn-xs waves-effect"><i class="material-icons">close</i></a>
-                            <a class="btn bg-blue btn-xs waves-effect"><i class="material-icons">keyboard_arrow_down</i></a>
-                            <a class="btn bg-indigo btn-xs waves-effect"><i class="material-icons">keyboard_arrow_up</i></a>
-
-                                                                                        </li>    
-                                                                                        @endif
-                                                                                    @endforeach
-                                                                                    </ul>
-                                                                                </li>    
-                                                                                @endif
-                                                                            @endforeach
-                                                                            </ul>
-                                                                        </li>    
-                                                                        @endif
-                                                                    @endforeach
-                                                                    </ul>
-                                                                </li>    
-                                                                @endif
-                                                            @endforeach
-                                                            </ul>
-                                                        </li>    
-                                                        @endif
-                                                    @endforeach
-                                                    </ul>
-                                                </li>    
-                                                @endif
-                                            @endforeach
-                                            </ul>
-                                        </li>    
-                                        @endif
-                                    @endforeach
-                                    </ul>
-                                </li>    
-                                @endif
-                            @endforeach
-                            </ul>
-                        </li>    
-                        @endif
-                    @endforeach
-                    </ul>
-                </li>    
-                @endif
-            @endforeach
-            </ul>
+                </div>
 
             </div>
         </div>
@@ -299,5 +37,42 @@ li{
 @include($modulo_url.'.scripts_crear')
 @include($modulo_url.'.scripts_borrar')
 @include($modulo_url.'.scripts')
+
+@php
+function fetchCategoryTreeList($parent = 1, $user_tree_array = '') {
+ 
+        if (!is_array($user_tree_array))
+        $user_tree_array = array();
+        
+        $query = DB::table('menus')->where('id_padre',$parent)->orderBy('orden', 'ASC')->get();
+
+        $user_tree_array[] = "<ul class='dd-list'>";
+        
+        foreach ($query as $row) {
+            $user_tree_array[] = '<li class="dd-item">
+                                    <div class="dd-handle">
+                                        <span class="dd-content">
+                                            <a href="#" class="menu-toggle waves-effect waves-block">
+                                            '.$row->descripcion.' | orden: '.$row->orden.'
+                                            </a>
+                                            <div>                         
+                                                <a class="btn bg-teal btn-xs waves-effect"><i class="material-icons"  onclick="add('.$row->id.')">add</i></a>
+                                                <a class="btn bg-pink btn-xs waves-effect" href="'.env("APP_URL").'menus/'.$row->id.'/edit"><i class="material-icons">mode_edit</i></a>
+                                                <a onclick="Delete('.$row->id.')" class="btn bg-red btn-xs waves-effect"><i class="material-icons">close</i></a>
+                                                <a class="btn bg-indigo btn-xs waves-effect" href="'.env("APP_URL").'down/'.$row->id.'/menus" ><i class="material-icons">keyboard_arrow_up</i></a>
+                                                <a class="btn bg-blue btn-xs waves-effect" href="'.env("APP_URL").'up/'.$row->id.'/menus" ><i class="material-icons">keyboard_arrow_down</i></a>
+
+                                            </div>
+                                        </span>
+                                    </div>';
+            $user_tree_array = fetchCategoryTreeList($row->id, $user_tree_array);
+        }
+        $user_tree_array[] = "</ul>";
+
+        return $user_tree_array;
+}
+@endphp
+
+
 
 @endsection
