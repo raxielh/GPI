@@ -25,11 +25,12 @@ class MenusController extends Controller
         public function index()
         {
 
-            $menu = DB::table('menus')->where('id', '<>' , 0)->get()->toArray();
+            $menu = DB::table('menus')->where('id', '<>' , 0)->orderBy('orden', 'ASC')->get()->toArray();
+            $tipomenus = DB::table('tipomenus')->pluck('descripcion','id');
 
             $modulo_url=$this->modulo_url;
             $modulo_nombre=$this->modulo_nombre;
-            return view($this->modulo_url.".index",compact("modulo_url","modulo_nombre","menu"));
+            return view($this->modulo_url.".index",compact("modulo_url","modulo_nombre","menu","tipomenus"));
 
         }
 

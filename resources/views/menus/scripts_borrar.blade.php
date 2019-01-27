@@ -28,8 +28,9 @@
                     {
                         console.log(data);
                         $('#cargando').hide();
+                        $('#m-'+i).hide();
                         Notificacion(data.success,'glyphicon glyphicon-thumbs-up','warning');
-                        CargarDatos();
+                        setTimeout(function(){ location.reload(); }, 1500);
                     },
                     error: function(e) {
                         $('#cargando').hide();

@@ -62,6 +62,12 @@
             color:#fff;
             border-radius: 25px;
         }
+        .swal2-popup .swal2-styled.swal2-confirm {
+            font-size: 1.5em;
+        }
+        .swal2-popup .swal2-styled.swal2-cancel {
+            font-size: 1.5em;
+        }
     </style>
 </head>
 

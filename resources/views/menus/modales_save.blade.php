@@ -13,12 +13,13 @@
             <div class="modal-body">
 
                 
-                        <div class="col-sm-6">
+                        <div class="col-sm-6" style="display:none">
                             <div class="form-group form-float">
                                 <div class="form-line">
                                     <input type="text"
                                     class="form-control"
                                     name="id_padre"
+                                    id="id_padre"
                                     autofocus
                                     value="">
                                     <label class="form-label">
@@ -37,27 +38,11 @@
                                     autofocus
                                     value="">
                                     <label class="form-label">
-                                    descripcion
+                                    Descripcion
                                     </label>
                                 </div>
                             </div>
                         </div>
-    
-                        <div class="col-sm-6">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input type="text"
-                                    class="form-control"
-                                    name="icono"
-                                    autofocus
-                                    value="">
-                                    <label class="form-label">
-                                    icono
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-    
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -67,35 +52,51 @@
                                     autofocus
                                     value="">
                                     <label class="form-label">
-                                    ruta
+                                    Ruta
                                     </label>
                                 </div>
                             </div>
                         </div>
-    
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text"
-                                    class="form-control"
-                                    name="tipomenu_id"
-                                    autofocus
-                                    value="">
-                                    <label class="form-label">
-                                    tipomenu_id
-                                    </label>
+
+<select class="form-control show-tick" 
+data-show-subtext="true",
+data-live-search="true" name="icono">
+
+    <option value="glyphicon glyphicon-link">glyphicon glyphicon-link</option>
+    <option value="glyphicon">glyphicon</option>
+    <option value="glyphicon glyphicon-plus">glyphicon-plus</option>
+    <option value="glyphicon glyphicon-eye-open">glyphicon-eye-open</option>
+    
+
+</select>
                                 </div>
                             </div>
                         </div>
     
-                        <div class="col-sm-6">
+
+    
+                <div class="col-sm-6">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            {!! Form::select('tipomenu_id',$tipomenus, null, 
+                            [
+                                'class' => 'form-control show-tick',
+                            ]) !!}
+                        </div>
+                    </div>
+                </div>
+    
+                        <div class="col-sm-6" style="display:none">
                             <div class="form-group form-float">
                                 <div class="form-line">
                                     <input type="text"
                                     class="form-control"
                                     name="orden"
                                     autofocus
-                                    value="">
+                                    value="1">
                                     <label class="form-label">
                                     orden
                                     </label>

@@ -15,9 +15,10 @@
 
                     $('#cargando').hide();
                     Notificacion(data.success,'glyphicon glyphicon-thumbs-up','success');
-                    CargarDatos();
+                    //CargarDatos();
                     //$('#Crear').modal('hide');
                     $("#frm")[0].reset();
+                    setTimeout(function(){ location.reload(); }, 1500);
 
                 }
                 if(data.error){
