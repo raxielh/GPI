@@ -9,28 +9,17 @@
                 <button type="button" class="btn bg-{{ Theme_Color() }} waves-effect btn-xs" data-toggle="modal" data-target="#Crear"><i class="material-icons">add</i></button>
             </h2></div>
             <div class="body">
-                <div class="table-responsive">
+            
+            <ul>
+            @foreach ($menu as $m0)
+                @if($m0->id_padre=1)
+                <li>
+                    {{ $m0->descripcion }}
+                </li>    
+                @endif
+            @endforeach
+            </ul>
 
-                    <table class="table table-bordered table-striped table-hover">
-
-                        <thead>
-
-                            <tr>
-                                <th>id</th>
-                                <th>id_padre</th>
-<th>descripcion</th>
-<th>icono</th>
-<th>ruta</th>
-<th>tipomenu_id</th>
-<th>orden</th>
-<th>Acciones</th>
-                            </tr>
-
-                        </thead>
-
-                    </table>
-
-                </div>
             </div>
         </div>
     </div>
@@ -43,4 +32,5 @@
 @include($modulo_url.'.scripts_crear')
 @include($modulo_url.'.scripts_borrar')
 @include($modulo_url.'.scripts')
+
 @endsection

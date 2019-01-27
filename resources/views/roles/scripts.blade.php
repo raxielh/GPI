@@ -33,18 +33,6 @@ var tree = [
       }
     ]
   },
-  {
-    text: "Parent 2"
-  },
-  {
-    text: "Parent 3"
-  },
-  {
-    text: "Parent 4"
-  },
-  {
-    text: "Parent 5"
-  }
 ];
 
 
@@ -57,31 +45,46 @@ var tree = [
 			dataType: "json",       
 			success: function(response)  
 			{
-				//initTree(response)
-				//console.log(response);
-				var treemenu= [{
-
-          id: 1,
-					text: "Home",
-					node: []
-
-				}];
-      console.log(treemenu);
-
 				$.each( response, function( key, v ) {
-					$.each( v, function( key, value ) {
-						if ( value.id != 1 && value.id_padre == 1 ){
-							console.log(value); 
-						  treemenu.id[1].node = {	id : value.id,	text : value.descripcion	}
-						}
-						
+					$.each( v, function( key, v2 ) {
+						initTree(v2);
 					});
 				});
-				console.log(treemenu);
 			}   
 		});
 	});
+	//console.log(tree);
 	function initTree(treeData) {
-		$('#treeview_json').treeview({data: treeData});
+		console.log([treeData]);
+		$('#treeview_json').treeview(
+			{
+				data: [treeData],
+				levels: 0,
+				enableLinks: true,
+				highlightSelected: true,
+				highlightSearchResults: true,
+				showBorder: true,
+  			showIcon: true,
+				expandIcon: 'glyphicon glyphicon-folder-close',
+        collapseIcon: 'glyphicon glyphicon-folder-open',
+        emptyIcon: 'glyphicon',
+
+			}
+		);
+		$('#treeview_json').treeview('expandNode', [ 0, { silent: true, ignoreChildren: false } ]);
+		$('#treeview_json').treeview('search', [ 'Parent', {
+			ignoreCase: true,     // case insensitive
+			exactMatch: false,    // like or equals
+			revealResults: true,  // reveal matching nodes
+			selectable: false,
+		}]);
+
+		$('#treeview_json').on('nodeChecked', function(event, data) {
+		console.log(data);
+		});
+
+
+
+
 	}
 </script>

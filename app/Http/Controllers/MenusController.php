@@ -25,9 +25,11 @@ class MenusController extends Controller
         public function index()
         {
 
+            $menu = DB::table('menus')->where('id', '<>' , 0)->get()->toArray();
+
             $modulo_url=$this->modulo_url;
             $modulo_nombre=$this->modulo_nombre;
-            return view($this->modulo_url.".index",compact("modulo_url","modulo_nombre"));
+            return view($this->modulo_url.".index",compact("modulo_url","modulo_nombre","menu"));
 
         }
 
@@ -122,47 +124,70 @@ class MenusController extends Controller
 
             $data1 = array();
             $tmp = array();
+
             foreach ($menu1 as $row) {
               if ( $row->id != '0' )
               {
                 $tmp['id'] = $row->id;
                 $tmp['id_padre'] = $row->id_padre;
-                $tmp['descripcion'] = $row->descripcion;
-                $tmp['icono'] = $row->icono;
+                $tmp['text'] = $row->descripcion;
+                $tmp['icon'] = $row->icono;
                 $tmp['tipomenu_id'] = $row->tipomenu_id;
                 $tmp['href'] = $row->ruta;
                 array_push($data1, $tmp);
               }
             }
 
+            
+
 
             function buildTree($data, $rootId=0)
             {
-            $tree = array('node' => array(),
-            'root' => array()
-            );
-            foreach ($data as $ndx=>$node)
-            {
-            		$id = $node['id'];
-            		/* Puede que exista el children creado si los hijos entran antes que el padre */
-            		$node['node'] = (isset($tree['node'][$id]))?$tree['node'][$id]['node']:array();
-            		$tree['node'][$id] = $node;
+                $tree = array('nodes' => array(),
+                'root' => array()
+                );
 
-            		if ($node['id_padre'] == $rootId)
-            		$tree['root'][$id] = &$tree['node'][$id];
-            		else
-            		{
-            		  $tree['node'][$node['id_padre']]['node'][$id] = &$tree['node'][$id];
-            		}
+
+                foreach ($data as $ndx=>$node)
+                {
+                    
+                        $id = $node['id'];
+                        
+                        /* Puede que exista el children creado si los hijos entran antes que el padre */
+                        $tipomenu_id=$node['tipomenu_id'];
+                        if($tipomenu_id==1){
+                            $node['nodes'] = (isset($tree['nodes'][$id]))?$tree['nodes'][$id]['nodes']:array();
+                        }
+
+                        //var_dump($node);
+
+                        $tree['nodes'][$id] = $node;
+
+                        
+                        
+
+
+                                              
+
+                        if ($node['id_padre'] == $rootId)
+                            $tree['root'][$id] = &$tree['nodes'][$id];
+                        else
+                        {
+                            //if($tipomenu_id==1){
+                                $tree['nodes'][$node['id_padre']]['nodes'][$id] = &$tree['nodes'][$id];
+                            //}
+                        }
+
+                }
+                return $tree["root"];
 
             }
-            return $tree["root"];
-            }
 
 
- $salida=buildTree($data1);
-  return response()->json( $salida);
-  //  echo json_encode($salida);
+
+                $salida=buildTree($data1);
+                return response()->json([$salida]);
+                //  echo json_encode($salida);
 
 
 
