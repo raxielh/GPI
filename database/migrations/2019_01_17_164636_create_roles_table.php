@@ -22,6 +22,8 @@ class CreateRolesTable extends Migration
             $table->foreign('rolesmaestros_id')->references('id')->on('rolesmaestros');
             $table->foreign('menus_id')->references('id')->on('menus');
             $table->foreign('permisos_id')->references('id')->on('permisos');
+            $table->unique(['rolesmaestros_id', 'menus_id'], 'indice_roles');
+
         });
     }
 
