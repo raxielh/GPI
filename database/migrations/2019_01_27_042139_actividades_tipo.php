@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Proyecto extends Migration
+class ActividadesTipo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,24 @@ class Proyecto extends Migration
      */
     public function up()
     {
-        Schema::create('proyecto', function (Blueprint $table) {
+        Schema::create('actividades_tipo', function (Blueprint $table) {
             $table->increments('id');
             $table->string('descripcion_larga')->unique();
             $table->string('descripcion_corta')->unique();
-            $table->integer('sede_id')->unsigned();
             $table->timestamps();
-            $table->foreign('sede_id')->references('id')->on('sede');
         });
 
 
-        DB::table('proyecto')->insert([
-            'descripcion_larga' => 'San Ventto',
-            'descripcion_corta' => 'San Ventto',
+        DB::table('actividades_tipo')->insert([
+            'descripcion_larga' => 'Ingreso',
+            'descripcion_corta' => 'Ingreso',
         ]);
 
+
+        DB::table('actividades_tipo')->insert([
+            'descripcion_larga' => 'Salida',
+            'descripcion_corta' => 'Salida',
+        ]);
     }
 
     /**
@@ -37,6 +40,6 @@ class Proyecto extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proyecto');
+        Schema::dropIfExists('actividades_tipo');
     }
 }
