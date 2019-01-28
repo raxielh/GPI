@@ -35,6 +35,21 @@
     </div>
 </div>
 
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body" style="text-align:center">
+       <p id="qr"></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 @include($modulo_url.'.modales_ver')
 @include($modulo_url.'.modales_save')
 @include($modulo_url.'.scripts_table')

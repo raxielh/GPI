@@ -46,6 +46,7 @@ class PersonasController extends Controller
                             ->get()
                             )->addColumn('action', function ($personas) {
                                 return '
+                                <a href="#" onclick="qr('.$personas->identificacion.')" class="btn bg-orange btn-xs waves-effect"><i class="material-icons">casino</i></a>
                                 <a href="#" onclick="Ver('.$personas->id.')" class="btn bg-pink btn-xs waves-effect"><i class="material-icons">search</i></a>
                                 <a href="'.env('APP_URL').'personas/'.$personas->id.'/edit" class="btn bg-cyan btn-xs waves-effect"><i class="material-icons">mode_edit</i></a>
                                 <a href="#" onclick="Delete('.$personas->id.')" class="btn bg-red btn-xs waves-effect"><i class="material-icons">delete</i></a>
