@@ -66,15 +66,19 @@ function Menu_d($parent = 1, $user_tree_array = '') {
 
 function abrir_padre() {
 
-    $actual=( Request::path() );
+    $url=explode("/",$_SERVER["REQUEST_URI"]);
+
+    $actual=$url[1];
 
     $q = DB::table('menus')->where('ruta',$actual)->get();
 
     foreach ($q as $q) {
         $padre=($q->id_padre);
     }
-   
+    
     $q2 = DB::table('menus')->where('id',$padre)->get();
+
+    
 
     foreach ($q2 as $q2) {
         //var_dump('item-'.$q2->id);
@@ -82,5 +86,5 @@ function abrir_padre() {
         echo "<script>$('.".$id."').addClass( 'active');
         </script>";
     }
-
+    
 }
