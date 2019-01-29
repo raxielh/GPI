@@ -32,7 +32,7 @@ class Compromisos extends Migration
             $table->timestamps();
             $table->foreign('compromisos_maestros_id')->references('id')->on('compromisos_maestros');
             $table->foreign('proyecto_id')->references('id')->on('proyecto');
-            $table->foreign('responsable_id')->references('id')->on('personas');
+            $table->foreign('responsable_id')->references('id')->on('empleados');
             $table->foreign('estado_proyecto_id')->references('id')->on('estado_proyecto');
             $table->foreign('causas_id')->references('id')->on('causas');
         });

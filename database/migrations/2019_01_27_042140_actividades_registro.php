@@ -17,13 +17,14 @@ class ActividadesRegistro extends Migration
             $table->increments('id');
             $table->integer('actividades_id')->unsigned();
             $table->integer('actividades_tipo_id')->unsigned();
-            $table->integer('personas_id')->unsigned();
+            $table->integer('empleados_id')->unsigned();
             $table->date('fecha');
             $table->time('hora');
             $table->string('observacion');
             $table->timestamps();
             $table->foreign('actividades_id')->references('id')->on('actividades');
             $table->foreign('actividades_tipo_id')->references('id')->on('actividades_tipo');
+            $table->foreign('empleados_id')->references('id')->on('empleados');
         });
     }
 

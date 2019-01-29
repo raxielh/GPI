@@ -24,8 +24,8 @@ class CompromisosMaestros extends Migration
             $table->date('fecha_final');
             $table->timestamps();
             $table->foreign('direciones_areas_id')->references('id')->on('direciones_areas');
-            $table->foreign('respon_id')->references('id')->on('personas');
-            $table->foreign('respon_revi_id')->references('id')->on('personas');
+            $table->foreign('respon_id')->references('id')->on('empleados');
+            $table->foreign('respon_revi_id')->references('id')->on('empleados');
             $table->foreign('cargo_respon_revi_id')->references('id')->on('cargos');
         });
     }
