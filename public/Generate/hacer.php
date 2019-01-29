@@ -1,8 +1,8 @@
 <?php
 
-$nombre_controlador='Causas';
-$uri="causas";
-$modulo_nombre="'Causa'";
+$nombre_controlador='Empleados_tipos';
+$uri="empleados_tipos";
+$modulo_nombre="'Tipo Empleado'";
 $icon='transfer_within_a_station';
 
 $fields = array(
