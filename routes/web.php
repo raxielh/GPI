@@ -45,3 +45,6 @@ Route::get('/listado_cargos', 'CargosController@listado')->name('listado_cargos'
 
 Route::resource('causas', 'CausasController');
 Route::get('/listado_causas', 'CausasController@listado')->name('listado_causas');
+
+Route::resource('empleados_tipos', 'Empleados_tiposController');
+Route::get('/listado_empleados_tipos', 'Empleados_tiposController@listado')->name('listado_empleados_tipos');
