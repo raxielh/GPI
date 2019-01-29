@@ -9,10 +9,6 @@ $request='$request';
 $id='$id';
 
 $vista= <<<EOT
-<li class="{{ Request::is('$uri*') ? 'active' : '' }}">
-    <a href="{{ route('$uri.index') }}"> <i class="material-icons">$icon</i> <span>$nombre_controlador</span> </a>
-</li>
-
 Route::resource('$uri', '$nombre_controlador#Controller');
 Route::get('/listado_$uri', '$nombre_controlador#Controller@listado')->name('listado_$uri');
 
