@@ -42,9 +42,12 @@ function Menu_d($parent = 1, $user_tree_array = '') {
         }else{
             //var_dump($row->id_padre);
             $active=Request::is($row->ruta.'*') ? 'active' : '';
-
+            $path='';
+            if($row->tipomenu_id == 2){
+                $path=env('APP_URL');
+            }
             $user_tree_array[] = '<li class="'.$active.' item-'.$row->id.' ">
-                                    <a href="'.$row->ruta.'" class="'.$menu_toggle.' waves-effect waves-block">
+                                    <a href="'.$path.$row->ruta.'" class="'.$menu_toggle.' waves-effect waves-block">
                                             <i class="material-icons">'.$row->icono.'</i>
                                             <span>'.$row->descripcion.'</span>
                                             </a>
