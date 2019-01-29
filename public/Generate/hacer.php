@@ -1,16 +1,18 @@
 <?php 
 
-$nombre_controlador='Tipomenus';
-$uri="tipomenus";
-$modulo_nombre="'tipomenus'";
+$nombre_controlador='Cargos';
+$uri="cargos";
+$modulo_nombre="'Cargo'";
 $icon='transfer_within_a_station';
 
 $fields = array(
-                'descripcion',
+                'descripcion_larga',
+                'descripcion_corta',
         );
 
 $muestra = array(
-                'descripcion',
+                'Descripción larga',
+                'Descripción Corta',
         );
 
 $x;

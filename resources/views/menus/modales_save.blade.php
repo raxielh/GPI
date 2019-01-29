@@ -65,11 +65,8 @@
 data-show-subtext="true",
 data-live-search="true" name="icono">
 
-    <option value="glyphicon glyphicon-link">glyphicon glyphicon-link</option>
-    <option value="glyphicon">glyphicon</option>
-    <option value="glyphicon glyphicon-plus">glyphicon-plus</option>
-    <option value="glyphicon glyphicon-eye-open">glyphicon-eye-open</option>
-    
+    <option value="link">link</option>
+
 
 </select>
                                 </div>

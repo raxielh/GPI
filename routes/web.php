@@ -39,3 +39,6 @@ Route::get('/listado_tipomenus', 'TipomenusController@listado')->name('listado_t
 Route::resource('mensaje', 'MensajeController');
 
 Route::get('/scaner', 'ScanerController@scaner')->name('scaner');
+
+Route::resource('cargos', 'CargosController');
+Route::get('/listado_cargos', 'CargosController@listado')->name('listado_cargos');
