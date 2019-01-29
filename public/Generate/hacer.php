@@ -133,6 +133,7 @@ include('Crearscriptstable.php');
 include('Crearscriptsver.php');
 include('Crearscripts.php');
 include('CrearMenu.php');
+include('CrearRuta.php');
 
 //Asignamos la carpeta que queremos copiar
 $source =$uri;
