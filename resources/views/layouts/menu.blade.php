@@ -9,3 +9,6 @@
 <li class="{{ Request::is('cargos*') ? 'active' : '' }}">
     <a href="{{ route('cargos.index') }}"> <i class="material-icons">transfer_within_a_station</i> <span>Cargos</span> </a>
 </li>
+<li class="{{ Request::is('causas*') ? 'active' : '' }}">
+    <a href="{{ route('causas.index') }}"> <i class="material-icons">transfer_within_a_station</i> <span>Causas</span> </a>
+</li>

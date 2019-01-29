@@ -1,15 +1,15 @@
-<?php 
+<?php
 $modelo="\.".$nombre_controlador;
 $modulo_url="'".$uri."'";
 $modulo_url_list="'".$uri."/'";
 $modelo= str_replace(".","",$modelo);
-$nombre_archivo = $nombre_controlador.'.php'; 
+$nombre_archivo = $nombre_controlador.'.php';
 
 $request='$request';
 $id='$id';
 
 
-$dtf;
+$dtf='';
 foreach ($fields as $v2)
 {
         $dtf=$dtf."{ data: '".$v2."', name: '".$v2."' },\n";

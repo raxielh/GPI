@@ -1,8 +1,8 @@
-<?php 
+<?php
 
-$nombre_controlador='Cargos';
-$uri="cargos";
-$modulo_nombre="'Cargo'";
+$nombre_controlador='Causas';
+$uri="causas";
+$modulo_nombre="'Causa'";
 $icon='transfer_within_a_station';
 
 $fields = array(
@@ -15,13 +15,13 @@ $muestra = array(
                 'Descripción Corta',
         );
 
-$x;
+$x='';
 foreach ($fields as $v)
 {
         $x=$x."'".$v."',\n";
 }
 
-$tf;
+$tf='';
 foreach ($muestra as $v2)
 {
         $tf=$tf."<th>".$v2."</th>\n";
@@ -35,7 +35,7 @@ $campos=$x;
 $tabla=$tf."<th>Acciones</th>";
 
 
-$e2;
+$e2='';
 $fi=0;
 foreach ($fields as $v3)
 {
@@ -60,7 +60,7 @@ foreach ($fields as $v3)
 
 $editar=$e2;
 
-$e3;
+$e3='';
 $fic=0;
 foreach ($fields as $v4)
 {
@@ -85,7 +85,7 @@ foreach ($fields as $v4)
 
 $save=$e3;
 
-$e4;
+$e4='';
 $ficc=0;
 foreach ($fields as $v5)
 {
@@ -106,11 +106,11 @@ foreach ($fields as $v5)
 $ver=$e4;
 
 
-$e5;
+$e5='';
 $ficcc=0;
 foreach ($fields as $v6)
 {
-        $e5=$e5.' 
+        $e5=$e5.'
                 $("#v_'.$v6.'").text(val.'.$v6.');
         ';
     $ficc=$ficc+1;
@@ -150,14 +150,14 @@ function full_copy( $source, $target ) {
             if ( $entry == '.' || $entry == '..' ) {
                 continue;
             }
-            $Entry = $source . '/' . $entry; 
+            $Entry = $source . '/' . $entry;
             if ( is_dir( $Entry ) ) {
                 full_copy( $Entry, $target . '/' . $entry );
                 continue;
             }
             copy( $Entry, $target . '/' . $entry );
         }
- 
+
         $d->close();
     }else {
         copy( $source, $target );
