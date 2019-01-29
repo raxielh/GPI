@@ -68,7 +68,7 @@ function Menu_d($parent = 1, $user_tree_array = '') {
 }
 
 function abrir_padre() {
-
+/*
     $url=explode("/",$_SERVER["REQUEST_URI"]);
 
     $actual=$url[1];
@@ -89,5 +89,5 @@ function abrir_padre() {
         echo "<script>$('.".$id."').addClass( 'active');
         </script>";
     }
-    
+*/   
 }
