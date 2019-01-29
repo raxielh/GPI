@@ -15,6 +15,3 @@
 <li class="{{ Request::is('empleados_tipos*') ? 'active' : '' }}">
     <a href="{{ route('empleados_tipos.index') }}"> <i class="material-icons">transfer_within_a_station</i> <span>Empleados_tipos</span> </a>
 </li>
-<li class="{{ Request::is('empleados_tipos*') ? 'active' : '' }}">
-    <a href="{{ route('empleados_tipos.index') }}"> <i class="material-icons">transfer_within_a_station</i> <span>Empleados_tipos</span> </a>
-</li>
