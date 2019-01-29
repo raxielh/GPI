@@ -23,3 +23,5 @@ INSERT INTO public.menus VALUES (6, 4, 'Menu', 'link', 'menus', 2, 3, '2019-01-2
 INSERT INTO public.menus VALUES (11, 15, 'Compañias', 'link', 'companias', 2, 1, '2019-01-27 19:46:26', '2019-01-27 19:51:07');
 
 INSERT INTO public.menus VALUES (12, 15, 'Sedes', 'link', 'sedes', 2, 2, '2019-01-27 19:46:52', '2019-01-27 19:51:13');
+
+INSERT INTO public.menus VALUES (18, 2, 'Causas', 'link', 'causas', 2, 2, '2019-01-27 19:46:52', '2019-01-27 19:51:13');
