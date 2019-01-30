@@ -1,8 +1,8 @@
 <?php
 
-$nombre_controlador='Empleados_tipos';
-$uri="empleados_tipos";
-$modulo_nombre="'Tipo Empleado'";
+$nombre_controlador='Estado_proyecto';
+$uri="estado_proyecto";
+$modulo_nombre="'Estado del Proyecto'";
 $icon='transfer_within_a_station';
 
 $fields = array(

@@ -48,3 +48,6 @@ Route::get('/listado_causas', 'CausasController@listado')->name('listado_causas'
 
 Route::resource('empleados_tipos', 'Empleados_tiposController');
 Route::get('/listado_empleados_tipos', 'Empleados_tiposController@listado')->name('listado_empleados_tipos');
+Route::resource('estado_proyecto', 'Estado_proyectoController');
+Route::get('/listado_estado_proyecto', 'Estado_proyectoController@listado')->name('listado_estado_proyecto');
+
