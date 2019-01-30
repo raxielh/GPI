@@ -189,9 +189,16 @@
     <script src="{{ URL::asset('./js/app.js') }}"></script>
     <script>
     $(document).ready(function(){
-        var busqueda = $('#busqueda'),
-        titulo = $('ul li h3');
+        
+        $("#busqueda").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $(".list li").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+
     });
+
     </script>
 </body>
 
