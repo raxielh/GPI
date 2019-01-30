@@ -191,10 +191,31 @@
     $(document).ready(function(){
         
         $("#busqueda").on("keyup", function() {
+            /*
             var value = $(this).val().toLowerCase();
             $(".list li").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                console.log($(this).context.classList.value);
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
+            */
+                var texto = $(this).val();
+                    
+                    $(".list li").css("display", "block");
+
+                    $(".list li").each(function(){
+                        
+                        if($(this).text().toLowerCase().indexOf(texto) < 0){
+                            $(this).css("display", "none");
+                            $(this).removeClass( "active" );
+                        }else{
+                            var hijo=($(this).context.classList.value);
+                            //var padre=$('.'+$.trim(hijo)).parent().addClass( "active" );
+                        }
+                        
+                    });
+                    
+
+
         });
 
     });
