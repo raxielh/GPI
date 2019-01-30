@@ -90,7 +90,7 @@
                                     autofocus
                                     value="{{ date('Y-m-d') }}">
                                     <label class="form-label">
-                                    Fecha Inicio
+                                    Fecha Inicio Periodo
                                     </label>
                                 </div>
                             </div>
@@ -105,7 +105,7 @@
                                     autofocus
                                     value="{{ date('Y-m-d') }}">
                                     <label class="form-label">
-                                    Fecha Final
+                                    Fecha Final Periodo
                                     </label>
                                 </div>
                             </div>

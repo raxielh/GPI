@@ -17,7 +17,7 @@ class Compromisos extends Migration
             $table->increments('id');
             $table->integer('compromisos_maestros_id')->unsigned();
             $table->integer('nro');
-            $table->string('compromisos_laborales')->unique();
+            $table->text('compromisos_laborales');
             $table->integer('nro_seguimientos');
             $table->integer('proyecto_id')->unsigned();
             $table->integer('responsable_id')->unsigned();
@@ -27,7 +27,7 @@ class Compromisos extends Migration
             $table->integer('dias_avance_retraso');
             $table->integer('estado_proyecto_id')->unsigned();
             $table->integer('causas_id')->unsigned();
-            $table->string('descripcion_causa');
+            $table->string('descripcion_causa')->nullable();
 
             $table->timestamps();
             $table->foreign('compromisos_maestros_id')->references('id')->on('compromisos_maestros');

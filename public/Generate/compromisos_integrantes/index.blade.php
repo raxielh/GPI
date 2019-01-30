@@ -5,7 +5,7 @@
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
-            <div class="header"><h2>{{ $modulo_nombre }}
+            <div class="header"><h2>{{ $modulo_nombre }}s
                 <button type="button" class="btn bg-{{ Theme_Color() }} waves-effect btn-xs" data-toggle="modal" data-target="#Crear"><i class="material-icons">add</i></button>
             </h2></div>
             <div class="body">
@@ -16,10 +16,8 @@
                         <thead>
 
                             <tr>
-                                <th>Area</th>
-<th>Responsable</th>
-<th>Responsable Revision</th>
-<th>Fecha</th>
+                                <th>integrantes_id</th>
+<th>compromisos_maestros_id</th>
 <th>Acciones</th>
                             </tr>
 

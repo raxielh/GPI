@@ -57,6 +57,9 @@ Route::get('/listado_empleados', 'EmpleadosController@listado')->name('listado_e
 
 Route::resource('compromisos_maestros', 'Compromisos_maestrosController');
 Route::get('/listado_compromisos_maestros', 'Compromisos_maestrosController@listado')->name('listado_compromisos_maestros');
+Route::get('/compromisos_maestros/detalle/{id}', 'Compromisos_maestrosController@detalle')->name('compromisos_maestros_detalle');
+Route::get('/compromisos_maestros/vinculados/{id}', 'Compromisos_maestrosController@vinculados')->name('compromisos_maestros.vinculados');
+
 Route::resource('estado_proyecto', 'Estado_proyectoController');
 Route::get('/listado_estado_proyecto', 'Estado_proyectoController@listado')->name('listado_estado_proyecto');
 
@@ -68,4 +71,7 @@ Route::get('/listado_direciones_areas', 'direciones_areasController@listado')->n
 
 Route::resource('registro_lluvia', 'registro_lluviaController');
 Route::get('/listado_registro_lluvia', 'registro_lluviaController@listado')->name('listado_registro_lluvia');
+
+Route::resource('compromisos_integrantes', 'Compromisos_integrantesController');
+Route::get('/listado_compromisos_integrantes', 'Compromisos_integrantesController@listado')->name('listado_compromisos_integrantes');
 

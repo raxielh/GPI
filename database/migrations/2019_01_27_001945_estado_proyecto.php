@@ -25,21 +25,16 @@ class EstadoProyecto extends Migration
 
         DB::table('estado_proyecto')->insert([
            'id' => '1',
-            'descripcion_larga' => 'Realizado SI',
-            'descripcion_corta' => 'SI',
+            'descripcion_larga' => 'Activo',
+            'descripcion_corta' => 'Activo',
         ]);
 
         DB::table('estado_proyecto')->insert([
            'id' => '2',
-            'descripcion_larga' => 'Realizado NO',
-            'descripcion_corta' => 'NO',
+            'descripcion_larga' => 'Inactivo',
+            'descripcion_corta' => 'Inactivo',
         ]);
 
-        DB::table('estado_proyecto')->insert([
-           'id' => '3',
-            'descripcion_larga' => 'Realizado CCR',
-            'descripcion_corta' => 'CCR',
-        ]);
 
     }
 

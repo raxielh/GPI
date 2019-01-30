@@ -19,7 +19,7 @@ class CompromisosIntegrantes extends Migration
               $table->integer('compromisos_maestros_id')->unsigned();
             $table->timestamps();
             $table->foreign('integrantes_id')->references('id')->on('empleados');
-            $table->foreign('compromisos_maestros_id')->references('id')->on('empleados');
+            $table->foreign('compromisos_maestros_id')->references('id')->on('compromisos_maestros');
             $table->unique(['integrantes_id', 'compromisos_maestros_id'], 'indice_compromisos_integrantes');
         });
     }

@@ -1,16 +1,16 @@
 <?php
 
-$nombre_controlador='Actividades_tipo';
-$uri="actividades_tipo";
-$modulo_nombre="'Tipo de Actividades'";
+$nombre_controlador='Compromisos_integrantes';
+$uri="compromisos_integrantes";
+$modulo_nombre="'Compromisos de Integrantes'";
 $icon='transfer_within_a_station';
 $fields = array(
-                'descripcion_larga',
-                'descripcion_corta',
+                'integrantes_id',
+                'compromisos_maestros_id',
         );
 $muestra = array(
-                'Descripción larga',
-                'Descripción Corta',
+                'integrantes_id',
+                'compromisos_maestros_id',
         );
 $x='';
 foreach ($fields as $v)

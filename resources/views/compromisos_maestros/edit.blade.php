@@ -21,71 +21,59 @@
                     <form method="post" autocomplete="off" id="frm">
                         @csrf
 
-                            
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text"
-                                    class="form-control"
-                                    name="direciones_areas_id"
-                                    autofocus
-                                    value="{{ $compromisos_maestros->direciones_areas_id}}">
+                                    {!! Form::select('direciones_areas_id',$direciones_areas, $compromisos_maestros->direciones_areas_id,
+                                    [
+                                        'class' => 'form-control show-tick',
+                                        'data-show-subtext'=>"true",
+                                        'data-live-search'=>"true"
+                                    ]) !!}
                                     <label class="form-label">
-                                    Area
-                                    </label>
+                                            Area
+                                            </label>
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text"
-                                    class="form-control"
-                                    name="respon_id"
-                                    autofocus
-                                    value="{{ $compromisos_maestros->respon_id}}">
+                                        {!! Form::select('respon_id',$Empleados, $compromisos_maestros->respon_id,
+                                        [
+                                            'class' => 'form-control show-tick',
+                                            'data-show-subtext'=>"true",
+                                            'data-live-search'=>"true"
+                                        ]) !!}
                                     <label class="form-label">
                                     Responsable
                                     </label>
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text"
-                                    class="form-control"
-                                    name="respon_revi_id"
-                                    autofocus
-                                    value="{{ $compromisos_maestros->respon_revi_id}}">
+                                        {!! Form::select('respon_id',$Empleados, $compromisos_maestros->respon_revi_id,
+                                        [
+                                            'class' => 'form-control show-tick',
+                                            'data-show-subtext'=>"true",
+                                            'data-live-search'=>"true"
+                                        ]) !!}
                                     <label class="form-label">
                                     Responsable Revision
                                     </label>
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text"
-                                    class="form-control"
-                                    name="cargo_respon_revi_id"
-                                    autofocus
-                                    value="{{ $compromisos_maestros->cargo_respon_revi_id}}">
-                                    <label class="form-label">
-                                    Cargo Responsable Revision
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="col-sm-6">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input type="text"
+                                    <input type="date"
                                     class="form-control"
                                     name="fecha_compromiso"
                                     autofocus
@@ -96,11 +84,11 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text"
+                                    <input type="date"
                                     class="form-control"
                                     name="fecha_inicio"
                                     autofocus
@@ -111,11 +99,11 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text"
+                                    <input type="date"
                                     class="form-control"
                                     name="fecha_final"
                                     autofocus
@@ -126,9 +114,9 @@
                                 </div>
                             </div>
                         </div>
-    
 
-                
+
+
 
                             <div class="col-sm-12" style="text-align:right">
                                 <button type="button" class="btn btn-link waves-effect" id="save_editar">Guardar</button>

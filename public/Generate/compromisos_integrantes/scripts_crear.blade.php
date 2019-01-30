@@ -11,8 +11,6 @@
            data: $("#frm").serialize(),
            success: function(data)
            {
-                //$('#cargando').hide();
-                //console.log(data);
                 if(data.success){
 
                     $('#cargando').hide();

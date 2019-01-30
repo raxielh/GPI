@@ -1,25 +1,20 @@
 @php
-    $url_crear=route($modulo_url.'.store');
+    $url_editar=route($modulo_url.'.update',$compromisos_integrantes->id);
 @endphp
 <script>
-    $('#save_crear').click(function(){
+    $('#save_editar').click(function(){
         $('#cargando').show();
-        var url = "{{ $url_crear }}";
+        var url = "{{ $url_editar }}";
         $.ajax({
-           type: "POST",
+           type: "PUT",
            url: url,
            data: $("#frm").serialize(),
            success: function(data)
            {
-                //$('#cargando').hide();
-                //console.log(data);
                 if(data.success){
 
                     $('#cargando').hide();
-                    Notificacion(data.success,'glyphicon glyphicon-thumbs-up','success');
-                    CargarDatos();
-                    //$('#Crear').modal('hide');
-                    $("#frm")[0].reset();
+                    Notificacion(data.success,'glyphicon glyphicon-thumbs-up','warning');
 
                 }
                 if(data.error){
@@ -34,10 +29,11 @@
 
                 }
            },
-            error : function(e) {
+           error : function(e) {
                 $('#cargando').hide();
+                console.log(e);
                 Notificacion(e.responseJSON.message,'glyphicon glyphicon-thumbs-down','danger');
-            }
+           }
        });
     });
 </script>
