@@ -21,3 +21,6 @@
 <li class="{{ Request::is('actividades_tipo*') ? 'active' : '' }}">
     <a href="{{ route('actividades_tipo.index') }}"> <i class="material-icons">transfer_within_a_station</i> <span>Actividades_tipo</span> </a>
 </li>
+<li class="{{ Request::is('direciones_areas*') ? 'active' : '' }}">
+    <a href="{{ route('direciones_areas.index') }}"> <i class="material-icons">transfer_within_a_station</i> <span>direciones_areas</span> </a>
+</li>

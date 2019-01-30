@@ -1,8 +1,8 @@
 <?php
 
-$nombre_controlador='Actividades_tipo';
-$uri="actividades_tipo";
-$modulo_nombre="'Tipo de Actividades'";
+$nombre_controlador='direciones_areas';
+$uri="direciones_areas";
+$modulo_nombre="'Direciones o Areas'";
 $icon='transfer_within_a_station';
 $fields = array(
                 'descripcion_larga',

@@ -63,3 +63,6 @@ Route::get('/listado_estado_proyecto', 'Estado_proyectoController@listado')->nam
 Route::resource('actividades_tipo', 'Actividades_tipoController');
 Route::get('/listado_actividades_tipo', 'Actividades_tipoController@listado')->name('listado_actividades_tipo');
 
+Route::resource('direciones_areas', 'direciones_areasController');
+Route::get('/listado_direciones_areas', 'direciones_areasController@listado')->name('listado_direciones_areas');
+
