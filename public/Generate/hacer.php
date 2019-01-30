@@ -1,4 +1,5 @@
 <?php
+
 $nombre_controlador='Estado_proyecto';
 $uri="estado_proyecto";
 $modulo_nombre="'Estado del Proyecto'";
