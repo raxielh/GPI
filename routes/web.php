@@ -66,3 +66,6 @@ Route::get('/listado_actividades_tipo', 'Actividades_tipoController@listado')->n
 Route::resource('direciones_areas', 'direciones_areasController');
 Route::get('/listado_direciones_areas', 'direciones_areasController@listado')->name('listado_direciones_areas');
 
+Route::resource('registro_lluvia', 'registro_lluviaController');
+Route::get('/listado_registro_lluvia', 'registro_lluviaController@listado')->name('listado_registro_lluvia');
+

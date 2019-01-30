@@ -1,16 +1,14 @@
 <?php
 
-$nombre_controlador='direciones_areas';
-$uri="direciones_areas";
-$modulo_nombre="'Direciones o Areas'";
+$nombre_controlador='registro_lluvia';
+$uri="registro_lluvia";
+$modulo_nombre="'Registro de lluvia'";
 $icon='transfer_within_a_station';
 $fields = array(
-                'descripcion_larga',
-                'descripcion_corta',
+                'mm'
         );
 $muestra = array(
-                'Descripción larga',
-                'Descripción Corta',
+                'mm'
         );
 $x='';
 foreach ($fields as $v)
