@@ -51,3 +51,6 @@ Route::get('/listado_empleados_tipos', 'Empleados_tiposController@listado')->nam
 Route::resource('estado_proyecto', 'Estado_proyectoController');
 Route::get('/listado_estado_proyecto', 'Estado_proyectoController@listado')->name('listado_estado_proyecto');
 
+Route::resource('actividades_tipo', 'Actividades_tipoController');
+Route::get('/listado_actividades_tipo', 'Actividades_tipoController@listado')->name('listado_actividades_tipo');
+

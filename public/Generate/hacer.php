@@ -1,8 +1,8 @@
 <?php
 
-$nombre_controlador='Estado_proyecto';
-$uri="estado_proyecto";
-$modulo_nombre="'Estado del Proyecto'";
+$nombre_controlador='Actividades_tipo';
+$uri="actividades_tipo";
+$modulo_nombre="'Tipo de Actividades'";
 $icon='transfer_within_a_station';
 
 $fields = array(
