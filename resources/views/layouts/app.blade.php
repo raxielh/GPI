@@ -187,6 +187,19 @@
     <script src="{{ URL::asset('./js/admin.js') }}"></script>
     <script src="{{ URL::asset('./js/demo.js') }}"></script>
     <script src="{{ URL::asset('./js/app.js') }}"></script>
+    <script>
+    $(document).ready(function(){
+        
+        $("#busqueda").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $(".list li").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+
+    });
+
+    </script>
 </body>
 
 </html>
