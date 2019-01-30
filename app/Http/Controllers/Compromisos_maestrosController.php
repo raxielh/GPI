@@ -6,16 +6,18 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use App\Models\Compromisos_maestros;
+use App\Models\Empleados;
+use App\Models\direciones_areas;
 
 class Compromisos_maestrosController extends Controller
 {
-        
+
         private $modulo_url;
         private $modulo_nombre;
-    
+
         public function __construct()
         {
-            
+
             $this->middleware("auth");
             $this->middleware("cors");
             $this->modulo_url = 'compromisos_maestros';
@@ -24,21 +26,33 @@ class Compromisos_maestrosController extends Controller
 
         public function index()
         {
-            
+            //$Empleados = Empleados::select( 'id',"id" )->pluck('id', 'id');
+            $Empleados=DB::table('empleados')
+            ->join('personas', 'empleados.persona_id', '=', 'personas.id')
+            ->select(
+                DB::raw("empleados.id as id,concat(identificacion, ' ', primer_nombre, ' ',primer_apellido, ' ',segundo_apellido) as persona_id"),
+                'empleados.id as id'
+            )->orderBy("empleados.id","desc")
+            ->pluck('persona_id', 'id');
+
+            //dd($empleados);
+
+            $direciones_areas = direciones_areas::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id');
+
             $modulo_url=$this->modulo_url;
             $modulo_nombre=$this->modulo_nombre;
-            return view($this->modulo_url.".index",compact("modulo_url","modulo_nombre"));
+            return view($this->modulo_url.".index",compact("modulo_url","modulo_nombre","Empleados","direciones_areas"));
 
         }
 
         public function listado()
         {
-            
+
             return Datatables::of(
                 DB::table('compromisos_maestros')->orderBy("id","desc")->get()
             )->addColumn("action", function ($datos) {
                 return '
-                        
+
                     <a href="#" onclick="Ver('.$datos->id.')" class="btn bg-pink btn-xs waves-effect"><i class="material-icons">search</i></a>
                     <a href="'.env('APP_URL').'compromisos_maestros/'.$datos->id.'/edit" class="btn bg-cyan btn-xs waves-effect"><i class="material-icons">mode_edit</i></a>
                     <a href="#" onclick="Delete('.$datos->id.')" class="btn bg-red btn-xs waves-effect"><i class="material-icons">delete</i></a>
@@ -51,20 +65,20 @@ class Compromisos_maestrosController extends Controller
 
         public function show($id)
         {
-            
+
             $compromisos_maestros=DB::table('compromisos_maestros')
             ->where('id',$id)
             ->get();
-    
+
             return response()->json(['success'=>$compromisos_maestros]);
 
         }
 
         public function store(Request $request)
         {
-            
+
             $rules = array();
-                    
+
             $validator = Validator::make($request->all(),$rules);
 
             if ($validator->fails())
@@ -73,25 +87,25 @@ class Compromisos_maestrosController extends Controller
             }
 
             Compromisos_maestros::create($request->all());
-    
+
             return response()->json(['success'=>$this->modulo_nombre.' creado con exito']);
 
         }
 
         public function edit($id)
-        {  
-            
+        {
+
             $modulo_url=$this->modulo_url;
             $modulo_nombre=$this->modulo_nombre;
 
             $compromisos_maestros=Compromisos_maestros::find($id);
             return view($this->modulo_url.'.edit',compact('compromisos_maestros','modulo_url','modulo_nombre'));
- 
+
         }
 
         public function update(Request $request,$id)
         {
-            
+
             $rules = array();
 
             $validator = Validator::make($request->all(),$rules);
@@ -102,8 +116,8 @@ class Compromisos_maestrosController extends Controller
             }
 
             Compromisos_maestros::find($id)->update($request->all());
-            return response()->json(['success'=>$this->modulo_nombre.' actualizado con exito']);      
- 
+            return response()->json(['success'=>$this->modulo_nombre.' actualizado con exito']);
+
         }
 
         public function destroy($id)
@@ -111,10 +125,10 @@ class Compromisos_maestrosController extends Controller
             $Compromisos_maestros = Compromisos_maestros::findOrFail($id);
             $Compromisos_maestros->delete();
 
-            return response()->json(['success'=>$this->modulo_nombre.' borrado con exito']);      
- 
+            return response()->json(['success'=>$this->modulo_nombre.' borrado con exito']);
+
         }
 
 
-    
+
 }

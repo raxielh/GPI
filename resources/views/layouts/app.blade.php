@@ -69,7 +69,9 @@
         .swal2-popup .swal2-styled.swal2-cancel {
             font-size: 1.5em;
         }
-
+        .form-group .form-line.focused .form-label {
+            z-index: 999;
+        }
 
     </style>
 </head>
@@ -189,7 +191,7 @@
     <script src="{{ URL::asset('./js/app.js') }}"></script>
     <script>
     $(document).ready(function(){
-        
+
         $("#busqueda").on("keyup", function() {
             /*
             var value = $(this).val().toLowerCase();
@@ -199,11 +201,11 @@
             });
             */
                 var texto = $(this).val();
-                    
+
                     $(".list li").css("display", "block");
 
                     $(".list li").each(function(){
-                        
+
                         if($(this).text().toLowerCase().indexOf(texto) < 0){
                             $(this).css("display", "none");
                             $(this).removeClass( "active" );
@@ -211,9 +213,9 @@
                             var hijo=($(this).context.classList.value);
                             //var padre=$('.'+$.trim(hijo)).parent().addClass( "active" );
                         }
-                        
+
                     });
-                    
+
 
 
         });

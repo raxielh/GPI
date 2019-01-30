@@ -12,112 +12,105 @@
 
             <div class="modal-body">
 
-                
-                        <div class="col-sm-6">
+
+                        <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text"
-                                    class="form-control"
-                                    name="direciones_areas_id"
-                                    autofocus
-                                    value="">
+
+                                    {!! Form::select('direciones_areas_id',$direciones_areas, null,
+                                    [
+                                        'class' => 'form-control show-tick',
+                                        'data-show-subtext'=>"true",
+                                        'data-live-search'=>"true"
+                                    ]) !!}
                                     <label class="form-label">
-                                    Area
-                                    </label>
+                                            Area
+                                            </label>
                                 </div>
                             </div>
                         </div>
-    
-                        <div class="col-sm-6">
+
+                        <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text"
-                                    class="form-control"
-                                    name="respon_id"
-                                    autofocus
-                                    value="">
+
+                                    {!! Form::select('respon_id',$Empleados, null,
+                                    [
+                                        'class' => 'form-control show-tick',
+                                        'data-show-subtext'=>"true",
+                                        'data-live-search'=>"true"
+                                    ]) !!}
                                     <label class="form-label">
-                                    Responsable
-                                    </label>
+                                            Responsable
+                                            </label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+
+                                    {!! Form::select('respon_revi_id',$Empleados, null,
+                                    [
+                                        'class' => 'form-control show-tick',
+                                        'data-show-subtext'=>"true",
+                                        'data-live-search'=>"true"
+                                    ]) !!}
+                                    <label class="form-label">
+                                            Responsable Revision
+                                            </label>
                                 </div>
                             </div>
                         </div>
-    
-                        <div class="col-sm-6">
+
+
+                        <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text"
-                                    class="form-control"
-                                    name="respon_revi_id"
-                                    autofocus
-                                    value="">
-                                    <label class="form-label">
-                                    Responsable Revision
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="col-sm-6">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input type="text"
-                                    class="form-control"
-                                    name="cargo_respon_revi_id"
-                                    autofocus
-                                    value="">
-                                    <label class="form-label">
-                                    Cargo Responsable Revision
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="col-sm-6">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input type="text"
+                                    <input type="date"
                                     class="form-control"
                                     name="fecha_compromiso"
                                     autofocus
-                                    value="">
+                                    value="{{ date('Y-m-d') }}">
                                     <label class="form-label">
                                     Fecha Compromiso
                                     </label>
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text"
+                                    <input type="date"
                                     class="form-control"
                                     name="fecha_inicio"
                                     autofocus
-                                    value="">
+                                    value="{{ date('Y-m-d') }}">
                                     <label class="form-label">
                                     Fecha Inicio
                                     </label>
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text"
+                                    <input type="date"
                                     class="form-control"
                                     name="fecha_final"
                                     autofocus
-                                    value="">
+                                    value="{{ date('Y-m-d') }}">
                                     <label class="form-label">
                                     Fecha Final
                                     </label>
                                 </div>
                             </div>
                         </div>
-    
+
 
             </div>
 
