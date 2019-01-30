@@ -187,6 +187,12 @@
     <script src="{{ URL::asset('./js/admin.js') }}"></script>
     <script src="{{ URL::asset('./js/demo.js') }}"></script>
     <script src="{{ URL::asset('./js/app.js') }}"></script>
+    <script>
+    $(document).ready(function(){
+        var busqueda = $('#busqueda'),
+        titulo = $('ul li h3');
+    });
+    </script>
 </body>
 
 </html>

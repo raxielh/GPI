@@ -48,3 +48,15 @@ Route::get('/listado_causas', 'CausasController@listado')->name('listado_causas'
 
 Route::resource('empleados_tipos', 'Empleados_tiposController');
 Route::get('/listado_empleados_tipos', 'Empleados_tiposController@listado')->name('listado_empleados_tipos');
+
+Route::resource('empleado_estados', 'Empleado_estadosController');
+Route::get('/listado_empleado_estados', 'Empleado_estadosController@listado')->name('listado_empleado_estados');
+
+Route::resource('empleados', 'EmpleadosController');
+Route::get('/listado_empleados', 'EmpleadosController@listado')->name('listado_empleados');
+
+Route::resource('compromisos_maestros', 'Compromisos_maestrosController');
+Route::get('/listado_compromisos_maestros', 'Compromisos_maestrosController@listado')->name('listado_compromisos_maestros');
+Route::resource('estado_proyecto', 'Estado_proyectoController');
+Route::get('/listado_estado_proyecto', 'Estado_proyectoController@listado')->name('listado_estado_proyecto');
+

@@ -2,7 +2,7 @@
     <div class="search-icon">
         <i class="material-icons">search</i>
     </div>
-    <input type="text" placeholder="Comienza a escribir...">
+    <input type="text" placeholder="Comienza a escribir..." id="busqueda">
     <div class="close-search">
         <i class="material-icons">close</i>
     </div>

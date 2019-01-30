@@ -1,40 +1,28 @@
 <?php
-
-$nombre_controlador='Empleados_tipos';
-$uri="empleados_tipos";
-$modulo_nombre="'Tipo Empleado'";
+$nombre_controlador='Estado_proyecto';
+$uri="estado_proyecto";
+$modulo_nombre="'Estado del Proyecto'";
 $icon='transfer_within_a_station';
-
 $fields = array(
                 'descripcion_larga',
                 'descripcion_corta',
         );
-
 $muestra = array(
                 'Descripción larga',
                 'Descripción Corta',
         );
-
 $x='';
 foreach ($fields as $v)
 {
         $x=$x."'".$v."',\n";
 }
-
 $tf='';
 foreach ($muestra as $v2)
 {
         $tf=$tf."<th>".$v2."</th>\n";
 }
-
-
-
-
 $campos=$x;
-
 $tabla=$tf."<th>Acciones</th>";
-
-
 $e2='';
 $fi=0;
 foreach ($fields as $v3)
@@ -57,9 +45,7 @@ foreach ($fields as $v3)
     ';
     $fi=$fi+1;
 }
-
 $editar=$e2;
-
 $e3='';
 $fic=0;
 foreach ($fields as $v4)
@@ -82,9 +68,7 @@ foreach ($fields as $v4)
     ';
     $fic=$fic+1;
 }
-
 $save=$e3;
-
 $e4='';
 $ficc=0;
 foreach ($fields as $v5)
@@ -101,11 +85,7 @@ foreach ($fields as $v5)
     ';
     $ficc=$ficc+1;
 }
-
-
 $ver=$e4;
-
-
 $e5='';
 $ficcc=0;
 foreach ($fields as $v6)
@@ -115,10 +95,7 @@ foreach ($fields as $v6)
         ';
     $ficc=$ficc+1;
 }
-
-
 $ver_i=$e5;
-
 include('CrearControlador.php');
 include('CrearModelo.php');
 include('CrearCarpetaVista.php');
@@ -134,14 +111,11 @@ include('Crearscriptsver.php');
 include('Crearscripts.php');
 include('CrearMenu.php');
 include('CrearRuta.php');
-
 //Asignamos la carpeta que queremos copiar
 $source =$uri;
 //El destino donde se guardara la copia
 $destination = '../../resources/views/'.$uri;
 full_copy($source, $destination);
-
-
 //Crear nuevos directorios completos
 function full_copy( $source, $target ) {
     if ( is_dir( $source ) ) {
@@ -158,12 +132,9 @@ function full_copy( $source, $target ) {
             }
             copy( $Entry, $target . '/' . $entry );
         }
-
         $d->close();
     }else {
         copy( $source, $target );
     }
 }
-
-
 ?>
