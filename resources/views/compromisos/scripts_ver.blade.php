@@ -45,7 +45,6 @@
         $('#cargando').show();
         $("#datos").empty();
 
-
         $.getJSON( "{{ $url_ver }}/"+i, function( data ) {
 
             var n=0;

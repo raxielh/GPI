@@ -40,6 +40,7 @@
                         </table>
                     </div>
 
+                    <input type='text' id='buscar_compromisos'class='form-control' placeholder='Buscar..'>
                     <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
@@ -88,6 +89,14 @@ $url_integrantes=url('compromisos_maestros/vinculados');
 
         });
     }
+
+    $("#buscar_compromisos").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        console.log(value);
+        $("#datos tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
 
 </script>
 

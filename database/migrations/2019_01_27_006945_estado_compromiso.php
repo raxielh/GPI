@@ -21,22 +21,26 @@ class EstadoCompromiso extends Migration
             $table->primary('id');
         });
 
-
-
         DB::table('estado_compromiso')->insert([
             'id' => '1',
+            'descripcion_larga' => 'Inicial',
+            'descripcion_corta' => 'Inicial',
+         ]);
+
+        DB::table('estado_compromiso')->insert([
+            'id' => '2',
              'descripcion_larga' => 'Realizado SI',
              'descripcion_corta' => 'SI',
          ]);
 
          DB::table('estado_compromiso')->insert([
-            'id' => '2',
+            'id' => '3',
              'descripcion_larga' => 'Realizado NO',
              'descripcion_corta' => 'NO',
          ]);
 
          DB::table('estado_compromiso')->insert([
-            'id' => '3',
+            'id' => '4',
              'descripcion_larga' => 'Realizado CCR',
              'descripcion_corta' => 'CCR',
          ]);

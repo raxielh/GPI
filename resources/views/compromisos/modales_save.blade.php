@@ -145,7 +145,7 @@
                                     class="form-control"
                                     name="estado_compromiso_id"
                                     autofocus
-                                    value="2">
+                                    value="1">
                                     <label class="form-label">
                                     Estado
                                     </label>
