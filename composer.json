@@ -39,8 +39,7 @@
         },
         "classmap": [
             "database/seeds",
-            "database/factories",
-            "database/migrations"
+            "database/factories"
         ],
         "files": [
             "app/helpers.php"

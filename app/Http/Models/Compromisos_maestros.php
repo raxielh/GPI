@@ -13,6 +13,7 @@ class Compromisos_maestros extends Model
 'respon_id',
 'respon_revi_id',
 'cargo_respon_revi_id',
+'fecha_compromiso',
 'fecha_inicio',
 'fecha_final',
 

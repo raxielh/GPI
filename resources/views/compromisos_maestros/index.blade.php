@@ -19,8 +19,7 @@
                                 <th>Area</th>
 <th>Responsable</th>
 <th>Responsable Revision</th>
-<th>Periodo Inicio</th>
-<th>Periodo Fin</th>
+<th>Fecha</th>
 <th>Acciones</th>
                             </tr>
 

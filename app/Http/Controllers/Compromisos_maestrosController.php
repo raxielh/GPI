@@ -61,6 +61,7 @@ class Compromisos_maestrosController extends Controller
                     DB::raw("concat(personas.identificacion, ' ', personas.primer_nombre, ' ', personas.primer_apellido) as respon_id"),
                     DB::raw("concat(p2.identificacion, ' ', p2.primer_nombre, ' ', p2.primer_apellido) as respon_revi_id"),
                     'cargos.descripcion_corta as cargo_respon_revi_id',
+                    'fecha_compromiso',
                     'fecha_inicio',
                     'fecha_final'
                 )->orderBy("compromisos_maestros.id","desc")->get()
@@ -96,6 +97,7 @@ class Compromisos_maestrosController extends Controller
                 DB::raw("concat(personas.identificacion, ' ', personas.primer_nombre, ' ', personas.primer_apellido) as respon_id"),
                 DB::raw("concat(p2.identificacion, ' ', p2.primer_nombre, ' ', p2.primer_apellido) as respon_revi_id"),
                 'cargos.descripcion_corta as cargo_respon_revi_id',
+                'fecha_compromiso',
                 'fecha_inicio',
                 'fecha_final'
             )
@@ -199,6 +201,7 @@ class Compromisos_maestrosController extends Controller
                 DB::raw("concat(personas.primer_nombre, ' ', personas.primer_apellido, ' ',personas.segundo_apellido) as respon_id"),
                 DB::raw("concat(p2.primer_nombre, ' ', p2.primer_apellido, ' ',p2.segundo_apellido) as respon_revi_id"),
                 'cargos.descripcion_corta as cargo_respon_revi_id',
+                'fecha_compromiso',
                 'fecha_inicio',
                 'fecha_final'
             )
