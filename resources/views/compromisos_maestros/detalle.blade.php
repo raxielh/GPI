@@ -12,14 +12,6 @@
                     Reuniónes
             </h2></div>
             <div class="body">
-                <div style="    font-weight: bold;
-                text-align: center;
-                font-size: 12px;">
-                    {{ $compromisos_maestros[0]->fecha_compromiso }}
-                </div>
-
-
-
 
                 <div class="body table-responsive">
                     <table class="table table-bordered">

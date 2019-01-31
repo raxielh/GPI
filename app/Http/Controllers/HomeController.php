@@ -43,6 +43,10 @@ class HomeController extends Controller
         return response()->json(['success'=>'Data is successfully']);
     }
 
+    public function login()
+    {   
+        return redirect('/login');
+    }
 
 
 

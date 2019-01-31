@@ -19,7 +19,6 @@ class CompromisosMaestros extends Migration
             $table->integer('respon_id')->unsigned();
             $table->integer('respon_revi_id')->unsigned();
             $table->integer('cargo_respon_revi_id')->unsigned();
-            $table->date('fecha_compromiso');
             $table->date('fecha_inicio');
             $table->date('fecha_final');
             $table->timestamps();

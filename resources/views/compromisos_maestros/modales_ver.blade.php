@@ -29,7 +29,7 @@
                             </div>
                         </div>
     
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <label>Responsable Revision</label>
                             <div class="form-group">
                                 <div class="form-line">
@@ -38,20 +38,11 @@
                             </div>
                         </div>
     
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <label>Cargo Responsable Revision</label>
                             <div class="form-group">
                                 <div class="form-line">
                                     <p id="v_cargo_respon_revi_id"></p>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="col-sm-6">
-                            <label>Fecha Compromiso</label>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <p id="v_fecha_compromiso"></p>
                                 </div>
                             </div>
                         </div>
