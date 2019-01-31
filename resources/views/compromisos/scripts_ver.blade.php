@@ -1,42 +1,69 @@
 @php
-    $url_ver=url($modulo_url);
+    $url_ver=url('compromisos');
 @endphp
 <script>
+        function borrar_compromiso(i)
+        {
+            Swal({
+                title: 'Estas seguro?',
+                text: "",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, borralo!'
+              }).then((result) => {
+                if (result.value) {
+
+                    $('#cargando').show();
+
+                    $.ajax({
+                        url: "{{ $url_ver }}/"+i,
+                        type: "DELETE",
+                        dataType: "JSON",
+                        data: {
+                            id: i
+                        },
+                        success: function (data)
+                        {
+                            console.log(data);
+                            $('#cargando').hide();
+                            Notificacion(data.success,'glyphicon glyphicon-thumbs-up','warning');
+                            Ver({{ $compromisos_maestros[0]->id }});
+                        },
+                        error: function(e) {
+                            $('#cargando').hide();
+                            Notificacion(e.responseJSON.message,'glyphicon glyphicon-thumbs-down','danger');
+                       }
+                    });
+                }
+
+              })
+        }
     function Ver(i)
     {
         $('#cargando').show();
+        $("#datos").empty();
 
-        $('#Ver').modal('show');
-        
+
         $.getJSON( "{{ $url_ver }}/"+i, function( data ) {
 
+            var n=0;
             $.each( data.success, function( key, val )
             {
-                
-                $("#v_compromisos_maestros_id").text(val.compromisos_maestros_id);
-        
-                $("#v_compromisos_laborales").text(val.compromisos_laborales);
-        
-                $("#v_nro_seguimientos").text(val.nro_seguimientos);
-        
-                $("#v_proyecto_id").text(val.proyecto_id);
-        
-                $("#v_responsable_id").text(val.responsable_id);
-        
-                $("#v_fecha_inicio_compromiso").text(val.fecha_inicio_compromiso);
-        
-                $("#v_fecha_fin_compromiso").text(val.fecha_fin_compromiso);
-        
-                $("#v_fecha_real_entrega").text(val.fecha_real_entrega);
-        
-                $("#v_dias_avance_retraso").text(val.dias_avance_retraso);
-        
-                $("#v_estado_compromiso_id").text(val.estado_compromiso_id);
-        
-                $("#v_causas_id").text(val.causas_id);
-        
-                $("#v_descripcion_causa").text(val.descripcion_causa);
-           
+                n=n+1;
+                $("#datos").append("<tr>"+
+                                        "<td style='text-align:center;'><button type='button' class='btn btn-danger btn-circle waves-effect waves-circle waves-float pull-right' style='padding: 0px;' onclick='borrar_compromiso("+ val.id +")'>"+ n +" </button></td>"+
+                                        "<td style='text-align:center;'>"+ val.compromisos_laborales +"</td>"+
+                                        "<td style='text-align:center;'>"+ val.nro_seguimientos +"</td>"+
+                                        "<td style='text-align:center;'>"+ val.proyecto +"</td>"+
+                                        "<td style='text-align:center;'>"+ val.responsable +"</td>"+
+                                        "<td style='text-align:center;'>"+ val.fecha_inicio_compromiso +"</td>"+
+                                        "<td style='text-align:center;'>"+ val.fecha_fin_compromiso +"</td>"+
+                                        "<td style='text-align:center;'>"+ val.fecha_real_entrega +"</td>"+
+                                        "<td style='text-align:center;'>"+ val.dias_avance_retraso +"</td>"+
+                                        "<td style='text-align:center;'>"+ val.estado +"</td>"+
+                                    "</tr>'");
             });
 
             $('#cargando').hide();

@@ -43,7 +43,6 @@ class CreateMenusTable extends Migration
           (8, 2, 'Buzón', 'email', 'mensaje', 2, 2, '2019-01-27 20:05:38', '2019-01-27 20:05:38'),
           (9, 2, 'Scaner', 'camera_alt', 'scaner', 2, 31, '2019-01-27 22:22:06', '2019-01-27 22:22:06'),
           (10, 2, 'Usuarios', 'person_pin', 'usuarios', 2, 4, '2019-01-27 19:49:37', '2019-01-30 01:17:01'),
-          (11, 2, 'Compromisos', 'group', 'compromisos_maestros', 2, 4, '2019-01-30 01:11:29', '2019-01-30 01:15:44'),
           (12, 4, 'Permisos', 'link', 'permisos', 2, 1, '2019-01-27 19:43:26', '2019-01-27 19:43:26'),
           (13, 4, 'Nombre roles', 'link', 'nombreroles', 2, 4, '2019-01-27 19:44:10', '2019-01-27 19:44:10'),
           (14, 4, 'Roles', 'link', 'roles', 2, 5, '2019-01-27 19:44:39', '2019-01-27 19:44:39'),
@@ -59,15 +58,17 @@ class CreateMenusTable extends Migration
           (24, 2, 'Modulo Proyectos', 'domain', 'javascript:void(0);', 1, 6, '2019-01-31 14:20:35', '2019-01-31 14:20:35'),
           (25, 24, 'Estados', 'link', 'estado_proyecto', 2, 0, '2019-01-31 14:21:06', '2019-01-31 14:21:06'),
           (26, 24, 'Proyectos', 'link', 'proyecto', 2, 1, '2019-01-31 14:21:26', '2019-01-31 14:21:26'),
-          (27, 6, 'Direciones/Areas', 'link', 'direciones_areas', 2, 0, '2019-01-31 14:25:53', '2019-01-31 14:25:53');
+          (27, 6, 'Direciones/Areas', 'link', 'direciones_areas', 2, 0, '2019-01-31 14:25:53', '2019-01-31 14:25:53'),
+          (28, 2, 'Modulo Compromisos', 'group', 'javascript:void(0);', 1, 10, '2019-01-31 16:32:26', '2019-01-31 16:34:03'),
+          (29, 28, 'Estado', 'link', 'estado_compromiso', 2, 1, '2019-01-31 16:33:36', '2019-01-31 16:33:36'),
+          (30, 28, 'Compromisos', 'link', 'compromisos_maestros', 2, 2, '2019-01-30 01:11:29', '2019-01-31 16:33:59');
 
 
 
 
 
 
-
-        ALTER SEQUENCE menus_id_seq RESTART WITH 28;
+        ALTER SEQUENCE menus_id_seq RESTART WITH 31;
 
         ");
 

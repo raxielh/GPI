@@ -55,10 +55,54 @@ class CompromisosController extends Controller
         {
 
             $compromisos=DB::table('compromisos')
-            ->where('id',$id)
+            ->join('proyecto', 'compromisos.proyecto_id', '=', 'proyecto.id')
+            ->join('empleados', 'compromisos.responsable_id', '=', 'empleados.id')
+            ->join('personas', 'empleados.persona_id', '=', 'personas.id')
+            ->join('estado_compromiso', 'compromisos.estado_compromiso_id', '=', 'estado_compromiso.id')
+            ->where('compromisos_maestros_id',$id)
+            ->select(
+                'compromisos.*',
+                'proyecto.descripcion_larga as proyecto',
+                DB::raw("concat(personas.primer_nombre, ' ', personas.primer_apellido, ' ',personas.segundo_apellido) as responsable"),
+                'estado_compromiso.descripcion_larga as estado'
+            )
+            ->orderBy("compromisos.id","desc")
             ->get();
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             return response()->json(['success'=>$compromisos]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         }
 

@@ -3,7 +3,7 @@
 @endphp
 <script>
     $('#save_crear_').click(function(){
-        console.log($("#frm2").serialize());
+        //console.log($("#frm2").serialize());
         $('#cargando').show();
         var url = "{{ $url_crear }}";
         $.ajax({
@@ -12,14 +12,14 @@
            data: $("#frm2").serialize(),
            success: function(data)
            {
-               console.log(data);
+               //console.log(data);
                 if(data.success){
-
                     $('#cargando').hide();
                     Notificacion(data.success,'glyphicon glyphicon-thumbs-up','success');
                     //CargarDatos();
                     //$('#Crear').modal('hide');
-                    $("#frm")[0].reset();
+                    $("#frm2")[0].reset();
+                    Ver({{ $compromisos_maestros[0]->id }});
 
                 }
                 if(data.error){

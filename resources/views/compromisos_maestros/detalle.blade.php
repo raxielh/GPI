@@ -41,35 +41,22 @@
                     </div>
 
                     <div class="table-responsive">
-                            <table class="table table-bordered">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th width='51px'><button type="button" class="btn bg-{{ Theme_Color() }} waves-effect btn-xs" data-toggle="modal" data-target="#Crear_"><i class="material-icons">add</i></button></th>
-                                        <th>Compromisos laborales</th>
-                                        <th>No. De Seguimiento</th>
-                                        <th>Proyecto</th>
-                                        <th>Responsable</th>
-                                        <th>Inicio</th>
-                                        <th>Fin</th>
-                                        <th>Real</th>
-                                        <th>Días de avance/retraso</th>
-                                        <th>Estado</th>
+                                        <th style="text-align:center;">Compromisos laborales</th>
+                                        <th style="text-align:center;">No. De Seguimiento</th>
+                                        <th style="text-align:center">Proyecto</th>
+                                        <th style="text-align:center">Responsable</th>
+                                        <th style="text-align:center">Fecha Inicio</th>
+                                        <th style="text-align:center">Fecha Fin</th>
+                                        <th style="text-align:center">Fecha Real</th>
+                                        <th style="text-align:center">Días de avance/retraso</th>
+                                        <th style="text-align:center">Estado</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-
-                                    </tr>
+                                <tbody id="datos">
                                 </tbody>
                             </table>
                         </div>
@@ -101,8 +88,11 @@ $url_integrantes=url('compromisos_maestros/vinculados');
 
         });
     }
+
 </script>
 
+@include('compromisos.scripts_ver')
+<script>Ver({{ $compromisos_maestros[0]->id }})</script>
 @include('compromisos_integrantes.modales_save')
 @include('compromisos.modales_save')
 
@@ -112,6 +102,7 @@ $url_integrantes=url('compromisos_maestros/vinculados');
 @include('compromisos_integrantes.scripts_borrar')
 
 @include('compromisos_integrantes.scripts')
+
 
 
 @endsection

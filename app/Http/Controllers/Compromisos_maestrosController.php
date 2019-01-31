@@ -187,9 +187,6 @@ class Compromisos_maestrosController extends Controller
             $Proyectos = Proyectos::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id');
             $Estado_comp = Estado_compromisos::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id');
 
-
-
-
             $modulo_url=$this->modulo_url;
 
             $modulo_nombre=$this->modulo_nombre;
@@ -239,6 +236,7 @@ class Compromisos_maestrosController extends Controller
                     'compromisos_integrantes.id as id',
                     DB::raw("concat(personas.primer_nombre, ' ', personas.primer_apellido) as personas")
                 )
+                ->where('compromisos_maestros.id',$id)
                 ->orderBy("compromisos_maestros.id","desc")->get();
             return response()->json(['success'=>$vinculados]);
         }
