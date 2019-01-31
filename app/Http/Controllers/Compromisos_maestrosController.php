@@ -9,6 +9,9 @@ use App\Models\Compromisos_maestros;
 use App\Models\Empleados;
 use App\Models\direciones_areas;
 use App\Models\Compromisos_integrantes;
+use App\Models\Estado_compromisos;
+use App\Models\Sedes;
+use App\Models\Proyectos;
 
 class Compromisos_maestrosController extends Controller
 {
@@ -180,7 +183,13 @@ class Compromisos_maestrosController extends Controller
 
         public function detalle($id)
         {
-            //dd($id);
+
+            $Proyectos = Proyectos::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id');
+            $Estado_comp = Estado_compromisos::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id');
+
+
+
+
             $modulo_url=$this->modulo_url;
 
             $modulo_nombre=$this->modulo_nombre;
@@ -212,7 +221,11 @@ class Compromisos_maestrosController extends Controller
             )->orderBy("empleados.id","desc")
             ->pluck('persona_id', 'id');
 
-            return view($this->modulo_url.'.detalle',compact('modulo_url','modulo_nombre','compromisos_maestros','Empleados'));
+            return view($this->modulo_url.'.detalle',compact(
+                'modulo_url',
+                'modulo_nombre',
+                'compromisos_maestros',
+                'Empleados','Proyectos','Estado_comp'));
 
         }
 

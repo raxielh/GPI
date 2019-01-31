@@ -1,23 +1,21 @@
 @php
-    $url_crear=route('compromisos.store');
+    $url_crear=route($modulo_url.'.store');
 @endphp
 <script>
-    $('#save_crear_').click(function(){
-        console.log($("#frm2").serialize());
+    $('#save_crear').click(function(){
         $('#cargando').show();
         var url = "{{ $url_crear }}";
         $.ajax({
            type: "POST",
            url: url,
-           data: $("#frm2").serialize(),
+           data: $("#frm").serialize(),
            success: function(data)
            {
-               console.log(data);
                 if(data.success){
 
                     $('#cargando').hide();
                     Notificacion(data.success,'glyphicon glyphicon-thumbs-up','success');
-                    //CargarDatos();
+                    CargarDatos();
                     //$('#Crear').modal('hide');
                     $("#frm")[0].reset();
 

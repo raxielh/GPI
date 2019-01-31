@@ -13,34 +13,66 @@
             </h2></div>
             <div class="body">
 
-                <div class="body table-responsive">
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <th>Dirección/Area</th>
-                                <td>{{ $compromisos_maestros[0]->direciones_areas_id }}</td>
-                                <th>Responsable</th>
-                                <td>{{ $compromisos_maestros[0]->respon_id }}</td>
-                            </tr>
-                            <tr>
-                                <th>Integrantes <button type="button" class="btn bg-{{ Theme_Color() }} waves-effect btn-xs" data-toggle="modal" data-target="#Crear"><i class="material-icons">add</i></button></th>
-                                <td>
-                                    <div id="integrantes"></div>
-                                </td>
-                                <th>Periodo de seguimiento</th>
-                                <td>{{ $compromisos_maestros[0]->fecha_inicio }} al {{ $compromisos_maestros[0]->fecha_final }}</td>
-                            </tr>
-                            <tr>
-                                <th>Responsable de revisión</th>
-                                <td>{{ $compromisos_maestros[0]->respon_revi_id }}</td>
-                                <th>Cargo</th>
-                                <td>{{ $compromisos_maestros[0]->cargo_respon_revi_id }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <th>Dirección/Area</th>
+                                    <td>{{ $compromisos_maestros[0]->direciones_areas_id }}</td>
+                                    <th>Responsable</th>
+                                    <td>{{ $compromisos_maestros[0]->respon_id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Integrantes <button type="button" class="btn bg-{{ Theme_Color() }} waves-effect btn-xs" data-toggle="modal" data-target="#Crear"><i class="material-icons">add</i></button></th>
+                                    <td>
+                                        <div id="integrantes"></div>
+                                    </td>
+                                    <th>Periodo de seguimiento</th>
+                                    <td>{{ $compromisos_maestros[0]->fecha_inicio }} al {{ $compromisos_maestros[0]->fecha_final }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Responsable de revisión</th>
+                                    <td>{{ $compromisos_maestros[0]->respon_revi_id }}</td>
+                                    <th>Cargo</th>
+                                    <td>{{ $compromisos_maestros[0]->cargo_respon_revi_id }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
+                    <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th width='51px'><button type="button" class="btn bg-{{ Theme_Color() }} waves-effect btn-xs" data-toggle="modal" data-target="#Crear_"><i class="material-icons">add</i></button></th>
+                                        <th>Compromisos laborales</th>
+                                        <th>No. De Seguimiento</th>
+                                        <th>Proyecto</th>
+                                        <th>Responsable</th>
+                                        <th>Inicio</th>
+                                        <th>Fin</th>
+                                        <th>Real</th>
+                                        <th>Días de avance/retraso</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
 
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
 
             </div>
@@ -72,8 +104,13 @@ $url_integrantes=url('compromisos_maestros/vinculados');
 </script>
 
 @include('compromisos_integrantes.modales_save')
+@include('compromisos.modales_save')
+
 @include('compromisos_integrantes.scripts_crear')
+@include('compromisos.scripts_crear')
+
 @include('compromisos_integrantes.scripts_borrar')
+
 @include('compromisos_integrantes.scripts')
 
 

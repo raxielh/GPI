@@ -8,6 +8,7 @@ use Validator;
 use App\Models\Proyectos;
 use App\Models\Estado_proyecto;
 use App\Models\Sedes;
+use App\Models\Empleados;
 
 class ProyectosController extends Controller
 {
