@@ -54,7 +54,7 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
                                         {!! Form::select('respon_id',$Empleados, $compromisos_maestros->respon_revi_id,
@@ -65,21 +65,6 @@
                                         ]) !!}
                                     <label class="form-label">
                                     Responsable Revision
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input type="date"
-                                    class="form-control"
-                                    name="fecha_compromiso"
-                                    autofocus
-                                    value="{{ $compromisos_maestros->fecha_compromiso}}">
-                                    <label class="form-label">
-                                    Fecha Compromiso
                                     </label>
                                 </div>
                             </div>
