@@ -1,16 +1,20 @@
 <?php
 
-$nombre_controlador='Compromisos_integrantes';
-$uri="compromisos_integrantes";
-$modulo_nombre="'Compromisos de Integrantes'";
+$nombre_controlador='Proyectos';
+$uri="proyecto";
+$modulo_nombre="'Proyecto'";
 $icon='transfer_within_a_station';
 $fields = array(
-                'integrantes_id',
-                'compromisos_maestros_id',
+                'descripcion_larga',
+                'descripcion_corta',
+                'sede_id',
+                'estado_proyecto_id',
         );
 $muestra = array(
-                'integrantes_id',
-                'compromisos_maestros_id',
+                'Descripcion larga',
+                'Descripcion corta',
+                'Sede',
+                'Estado',
         );
 $x='';
 foreach ($fields as $v)

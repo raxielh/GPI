@@ -75,3 +75,6 @@ Route::get('/listado_registro_lluvia', 'registro_lluviaController@listado')->nam
 Route::resource('compromisos_integrantes', 'Compromisos_integrantesController');
 Route::get('/listado_compromisos_integrantes', 'Compromisos_integrantesController@listado')->name('listado_compromisos_integrantes');
 
+Route::resource('proyecto', 'ProyectosController');
+Route::get('/listado_proyecto', 'ProyectosController@listado')->name('listado_proyecto');
+

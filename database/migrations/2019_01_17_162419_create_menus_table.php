@@ -34,8 +34,8 @@ class CreateMenusTable extends Migration
         INSERT INTO public.menus VALUES (1, 0, '', NULL, '', 1, 0, NULL, NULL);
         INSERT INTO public.menus VALUES (2, 1, 'App', 'desktop_mac', 'javascript:void(0);', 1, 0, '2019-01-27 19:40:20', '2019-01-27 19:41:27');
         INSERT INTO public.menus VALUES (3, 2, 'Inicio', 'home', 'home', 2, 1, '2019-01-27 19:41:48', '2019-01-27 19:41:48');
-        INSERT INTO public.menus VALUES (4, 2, 'Seguridad', 'https', 'javascript:void(0);', 1, 6, '2019-01-27 19:42:07', '2019-01-27 19:42:07');
-        INSERT INTO public.menus VALUES (5, 2, 'Parametros', 'settings', 'javascript:void(0);', 1, 6, '2019-01-27 19:50:47', '2019-01-27 19:50:47');
+        INSERT INTO public.menus VALUES (4, 2, 'Modulo Seguridad', 'https', 'javascript:void(0);', 1, 6, '2019-01-27 19:42:07', '2019-01-27 19:42:07');
+        INSERT INTO public.menus VALUES (5, 2, 'Modulo Parametros', 'settings', 'javascript:void(0);', 1, 6, '2019-01-27 19:50:47', '2019-01-27 19:50:47');
         INSERT INTO public.menus VALUES (6, 2, 'Modulo Empleados', 'face', 'javascript:void(0);', 1, 6, '2019-01-30 01:02:33', '2019-01-30 01:12:59');
 
 
