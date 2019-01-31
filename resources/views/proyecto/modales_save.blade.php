@@ -12,7 +12,7 @@
 
             <div class="modal-body">
 
-                
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -42,37 +42,40 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text"
-                                    class="form-control"
-                                    name="sede_id"
-                                    autofocus
-                                    value="">
+                                    {!! Form::select('sede_id',$Sedes, null,
+                                    [
+                                        'class' => 'form-control show-tick',
+                                        'data-show-subtext'=>"true",
+                                        'data-live-search'=>"true"
+                                    ]) !!}
+
                                     <label class="form-label">
                                     Sede
                                     </label>
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text"
-                                    class="form-control"
-                                    name="estado_proyecto_id"
-                                    autofocus
-                                    value="">
+                                    {!! Form::select('estado_proyecto_id',$Estado_proyecto, null,
+                                        [
+                                            'class' => 'form-control show-tick',
+                                            'data-show-subtext'=>"true",
+                                            'data-live-search'=>"true"
+                                    ]) !!}
                                     <label class="form-label">
                                     Estado
                                     </label>
                                 </div>
                             </div>
                         </div>
-    
+
 
             </div>
 

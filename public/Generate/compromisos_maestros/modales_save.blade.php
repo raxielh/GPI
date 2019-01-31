@@ -12,7 +12,7 @@
 
             <div class="modal-body">
 
-                
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -102,7 +102,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -117,7 +117,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
 
             </div>
 

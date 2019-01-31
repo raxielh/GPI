@@ -21,7 +21,7 @@
                     <form method="post" autocomplete="off" id="frm">
                         @csrf
 
-                            
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -51,39 +51,41 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text"
-                                    class="form-control"
-                                    name="sede_id"
-                                    autofocus
-                                    value="{{ $proyecto->sede_id}}">
+                                        {!! Form::select('sede_id',$Sedes, $proyecto->sede_id,
+                                        [
+                                            'class' => 'form-control show-tick',
+                                            'data-show-subtext'=>"true",
+                                            'data-live-search'=>"true"
+                                        ]) !!}
                                     <label class="form-label">
                                     Sede
                                     </label>
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text"
-                                    class="form-control"
-                                    name="estado_proyecto_id"
-                                    autofocus
-                                    value="{{ $proyecto->estado_proyecto_id}}">
+                                        {!! Form::select('estado_proyecto_id',$Estado_proyecto, $proyecto->estado_proyecto_id,
+                                        [
+                                            'class' => 'form-control show-tick',
+                                            'data-show-subtext'=>"true",
+                                            'data-live-search'=>"true"
+                                        ]) !!}
                                     <label class="form-label">
                                     Estado
                                     </label>
                                 </div>
                             </div>
                         </div>
-    
 
-                
+
+
 
                             <div class="col-sm-12" style="text-align:right">
                                 <button type="button" class="btn btn-link waves-effect" id="save_editar">Guardar</button>

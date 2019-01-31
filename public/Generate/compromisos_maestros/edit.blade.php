@@ -21,7 +21,7 @@
                     <form method="post" autocomplete="off" id="frm">
                         @csrf
 
-                            
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -66,7 +66,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -81,7 +81,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -96,7 +96,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -111,7 +111,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -126,9 +126,9 @@
                                 </div>
                             </div>
                         </div>
-    
 
-                
+
+
 
                             <div class="col-sm-12" style="text-align:right">
                                 <button type="button" class="btn btn-link waves-effect" id="save_editar">Guardar</button>
