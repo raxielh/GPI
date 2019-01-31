@@ -20,8 +20,14 @@ class Causas extends Migration
             $table->timestamps();
         });
 
+        DB::table('causas')->insert([
+            'id' => 0,
+            'descripcion_larga' => 'Defecto',
+            'descripcion_corta' => 'Defecto',
+        ]);
 
         DB::table('causas')->insert([
+            'id' => 1,
             'descripcion_larga' => 'Atraso',
             'descripcion_corta' => 'Atraso',
         ]);

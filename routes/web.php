@@ -78,3 +78,6 @@ Route::get('/listado_compromisos_integrantes', 'Compromisos_integrantesControlle
 Route::resource('proyecto', 'ProyectosController');
 Route::get('/listado_proyecto', 'ProyectosController@listado')->name('listado_proyecto');
 
+Route::resource('compromisos', 'CompromisosController');
+Route::get('/listado_compromisos', 'CompromisosController@listado')->name('listado_compromisos');
+

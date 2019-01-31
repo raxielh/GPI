@@ -11,10 +11,10 @@ function Theme_Color()
 }
 
 function Menu_d($parent = 1, $user_tree_array = '') {
- 
+
     if (!is_array($user_tree_array))
     $user_tree_array = array();
-    
+
     $query = DB::table('menus')->where('id_padre',$parent)->orderBy('orden', 'ASC')->get();
 
     if($parent == 1){
@@ -37,8 +37,8 @@ function Menu_d($parent = 1, $user_tree_array = '') {
                                             <span>'.$row->descripcion.'</span>
                                             </a>
                                     ';
-    
-            $user_tree_array = Menu_d($row->id, $user_tree_array);         
+
+            $user_tree_array = Menu_d($row->id, $user_tree_array);
         }else{
             //var_dump($row->id_padre);
             $active=Request::is($row->ruta.'*') ? 'active' : '';
@@ -52,7 +52,7 @@ function Menu_d($parent = 1, $user_tree_array = '') {
                                             <span>'.$row->descripcion.'</span>
                                             </a>
                                     ';
-    
+
             $user_tree_array = Menu_d($row->id, $user_tree_array);
         }
 
@@ -68,7 +68,7 @@ function Menu_d($parent = 1, $user_tree_array = '') {
 }
 
 function abrir_padre() {
-/*
+
     $url=explode("/",$_SERVER["REQUEST_URI"]);
 
     $actual=$url[1];
@@ -78,10 +78,10 @@ function abrir_padre() {
     foreach ($q as $q) {
         $padre=($q->id_padre);
     }
-    
+
     $q2 = DB::table('menus')->where('id',$padre)->get();
 
-    
+
 
     foreach ($q2 as $q2) {
         //var_dump('item-'.$q2->id);
@@ -89,5 +89,5 @@ function abrir_padre() {
         echo "<script>$('.".$id."').addClass( 'active');
         </script>";
     }
-*/   
+
 }

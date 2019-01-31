@@ -1,20 +1,36 @@
 <?php
 
-$nombre_controlador='Proyectos';
-$uri="proyecto";
-$modulo_nombre="'Proyecto'";
+$nombre_controlador='Compromisos';
+$uri="compromisos";
+$modulo_nombre="'Compromiso'";
 $icon='transfer_within_a_station';
 $fields = array(
-                'descripcion_larga',
-                'descripcion_corta',
-                'sede_id',
-                'estado_proyecto_id',
+                'compromisos_maestros_id',
+                'compromisos_laborales',
+                'nro_seguimientos',
+                'proyecto_id',
+                'responsable_id',
+                'fecha_inicio_compromiso',
+                'fecha_fin_compromiso',
+                'fecha_real_entrega',
+                'dias_avance_retraso',
+                'estado_compromiso_id',
+                'causas_id',
+                'descripcion_causa',
         );
 $muestra = array(
-                'Descripcion larga',
-                'Descripcion corta',
-                'Sede',
+                'compromisos_maestros_id',
+                'Compromiso laboral',
+                'nro_seguimientos',
+                'Proyecto',
+                'Responsable',
+                'Fecha inicio compromiso',
+                'Fecha fin compromiso',
+                'Fecha real entrega',
+                'Dias_avance_retraso',
                 'Estado',
+                'Causa',
+                'Descripcion causa',
         );
 $x='';
 foreach ($fields as $v)
