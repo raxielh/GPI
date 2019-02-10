@@ -5,17 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 require base_path() . '/vendor/autoload.php';
 use PHPJasper\PHPJasper;
-
+use JasperPHP\JasperPHP;
 class ReportesController extends Controller
 {
     public function index()
     {
-
+/*
         $jasper = new PHPJasper;
 
         $jasper->process(
-            public_path() . '/report/hola.jrxml', //input
-            public_path() . '/report/'.time().'_hello_world', //output
+            public_path() . '/jasper/hola.jasper', //input
+            public_path() . '/jasper/'.time().'_hello_world', //output
             ['pdf', 'rtf', 'xml'], //formats
             [], //parameters
             [],  //data_source
@@ -23,6 +23,33 @@ class ReportesController extends Controller
             )->output();
 
        //dd($jasper);
+*/
+
+            $input =  '/laravel/GPI/jasper/hola.jasper';
+            $output =  '/laravel/GPI/jasper/'.time().'_hello_world';
+
+            $jasper = new JasperPHP;
+
+            $jasper->process(
+                $input,
+                $output,
+                array("pdf", "rtf"),
+                array(
+                  'myString' => utf8_decode('Hello world :D ôéãìü'),
+                  'myInt' => 10.0 ,
+                  'myDate' => date("Y-m-d")
+                ),
+                array(
+                  array(
+                 'driver' => 'postgres',
+                 'username' => 'postgres',
+                 'host' => 'localhost',
+                 'database' => 'gpi',
+                 'port' => '5432',
+             )
+   )
+            )->execute();
+
 
     }
 

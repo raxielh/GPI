@@ -4,8 +4,62 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "094912ce66bee5fc7e9436e6fbdc396e",
+    "content-hash": "7f6c741bbeefe70b2595ab20f72e1686",
     "packages": [
+        {
+            "name": "copam/phpjasper",
+            "version": "v1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/copam/phpjasper.git",
+                "reference": "70126c65073c378ca8fa5697ccf7d9079babd930"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/copam/phpjasper/zipball/70126c65073c378ca8fa5697ccf7d9079babd930",
+                "reference": "70126c65073c378ca8fa5697ccf7d9079babd930",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JasperPHP": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Leandro Bitencourt",
+                    "email": "leandrocintrabitencourt@gmail.com",
+                    "homepage": "http://www.leandrobitencourt.zz.mu",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Daniel Rodrigues",
+                    "email": "danielrodrigues-ti@hotmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Create Reports in PHP/Laravel with JasperReports",
+            "homepage": "https://github.com/copam/phpjasper",
+            "keywords": [
+                "jasper",
+                "jasperreports",
+                "java",
+                "json",
+                "pdf",
+                "php",
+                "reports",
+                "xml"
+            ],
+            "time": "2018-04-12T12:23:30+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
