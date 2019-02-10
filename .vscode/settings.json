@@ -1,0 +1,7 @@
+{
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.tabSize": 2,
+    "workbench.tree.horizontalScrolling": true,
+    "editor.fontLigatures": true,
+    "workbench.fontAliasing": "antialiased"
+}
