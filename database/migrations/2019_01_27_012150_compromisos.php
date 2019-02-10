@@ -27,7 +27,7 @@ class Compromisos extends Migration
             $table->integer('estado_compromiso_id')->unsigned();
             $table->integer('causas_id')->unsigned()->default(0);
             $table->string('descripcion_causa')->nullable();
-
+            $table->integer('porcentage')->unsigned();
             $table->timestamps();
             $table->foreign('compromisos_maestros_id')->references('id')->on('compromisos_maestros');
             $table->foreign('proyecto_id')->references('id')->on('proyecto');
