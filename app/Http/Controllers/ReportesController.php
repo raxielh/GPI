@@ -5,26 +5,38 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 require base_path() . '/vendor/autoload.php';
 use PHPJasper\PHPJasper;
-use JasperPHP\JasperPHP;
+// use JasperPHP\JasperPHP;
 class ReportesController extends Controller
 {
     public function index()
     {
+
+
+      $input = '/laravel/GPI/jasper/hola.jasper';
+      $output = '/laravel/GPI/jasper/'.time().'_demo';
+      $options = [
+          'format' => ['pdf', 'rtf'],
+           'params' => [
+                       'myString' => 'hola mundo'
+                     ],
+       'db_connection' => [
+        'driver' => 'postgres', //mysql, ....
+        'username' => 'postgres',
+        'password' => 'camila',
+        'host' => '127.0.0.1',
+        'database' => 'gpi',
+        'port' => '5432'
+    ]
+                      ];
+
+      $jasper = new PHPJasper;
+
+      $jasper->process(
+          $input,
+          $output,
+          $options
+      )->execute();
 /*
-        $jasper = new PHPJasper;
-
-        $jasper->process(
-            public_path() . '/jasper/hola.jasper', //input
-            public_path() . '/jasper/'.time().'_hello_world', //output
-            ['pdf', 'rtf', 'xml'], //formats
-            [], //parameters
-            [],  //data_source
-            '' //locale
-            )->output();
-
-       //dd($jasper);
-*/
-
             $input =  '/laravel/GPI/jasper/hola.jasper';
             $output =  '/laravel/GPI/jasper/'.time().'_hello_world';
 
@@ -50,7 +62,7 @@ class ReportesController extends Controller
    )
             )->execute();
 
-
+*/
     }
 
     public function getDatabaseConfig()
