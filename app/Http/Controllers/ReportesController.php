@@ -3,36 +3,40 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use JasperPHP\JasperPHP as JasperPHP;
+require base_path() . '/vendor/autoload.php';
+use PHPJasper\PHPJasper;
 
 class ReportesController extends Controller
 {
     public function index()
     {
 
-        $jasper = new JasperPHP;
-
-        //$jasper->compile(base_path() . '/jasper/1.jrxml')->execute();
-
-        $ruta_jasper=base_path() . '/jasper/1.jasper';
+        $jasper = new PHPJasper;
 
         $jasper->process(
-            $ruta_jasper,
-            '1', // Ruta y nombre de archivo de salida del reporte (sin extensión)
-            array('pdf', 'rtf'), // Formatos de salida del reporte
-            array('php_version' => phpversion()) // Parámetros del reporte
-        )->execute();
+            public_path() . '/report/hola.jrxml', //input
+            public_path() . '/report/'.time().'_hello_world', //output
+            ['pdf', 'rtf', 'xml'], //formats
+            [], //parameters
+            [],  //data_source
+            '' //locale
+            )->output();
 
+       //dd($jasper);
 
-
-        return view('welcome');
-        /*
-        $jasper = new JasperPHP;
-
-        // Compilar el reporte para generar .jasper
-        $jasper->compile(base_path() . '/jasper/1.jrxml')->execute();
-
-        return view('welcome');
-        */
     }
+
+    public function getDatabaseConfig()
+    {
+        return [
+            'driver'   => env('DB_CONNECTION'),
+            'host'     => env('DB_HOST'),
+            'port'     => env('DB_PORT'),
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
+            'database' => env('DB_DATABASE'),
+            'jdbc_dir' => base_path() . env('JDBC_DIR', '/vendor/lavela/phpjasper/src/JasperStarter/jdbc'),
+        ];
+    }
+
 }
