@@ -84,3 +84,5 @@ Route::get('/listado_compromisos', 'CompromisosController@listado')->name('lista
 Route::resource('estado_compromiso', 'Estado_compromisosController');
 Route::get('/listado_estado_compromiso', 'Estado_compromisosController@listado')->name('listado_estado_compromiso');
 
+Route::get('/reporte', 'ReportesController@index')->name('reportes');
+

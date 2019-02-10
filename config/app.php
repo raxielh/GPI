@@ -178,6 +178,8 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
+        JasperPHP\JasperPHPServiceProvider::class,
+
     ],
 
     /*
