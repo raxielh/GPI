@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Models;
-    
+
 use Illuminate\Database\Eloquent\Model;
-    
+
 class Compromisos extends Model
 {
     protected $table = 'compromisos';
@@ -21,6 +21,7 @@ class Compromisos extends Model
 'estado_compromiso_id',
 'causas_id',
 'descripcion_causa',
+'porcentage',
 
     ];
 

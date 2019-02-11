@@ -26,6 +26,7 @@ class CompaniaController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware("cors");
         $this->modulo_url = 'companias';
         $this->modulo_nombre = 'Compañia';
     }
@@ -76,7 +77,7 @@ class CompaniaController extends Controller
             'representante_legal'=>'required',
             'telefono'=>'numeric',
         );
-     
+
         $validator = Validator::make($request->all(),$rules);
 
         if ($validator->fails())
@@ -113,7 +114,7 @@ class CompaniaController extends Controller
 
         $Compania=Compania::find($id);
         return view($this->modulo_url.'.edit',compact('Compania','modulo_url','modulo_nombre'));
-    
+
     }
 
     /**
@@ -131,7 +132,7 @@ class CompaniaController extends Controller
             'representante_legal'=>'required',
             'telefono'=>'numeric',
         );
-     
+
         $validator = Validator::make($request->all(),$rules);
 
         if ($validator->fails())
@@ -141,8 +142,8 @@ class CompaniaController extends Controller
 
         Compania::find($id)->update($request->all());
 
-        return response()->json(['success'=>$this->modulo_nombre.' actualizado con exito']);      
-      
+        return response()->json(['success'=>$this->modulo_nombre.' actualizado con exito']);
+
     }
 
     /**

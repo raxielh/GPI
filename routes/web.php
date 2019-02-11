@@ -80,6 +80,7 @@ Route::get('/listado_proyecto', 'ProyectosController@listado')->name('listado_pr
 
 Route::resource('compromisos', 'CompromisosController');
 Route::get('/listado_compromisos', 'CompromisosController@listado')->name('listado_compromisos');
+Route::get('/compromisos/detalle/{id}', 'CompromisosController@ver_detalle')->name('ver_detalle');
 
 Route::resource('estado_compromiso', 'Estado_compromisosController');
 Route::get('/listado_estado_compromiso', 'Estado_compromisosController@listado')->name('listado_estado_compromiso');

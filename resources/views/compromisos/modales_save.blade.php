@@ -78,7 +78,7 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
                                     <input type="date"
@@ -93,7 +93,7 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
                                     <input type="date"
@@ -103,21 +103,6 @@
                                     value="{{ date('Y-m-d') }}">
                                     <label class="form-label">
                                     Fecha fin compromiso
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input type="date"
-                                    class="form-control"
-                                    name="fecha_real_entrega"
-                                    autofocus
-                                    value="{{ date('Y-m-d') }}">
-                                    <label class="form-label">
-                                    Fecha real entrega
                                     </label>
                                 </div>
                             </div>

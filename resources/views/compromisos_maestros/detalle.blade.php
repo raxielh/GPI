@@ -45,15 +45,13 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th width='51px'><button type="button" class="btn bg-{{ Theme_Color() }} waves-effect btn-xs" data-toggle="modal" data-target="#Crear_"><i class="material-icons">add</i></button></th>
-                                        <th style="text-align:center;">Compromisos laborales</th>
-                                        <th style="text-align:center;">No. De Seguimiento</th>
+                                        <th width='51px'><button type="button" class="btn btn-warning waves-effect btn-xs" data-toggle="modal" data-target="#Crear_"><i class="material-icons">add</i></button></th>
+                                        <th style="text-align:center;">Compromiso</th>
                                         <th style="text-align:center">Proyecto</th>
                                         <th style="text-align:center">Responsable</th>
                                         <th style="text-align:center">Fecha Inicio</th>
                                         <th style="text-align:center">Fecha Fin</th>
-                                        <th style="text-align:center">Fecha Real</th>
-                                        <th style="text-align:center">Días de avance/retraso</th>
+                                        <th style="text-align:center">%</th>
                                         <th style="text-align:center">Estado</th>
                                     </tr>
                                 </thead>
@@ -67,6 +65,44 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="ver_compro" tabindex="-1" role="dialog" style="display: none;">
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title" id="defaultModalLabel">Ver Compromiso</h4>
+                </div>
+
+                <div class="modal-body">
+                    <input type="hidden" id="id_comp">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h6 class="card-inside-title" style="margin-top: 0px;margin-bottom: 0px;color:#333">Compromiso</h6>
+                                <div class="form-line">
+                                    <input type="text" class="form-control" id="d_compromiso" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <div class="col-sm-12">
+                        <button type="button" class="btn btn-link waves-effect" onclick="borrar_compromiso()" style="color:red">Borrar</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 
 @php
 $url_integrantes=url('compromisos_maestros/vinculados');

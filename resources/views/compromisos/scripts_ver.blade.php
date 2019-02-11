@@ -2,8 +2,9 @@
     $url_ver=url('compromisos');
 @endphp
 <script>
-        function borrar_compromiso(i)
+        function borrar_compromiso()
         {
+            var i=$('#id_comp').val();
             Swal({
                 title: 'Estas seguro?',
                 text: "",
@@ -16,6 +17,7 @@
                 if (result.value) {
 
                     $('#cargando').show();
+                    $('#ver_compro').modal('hide');
 
                     $.ajax({
                         url: "{{ $url_ver }}/"+i,
@@ -52,15 +54,13 @@
             {
                 n=n+1;
                 $("#datos").append("<tr>"+
-                                        "<td style='text-align:center;'><button type='button' class='btn btn-danger btn-circle waves-effect waves-circle waves-float pull-right' style='padding: 0px;' onclick='borrar_compromiso("+ val.id +")'>"+ n +" </button></td>"+
+                                        "<td style='text-align:center;'><button type='button' class='btn btn-info btn-circle waves-effect waves-circle waves-float pull-right' style='padding: 0px;' onclick='ver_compromiso("+ val.id +")'>"+ n +" </button></td>"+
                                         "<td style='text-align:center;'>"+ val.compromisos_laborales +"</td>"+
-                                        "<td style='text-align:center;'>"+ val.nro_seguimientos +"</td>"+
                                         "<td style='text-align:center;'>"+ val.proyecto +"</td>"+
                                         "<td style='text-align:center;'>"+ val.responsable +"</td>"+
                                         "<td style='text-align:center;'>"+ val.fecha_inicio_compromiso +"</td>"+
                                         "<td style='text-align:center;'>"+ val.fecha_fin_compromiso +"</td>"+
-                                        "<td style='text-align:center;'>"+ val.fecha_real_entrega +"</td>"+
-                                        "<td style='text-align:center;'>"+ val.dias_avance_retraso +"</td>"+
+                                        "<td style='text-align:center;'>"+ val.porcentage +"</td>"+
                                         "<td style='text-align:center;'>"+ val.estado +"</td>"+
                                     "</tr>'");
             });
@@ -69,4 +69,25 @@
 
         });
     }
+
+    function ver_compromiso(i)
+    {
+        console.log(i);
+        $('#cargando').show();
+        $('#ver_compro').modal('show');
+        $('#id_comp').val(i);
+        $.getJSON( "{{ $url_ver }}/detalle/"+i, function( data ) {
+
+            console.log(data);
+
+            $.each( data.success, function( key, val )
+            {
+                $("#d_compromiso").val(val.compromisos_laborales);
+            });
+
+            $('#cargando').hide();
+
+        });
+    }
+
 </script>
