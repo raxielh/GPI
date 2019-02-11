@@ -44,6 +44,7 @@
     <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Montserrat');
+        @import url('https://fonts.googleapis.com/css?family=Courgette');
         #cargando{
             display:none;
             z-index: 99999999999;
@@ -122,7 +123,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="#" style="font-family: 'Montserrat', sans-serif;font-size: 25px;font-weight: bold;">{{ env('APP_NAME') }}</a>
+                <a class="navbar-brand" href="#" style="font-family: 'Courgette', cursive;font-size: 26px;font-weight: bold;">{{ env('APP_NAME') }} <span style="font-size:14px">{{ env('APP_VERSION') }}</span></a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
