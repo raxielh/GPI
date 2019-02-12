@@ -513,6 +513,55 @@ class Dual extends Migration
             ALTER FUNCTION public.restar_fechas (fecha_ini date, fecha_fin date)
               OWNER TO postgres;
 
+              CREATE OR REPLACE FUNCTION public.fn_trae_integrantes (
+                s_compromisos_maestros_id integer
+              )
+              RETURNS varchar AS
+              $body$
+              DECLARE
+               salida varchar;
+                rec record;
+                sw BOOLEAN;
+              BEGIN
+
+              salida='';
+              sw=false;
+              	  begin
+                    for rec in    SELECT  fn_nvl(p1.primer_nombre)||' '||fn_nvl(p1.segundo_nombre)
+                    ||' '||fn_nvl(p1.primer_apellido)||' '||fn_nvl(p1.segundo_apellido) nombres
+              FROM  compromisos_integrantes ci,
+                    empleados em,
+                    personas p1
+              where ci.compromisos_maestros_id= s_compromisos_maestros_id
+                and ci.integrantes_id  = em.id
+                and em.persona_id = p1.id
+                loop
+                if (sw=FALSE) then
+                    salida=rec.nombres;
+                    else
+                      salida=salida||','|| rec.nombres;
+                end if;
+                    sw=true;
+                 end loop
+                ;
+
+
+                   EXCEPTION WHEN  others THEN
+              	    salida:=public.fun_nombreconstein(SQLERRM);
+                	end;
+
+                    return salida;
+
+              END;
+              $body$
+              LANGUAGE 'plpgsql'
+              VOLATILE
+              CALLED ON NULL INPUT
+              SECURITY INVOKER
+              COST 100;
+
+              ALTER FUNCTION public.fn_trae_integrantes (s_compromisos_maestros_id integer)
+                OWNER TO postgres;
 
             ");
     }
