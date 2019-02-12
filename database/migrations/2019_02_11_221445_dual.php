@@ -15,7 +15,7 @@ class Dual extends Migration
     {
         Schema::create('dual', function (Blueprint $table) {
             $table->string('x');
-
+            $table->primary('x');
         });
 
         DB::table('dual')->insert([
