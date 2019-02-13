@@ -241,6 +241,7 @@ class HomeController extends Controller
                     ->join('tipo_tarea', 'tareas.tipo_tarea_id', '=', 'tipo_tarea.id')
                     ->join('proyecto', 'tareas.proyecto_id', '=', 'proyecto.id')
                     ->where('tareas.users_id',Auth::id())
+                    ->where('tareas.tarea_estado_id',1)
                     ->select(
                         'tareas.*',
                         'tarea_estado.descripcion_larga as tarea_estado',
@@ -256,6 +257,7 @@ class HomeController extends Controller
             ->join('proyecto', 'tareas.proyecto_id', '=', 'proyecto.id')
             ->where('tareas.users_id',Auth::id())
             ->where('tareas.proyecto_id',$p)
+            ->where('tareas.tarea_estado_id',1)
             ->select(
                 'tareas.*',
                 'tarea_estado.descripcion_larga as tarea_estado',
