@@ -6,6 +6,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/tareasComromisos/{p}/{d}/{fi}/{ff}', 'HomeController@tareasComromisos')->name('tareasComromisos');
 Route::get('/tareasComromisos/{id}/{p}/{c}', 'HomeController@cambiar_porcentaje')->name('cambiar_porcentaje');
 Route::get('/tareasComromisos/{id}/{p}', 'HomeController@cambiar_porcentaje_tarea')->name('cambiar_porcentaje_tarea');
+Route::get('/tareasComromisos/{id}', 'HomeController@tareasComromisospp')->name('tareasComromisospp');
 
 Route::post('/cambiar_tema', 'HomeController@cambiar_tema')->name('cambiar_tema');
 

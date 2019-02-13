@@ -99,6 +99,28 @@
             $('#cargando').hide();
 
         });
+
+        var url="{{ url('tareasComromisos') }}/"+i;
+
+        $.getJSON(url, function( data ) {
+
+            $("#tareas_comites").empty();
+
+            $.each( data.success, function( key, val )
+            {
+                $("#tareas_comites").append("<blockquote style='font-size:14px;padding: 5px 5px;border-left: 3px solid #00bfd8;background: #dedede78;'>"+
+                                "<p>"+"<span style='font-size:16px'>"+val.descripcion_taera+"</span></p>"+
+                                "<footer>Fecha propuesta "+val.fecha_propuesta_entrega+" <span>"+val.estado+"</span> Porcentage <span >"+val.porcentage+"</span></footer>"+
+                                "<div class='irs'><input type='range' min='0' max='100' value='"+val.porcentage+"' class='slider' disabled></div>"+
+                                "</blockquote>");
+
+            });
+            $('#cargando').hide();
+        });
+
+
+
+
     }
 
 </script>

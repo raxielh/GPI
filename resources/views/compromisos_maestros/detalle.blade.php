@@ -190,12 +190,9 @@
                             </div>
                             <div role="tabpanel" class="tab-pane fade" id="profile_with_icon_title">
                                 <p>
+                                    <div id="tareas_comites">
 
-                                    <blockquote>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                                        <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-                                    </blockquote>
-
+                                    </div>
                                 </p>
                             </div>
                         </div>
