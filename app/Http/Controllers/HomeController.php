@@ -57,7 +57,7 @@ class HomeController extends Controller
                         ->join('empleados', 'compromisos.responsable_id', '=', 'empleados.id')
                         ->join('personas', 'empleados.persona_id', '=', 'personas.id')
                         ->join('estado_compromiso', 'compromisos.estado_compromiso_id', '=', 'estado_compromiso.id')
-                        ->where('compromisos.responsable_id',Auth::id())
+                        //->where('compromisos.responsable_id',Auth::id())
                         ->select(
                             'direciones_areas.descripcion_larga as area',
                             'compromisos.*',

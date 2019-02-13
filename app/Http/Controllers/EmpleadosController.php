@@ -10,6 +10,7 @@ use App\Models\Empleados_tipos;
 use App\Models\Empleado_estados;
 use App\Models\Cargos;
 use App\Models\Personas;
+use App\Models\direciones_areas;
 
 class EmpleadosController extends Controller
 {
@@ -30,13 +31,14 @@ class EmpleadosController extends Controller
         {
             //$Cargos = Cargos::select( 'id', DB::raw("concat(first_name, ' ', last_name) as descripcion_larga") )->pluck('descripcion_larga', 'id');
             $Cargos = Cargos::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id');
+            $direciones_areas = direciones_areas::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id');
             $Empleados_tipos = Empleados_tipos::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id');
             $Empleado_estados = Empleado_estados::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id');
             $Personas = Personas::select( 'id', DB::raw("concat(identificacion, ' ', primer_nombre, ' ',primer_apellido, ' ',segundo_apellido) as descripcion_larga") )->pluck('descripcion_larga', 'id');
 
             $modulo_url=$this->modulo_url;
             $modulo_nombre=$this->modulo_nombre;
-            return view($this->modulo_url.".index",compact("modulo_url","modulo_nombre","Cargos","Empleados_tipos","Empleado_estados","Personas"));
+            return view($this->modulo_url.".index",compact("modulo_url","modulo_nombre","Cargos","Empleados_tipos","Empleado_estados","Personas","direciones_areas"));
 
         }
 
@@ -72,11 +74,13 @@ class EmpleadosController extends Controller
 
             $empleados=DB::table('empleados')
                                             ->join('personas', 'empleados.persona_id', '=', 'personas.id')
+                                            ->join('direciones_areas', 'empleados.direciones_areas_id', '=', 'direciones_areas.id')
                                             ->join('cargos', 'empleados.cargos_id', '=', 'cargos.id')
                                             ->join('empleado_estados', 'empleados.empleado_estados_id', '=', 'empleado_estados.id')
                                             ->join('empleados_tipos', 'empleados.empleados_tipos_id', '=', 'empleados_tipos.id')
                                             ->select(
                                                 DB::raw("concat(identificacion, ' ', primer_nombre, ' ',primer_apellido, ' ',segundo_apellido) as persona_id"),
+                                                'direciones_areas.descripcion_larga as direciones_areas',
                                                 'cargos.descripcion_larga as cargos_id',
                                                 'empleado_estados.descripcion_larga as empleado_estados_id',
                                                 'empleados_tipos.descripcion_larga as empleados_tipos_id'
@@ -103,6 +107,7 @@ class EmpleadosController extends Controller
 
             Empleados::create($request->all());
 
+            //return response()->json(['success'=>$request->all()]);
             return response()->json(['success'=>$this->modulo_nombre.' creado con exito']);
 
         }
@@ -113,12 +118,13 @@ class EmpleadosController extends Controller
             $Empleados_tipos = Empleados_tipos::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id');
             $Empleado_estados = Empleado_estados::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id');
             $Personas = Personas::select( 'id', DB::raw("concat(identificacion, ' ', primer_nombre, ' ',primer_apellido, ' ',segundo_apellido) as descripcion_larga") )->pluck('descripcion_larga', 'id');
+            $direciones_areas = direciones_areas::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id');
 
             $modulo_url=$this->modulo_url;
             $modulo_nombre=$this->modulo_nombre;
 
             $empleados=Empleados::find($id);
-            return view($this->modulo_url.'.edit',compact('empleados','modulo_url','modulo_nombre',"Cargos","Empleados_tipos","Empleado_estados","Personas"));
+            return view($this->modulo_url.'.edit',compact('empleados','modulo_url','modulo_nombre',"Cargos","Empleados_tipos","Empleado_estados","Personas",'direciones_areas'));
 
         }
 

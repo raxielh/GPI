@@ -22,7 +22,7 @@
                         @csrf
 
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
                                         {!! Form::select('persona_id',$Personas, $empleados->persona_id,
@@ -38,7 +38,23 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                            {!! Form::select('direciones_areas_id',$direciones_areas, $empleados->direciones_areas_id,
+                                            [
+                                                'class' => 'form-control show-tick',
+                                                'data-show-subtext'=>"true",
+                                                'data-live-search'=>"true"
+                                            ]) !!}
+                                            <label class="form-label">
+                                                    Direción ó Area
+                                                    </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
                                     {!! Form::select('cargos_id',$Cargos, $empleados->cargos_id,

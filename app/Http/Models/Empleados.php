@@ -13,6 +13,7 @@ class Empleados extends Model
 'cargos_id',
 'empleado_estados_id',
 'empleados_tipos_id',
+'direciones_areas_id',
 
     ];
 

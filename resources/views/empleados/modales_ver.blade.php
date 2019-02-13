@@ -11,7 +11,7 @@
                 <div class="modal-body">
 
                     
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <label>Persona</label>
                             <div class="form-group">
                                 <div class="form-line">
@@ -20,14 +20,23 @@
                             </div>
                         </div>
     
-                        <div class="col-sm-6">
-                            <label>Cargo</label>
+                        <div class="col-sm-12">
+                            <label>Direcion ó area</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <p id="v_cargos_id"></p>
+                                    <p id="v_direciones_areas_id"></p>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-sm-12">
+                                <label>Cargo</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <p id="v_cargos_id"></p>
+                                    </div>
+                                </div>
+                            </div>
     
                         <div class="col-sm-6">
                             <label>Estado</label>

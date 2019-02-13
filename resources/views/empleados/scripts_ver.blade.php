@@ -22,6 +22,8 @@
 
                 $("#v_empleados_tipos_id").text(val.empleados_tipos_id);
 
+                $("#v_direciones_areas_id").text(val.direciones_areas);
+
             });
 
             $('#cargando').hide();
