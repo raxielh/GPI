@@ -73,6 +73,7 @@ class HomeController extends Controller
                         ->where('compromisos.responsable_id',$e[0]->id)
                         ->where('compromisos.proyecto_id',$p)
                         ->where('compromisos.estado_compromiso_id', '<>', 2)
+                        ->where('compromisos.estado_compromiso_id', '<>', 4)
                         ->whereBetween('fecha_inicio_compromiso', array($fi, $ff))
                         ->whereBetween('fecha_fin_compromiso', array($fi, $ff))
                         ->select(
