@@ -162,7 +162,7 @@
             $.each( data.success, function( key, val )
             {
 
-                $("#tareas_comites").append("<input type='text' id='total_p-"+val.id+"' value='"+val.porcentage+"'><blockquote style='font-size:14px;padding: 5px 5px;border-left: 3px solid #fd0062;' id='t-"+val.id+"'>"+
+                $("#tareas_comites").append("<input type='hidden' id='total_p-"+val.id+"' value='"+val.porcentage+"'><blockquote style='font-size:14px;padding: 5px 5px;border-left: 3px solid #fd0062;' id='t-"+val.id+"'>"+
                                             "<p style='font-weight: bold;'><a onclick='cargar("+val.id+")' data-toggle='modal' data-target='#Crear_tarea1' style='color:blue;cursor:pointer' ><i class='material-icons' style='font-size:20px;color:#00c2db'>add_alert</i></a> "+val.compromisos_laborales+"</p>"+
                                             "<div class='progress'><div class='progress-bar bg-green' role='progressbar' aria-valuenow='62' aria-valuemin='0' aria-valuemax='100' id='t1-"+val.id+"' style='width: "+val.porcentage+"%'>"+val.porcentage+"%</div></div>"+
                                             "<footer>Area "+val.area+"</footer>"+
@@ -188,11 +188,12 @@
 
             $.each( d.success, function( key, v )
             {
-                var variables='fn_porcentage("'+"t1-"+id+'","'+"t2-"+v.id+'","'+"p-"+v.id+'",'+c+',"'+"total_p-"+id+'","'+id+'","'+"pp-"+id+'")';
+                var variables='fn_porcentage("'+"t1-"+id+'","'+"t2-"+v.id+'","'+"p-"+v.id+'",'+c+',"'+"total_p-"+id+'","'+id+'","'+"pp-"+id+'","'+v.id+'","'+"es-"+v.id+'")';
                 $("#t-"+id).append("<blockquote style='font-size:14px;padding: 5px 5px;border-left: 3px solid #00bfd8;background: #dedede78;'>"+
                         "<p><span><a onclick='Delete("+v.id+")' style='color:red;cursor:pointer'><i class='material-icons' style='font-size:12px'>close</i></a></span>"+"<span style='font-size:16px'>"+v.descripcion_taera+"</span></p>"+
                         "<footer><cite>Fecha Propuesta "+v.fecha_propuesta_entrega+"</cite></footer>"+
                         "<footer>Porcentage <span id='t2-"+v.id+"' class='pp-"+id+"'>"+v.porcentage+"</span></footer>"+
+                        "<footer><span id='es-"+v.id+"'>"+v.estado+"</span></footer>"+
                         "<input type='range' min='0' max='100' id='p-"+v.id+"' value='"+v.porcentage+"' onchange='"+variables+"' class='slider'>"+
                         "</blockquote>");
 
@@ -202,7 +203,7 @@
         return '';
     }
 
-    function fn_porcentage(t1,t2,p,c,total_p,id,pp)
+    function fn_porcentage(t1,t2,p,c,total_p,id,pp,id2,es)
     {
         var t=$('#'+total_p).val();
         $('#'+total_p).val( parseInt( $('#'+p).val() ) );
@@ -218,8 +219,16 @@
             x=x+parseInt(v.innerText );
         });
 
+        p1=$('#'+p).val();
+
+
+        $.getJSON( '{{ url("tareasComromisos") }}/'+id2+'/'+p1, function( d ) {
+            $('#'+es).text(d.success[0].estado);
+        })
+
         $.getJSON( '{{ url("tareasComromisos") }}/'+id+'/'+x+'/'+c, function( d ) {
-            console.log(d);
+            $('#'+t1).text(d.success+'%');
+            $('#'+t1).css("width",d.success+'%')
         })
         
     }

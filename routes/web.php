@@ -5,6 +5,7 @@ Route::get('/', function () { return redirect('/login'); });
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/tareasComromisos', 'HomeController@tareasComromisos')->name('tareasComromisos');
 Route::get('/tareasComromisos/{id}/{p}/{c}', 'HomeController@cambiar_porcentaje')->name('cambiar_porcentaje');
+Route::get('/tareasComromisos/{id}/{p}', 'HomeController@cambiar_porcentaje_tarea')->name('cambiar_porcentaje_tarea');
 
 Route::post('/cambiar_tema', 'HomeController@cambiar_tema')->name('cambiar_tema');
 

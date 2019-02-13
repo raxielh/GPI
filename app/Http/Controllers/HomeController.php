@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Usuarios;
 use App\Models\Compromisos;
 use App\Models\TipoTareas;
+use App\Models\Proyectos;
+use App\Models\direciones_areas;
 
 class HomeController extends Controller
 {
@@ -30,7 +32,9 @@ class HomeController extends Controller
     public function index()
     {
         $TipoTareas = TipoTareas::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id');
-        return view('home',compact("TipoTareas"));
+        $Proyectos = Proyectos::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id');
+        $direciones_areas = direciones_areas::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id');
+        return view('home',compact("TipoTareas","Proyectos","direciones_areas"));
     }
 
     public function cambiar_tema(Request $request)
@@ -48,6 +52,15 @@ class HomeController extends Controller
 
     public function tareasComromisos()
     {
+        $e=DB::table('users')
+        ->join('empleados', 'users.personas_id', '=', 'empleados.persona_id')
+        ->where('empleados.persona_id',Auth::id())
+        ->select(
+            'empleados.id'
+        )
+        ->take(1)
+        ->get();
+
 
 
                         $compromisos=DB::table('compromisos')
@@ -57,7 +70,7 @@ class HomeController extends Controller
                         ->join('empleados', 'compromisos.responsable_id', '=', 'empleados.id')
                         ->join('personas', 'empleados.persona_id', '=', 'personas.id')
                         ->join('estado_compromiso', 'compromisos.estado_compromiso_id', '=', 'estado_compromiso.id')
-                        //->where('compromisos.responsable_id',Auth::id())
+                        ->where('compromisos.responsable_id',$e[0]->id)
                         ->select(
                             'direciones_areas.descripcion_larga as area',
                             'compromisos.*',
@@ -80,7 +93,39 @@ class HomeController extends Controller
         ->where('id',$id)
         ->update(['porcentage' => number_format($por/$c,1)]);
 
-       return response()->json(['success'=>'ok' ]);
+       return response()->json(['success'=>number_format($por/$c,0) ]);
+
+
+    }
+
+
+    public function cambiar_porcentaje_tarea($id,$por)
+    {
+
+        DB::table('compromiso_tarea')
+        ->where('id',$id)
+        ->update(['porcentage' => $por]);
+
+
+        if($por==100){
+            DB::table('compromiso_tarea')
+            ->where('id',$id)
+            ->update(['tarea_estado_id' => 2]);
+        }else{
+            DB::table('compromiso_tarea')
+            ->where('id',$id)
+            ->update(['tarea_estado_id' => 1]);
+        }
+
+        $estado=DB::table('compromiso_tarea')
+        ->join('tarea_estado', 'compromiso_tarea.tarea_estado_id', '=', 'tarea_estado.id')
+        ->where('compromiso_tarea.id',$id)
+        ->select(
+            'tarea_estado.descripcion_larga as estado'
+        )
+        ->get();
+
+       return response()->json(['success'=>$estado ]);
 
 
     }
