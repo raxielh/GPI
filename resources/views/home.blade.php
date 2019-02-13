@@ -3,35 +3,75 @@
 @section('content')
 
 
+<div class="row clearfix card" style="padding-top:20px">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                <div class="col-sm-12" style="margin-top:5px">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            {!! Form::select('Proyectos',$Proyectos, null,
+                                [
+                                    'id' => 'Proyectos',
+                                    'class' => 'form-control show-tick',
+                                    'data-show-subtext'=>"true",
+                                    'data-live-search'=>"true",
+                                    'onchange'=>"carga()"
+                                ]) !!}
+                            <label class="form-label">Proyectos</label>
+                        </div>
+                    </div>
+                </div>
+                @php
+                    $fechaI = new DateTime();
+                    $fechaI->modify('first day of this month');
+                    $fechaF = new DateTime();
+                    $fechaF->modify('last day of this month');
+                @endphp
+
+                <div class="col-sm-6">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="date"
+                                class="form-control"
+                                id="fi"
+                                autofocus
+                                onchange="carga()"
+                                value="{{ $fechaI->format('Y-m-d') }}">
+                                <label class="form-label">
+                                    Desde
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="date"
+                                    class="form-control"
+                                    id="ff"
+                                    autofocus
+                                    onchange="carga()"
+                                    value="{{ $fechaF->format('Y-m-d') }}">
+                                    <label class="form-label">
+                                        Hasta
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+    </div>
+</div>
+
+
 <div class="row clearfix">
 
 
 
     <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
         <div class="card">
-            <div class="header" style="padding:0px;padding-left: 15px;padding-right: 15px">
-
+            <div class="header" style="padding:10px;padding-left: 15px;padding-right: 15px">
+                    <h2>Tareas de comite</h2>
                 <div class="row">
-                    <div class="col-sm-12" style="margin:1em;margin-left:0px">
-                        <h2>Tareas de comite</h2>
-                    </div>
-
-                    <div class="col-sm-12" style="margin-top:5px">
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                {!! Form::select('Proyectos',$Proyectos, null,
-                                    [
-                                        'id' => 'Proyectos',
-                                        'class' => 'form-control show-tick',
-                                        'data-show-subtext'=>"true",
-                                        'data-live-search'=>"true",
-                                        'onchange'=>"tareasComromisos()"
-                                    ]) !!}
-                                <label class="form-label">Proyectos</label>
-                            </div>
-                        </div>
-                    </div>
-
                     <!--
                     <div class="col-sm-6" style="margin-top:5px" style="display:none">
                             <div class="form-group form-float"  style="display:none">
@@ -49,46 +89,6 @@
                             </div>
                         </div>
                         --->
-                        @php
-                            $fechaI = new DateTime();
-                            $fechaI->modify('first day of this month');
-                            $fechaF = new DateTime();
-                            $fechaF->modify('last day of this month');
-                        @endphp
-
-                        <div class="col-sm-6">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="date"
-                                        class="form-control"
-                                        id="fi"
-                                        autofocus
-                                        onchange="tareasComromisos()"
-                                        value="{{ $fechaI->format('Y-m-d') }}">
-                                        <label class="form-label">
-                                            Desde
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="date"
-                                            class="form-control"
-                                            id="ff"
-                                            autofocus
-                                            onchange="tareasComromisos()"
-                                            value="{{ $fechaF->format('Y-m-d') }}">
-                                            <label class="form-label">
-                                                Hasta
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-
                 </div>
 
 
@@ -206,6 +206,11 @@
     tareasComromisos();
     mis_tareas();
 
+    function carga(){
+        tareasComromisos();
+        mis_tareas();
+    }
+
     function tareasComromisos()
     {
         $("#tareas_comites").empty();
@@ -238,7 +243,7 @@
 
     function mis_tareas()
     {
-        $("#tareas_comites").empty();
+        $("#tareas").empty();
         $('#cargando').show();
 
         var p=$('#Proyectos').val();
@@ -249,18 +254,26 @@
 
         var url="{{ url('mis_tareas') }}/"+p+"/"+d+"/"+fi+"/"+ff;
 
-        console.log(url);
+        //console.log(url);
 
         $.getJSON(url, function( data ) {
 
             $.each( data.success, function( key, val )
             {
 
-                    //var variables='fn_porcentage("'+"t1-"+id+'","'+"t2-"+v.id+'","'+"p-"+v.id+'",'+c+',"'+"total_p-"+id+'","'+id+'","'+"pp-"+id+'","'+v.id+'","'+"es-"+v.id+'")';
+                if(val.porcentage==100){
+                    visible2='style="display:none"';
+
+                }else{
+                    visible2='style="display:block"';
+                }
+                console.log(val.porcentage);
+                    var variables='fn_porcentage_tarea("'+"tarea_p-"+val.id+'","'+val.id+'","'+"mi_tarea_estado-"+val.id+'","'+"mi_tarea_por-"+val.id+'")';
                     $("#tareas").append("<blockquote style='font-size:14px;padding: 5px 5px;border-left: 3px solid #00bfd8;background: #dedede78;'>"+
                         "<p><span><a onclick='Delete_t("+val.id+")' style='color:red;cursor:pointer'><i class='material-icons' style='font-size:12px'>close</i></a></span>"+"<span style='font-size:16px'>"+val.descripcion_taera+"</span></p>"+
-                        "<footer>Fecha propuesta "+val.fecha_propuesta_entrega+" <span>"+val.tarea_estado+"</span> Porcentage <span>"+val.porcentage+"</span></footer>"+
-                        "<input type='range' min='0' max='100' id='tarea_p-"+val.id+"' value='"+val.porcentage+"' onchange='' class='slider'>"+
+                        "<footer>Fecha propuesta "+val.fecha_propuesta_entrega+" <span id='mi_tarea_estado-"+val.id+"'>"+val.tarea_estado+"</span> Porcentage <span id='mi_tarea_por-"+val.id+"'>"+val.porcentage+"</span></footer>"+
+                        "<footer>Proyecto "+val.proyecto+"</footer>"+
+                        "<input type='range' min='0' max='100' id='tarea_p-"+val.id+"' value='"+val.porcentage+"' "+visible2+" onchange='"+variables+"' class='slider'>"+
                         "</blockquote>");
 
             });
@@ -283,10 +296,19 @@
             $.each( d.success, function( key, v )
             {
                 var variables='fn_porcentage("'+"t1-"+id+'","'+"t2-"+v.id+'","'+"p-"+v.id+'",'+c+',"'+"total_p-"+id+'","'+id+'","'+"pp-"+id+'","'+v.id+'","'+"es-"+v.id+'")';
+
+                var visible1='';
+
+                if(v.porcentage==100){
+                    visible1='style="display:none"';
+                }else{
+                    visible1='style="display:block"';
+                }
+
                 $("#t-"+id).append("<blockquote style='font-size:14px;padding: 5px 5px;border-left: 3px solid #00bfd8;background: #dedede78;'>"+
                         "<p><span><a onclick='Delete("+v.id+")' style='color:red;cursor:pointer'><i class='material-icons' style='font-size:12px'>close</i></a></span>"+"<span style='font-size:16px'>"+v.descripcion_taera+"</span></p>"+
                         "<footer>Fecha propuesta "+v.fecha_propuesta_entrega+" <span id='es-"+v.id+"'>"+v.estado+"</span> Porcentage <span id='t2-"+v.id+"' class='pp-"+id+"'>"+v.porcentage+"</span></footer>"+
-                        "<input type='range' min='0' max='100' id='p-"+v.id+"' value='"+v.porcentage+"' onchange='"+variables+"' class='slider'>"+
+                        "<input type='range' min='0' max='100' id='p-"+v.id+"' value='"+v.porcentage+"' "+visible1+" onchange='"+variables+"' class='slider'>"+
                         "</blockquote>");
 
             })
@@ -297,6 +319,10 @@
 
     function fn_porcentage(t1,t2,p,c,total_p,id,pp,id2,es)
     {
+        if($('#'+p).val()==100){
+            $('#'+p).hide();
+        }
+
         var t=$('#'+total_p).val();
         $('#'+total_p).val( parseInt( $('#'+p).val() ) );
         tp=100/c;
@@ -315,6 +341,7 @@
 
 
         $.getJSON( '{{ url("tareasComromisos") }}/'+id2+'/'+p1, function( d ) {
+            //console.log(d);
             $('#'+es).text(d.success[0].estado);
         })
 
@@ -326,11 +353,30 @@
     }
 
 
+    function fn_porcentage_tarea(p,id,estado,porcentage)
+    {
+        if($('#'+p).val()==100){
+            $('#'+p).hide();
+        }
+
+        var url='{{ url("mis_tareas_por") }}/'+id+'/'+$('#'+p).val();
+        console.log(url);
+
+        $.getJSON(url, function( d ) {
+            console.log(d);
+            $('#'+estado).text(d.success[0].estado);
+            $('#'+porcentage).text(d.success[0].porcentage);
+        })
+
+    }
+
+
 </script>
 
 @include('tareas.modales_save')
 @include('tareas.scripts_crear')
 @include('compromiso_tarea.scripts_crear')
 @include('compromiso_tarea.scripts_borrar')
+@include('tareas.scripts_borrar')
 
 @endsection

@@ -15,7 +15,7 @@
 
                     $('#cargando').hide();
                     Notificacion(data.success,'glyphicon glyphicon-thumbs-up','success');
-                    CargarDatos();
+                    mis_tareas();
                     //$('#Crear').modal('hide');
                     $("#frm_t")[0].reset();
 

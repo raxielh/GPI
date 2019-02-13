@@ -10,6 +10,7 @@ Route::get('/tareasComromisos/{id}', 'HomeController@tareasComromisospp')->name(
 Route::get('/mis_tareas_comites_pendientes/', 'HomeController@mis_tareas_comites_pendientes')->name('mis_tareas_comites_pendientes');
 Route::get('/mis_tareas_pendientes/', 'HomeController@mis_tareas_pendientes')->name('mis_tareas_pendientes');
 Route::get('/mis_tareas/{p}/{d}/{fi}/{ff}', 'HomeController@mis_tareas')->name('mis_tareas');
+Route::get('/mis_tareas_por/{id}/{p}', 'HomeController@mis_tareas_por')->name('mis_tareas_por');
 
 
 Route::post('/cambiar_tema', 'HomeController@cambiar_tema')->name('cambiar_tema');

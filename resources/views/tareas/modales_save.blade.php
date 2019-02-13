@@ -45,7 +45,7 @@
                         <div class="col-sm-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    {!! Form::select('proyecto_id',$Proyectos, null,
+                                    {!! Form::select('proyecto_id',$Pro, null,
                                     [
                                         'class' => 'form-control show-tick',
                                         'data-show-subtext'=>"true",

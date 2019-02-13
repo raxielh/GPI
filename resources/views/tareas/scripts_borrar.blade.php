@@ -1,8 +1,8 @@
 @php
-    $url_borrar=url($modulo_url);
+    $url_borrar=url('tareas');
 @endphp
 <script>
-    function Delete(i)
+    function Delete_t(i)
     {
         Swal({
             title: 'Estas seguro?',
@@ -26,10 +26,9 @@
                     },
                     success: function (data)
                     {
-                        console.log(data);
                         $('#cargando').hide();
                         Notificacion(data.success,'glyphicon glyphicon-thumbs-up','warning');
-                        CargarDatos();
+                        mis_tareas();
                     },
                     error: function(e) {
                         $('#cargando').hide();
