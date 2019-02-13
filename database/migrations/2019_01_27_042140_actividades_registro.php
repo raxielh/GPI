@@ -20,7 +20,7 @@ class ActividadesRegistro extends Migration
             $table->integer('empleados_id')->unsigned();
             $table->date('fecha');
             $table->time('hora');
-            $table->string('observacion');
+            $table->string('observacion')->nullable();
             $table->timestamps();
             $table->foreign('actividades_id')->references('id')->on('actividades');
             $table->foreign('actividades_tipo_id')->references('id')->on('actividades_tipo');
