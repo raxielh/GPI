@@ -20,7 +20,7 @@ class Tareas extends Migration
             $table->integer('tarea_estado_id')->unsigned();
             $table->integer('proyecto_id')->unsigned();
             $table->date('fecha_propuesta_entrega');
-            $table->date('fecha_entrega');
+            $table->date('fecha_entrega')->nullable();
             $table->float('porcentage')->unsigned();
             $table->string('descripcion_taera')->nullable();
             $table->timestamps();

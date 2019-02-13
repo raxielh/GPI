@@ -1,28 +1,28 @@
 <?php
 
-$nombre_controlador='CompromisoTarea';
-$uri="compromiso_tarea";
-$modulo_nombre="'Compromiso Tarea'";
+$nombre_controlador='Tareas';
+$uri="tareas";
+$modulo_nombre="'Tareas'";
 $icon='transfer_within_a_station';
 $fields = array(
-                'compromisos_id',
+                'descripcion_taera',
+                'fecha_entrega',
+                'fecha_propuesta_entrega',
+                'porcentage',
+                'proyecto_id',
                 'tarea_estado_id',
                 'tipo_tarea_id',
                 'users_id',
-                'fecha_propuesta_entrega',
-                'fecha_entrega',
-                'porcentage',
-                'descripcion_taera',
         );
 $muestra = array(
-                'compromisos_id',
+                'descripcion_taera',
+                'fecha_entrega',
+                'fecha_propuesta_entrega',
+                'porcentage',
+                'proyecto_id',
                 'tarea_estado_id',
                 'tipo_tarea_id',
                 'users_id',
-                'fecha_propuesta_entrega',
-                'fecha_entrega',
-                'porcentage',
-                'descripcion_taera',
         );
 $x='';
 foreach ($fields as $v)

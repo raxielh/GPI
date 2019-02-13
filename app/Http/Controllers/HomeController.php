@@ -189,5 +189,24 @@ class HomeController extends Controller
 
     }
 
+    public function mis_tareas($p,$d,$fi,$ff)
+    {
+
+                    $tareas=DB::table('tareas')
+                    ->join('tarea_estado', 'tareas.tarea_estado_id', '=', 'tarea_estado.id')
+                    ->join('tipo_tarea', 'tareas.tipo_tarea_id', '=', 'tipo_tarea.id')
+                    ->where('tareas.users_id',Auth::id())
+                    ->select(
+                        'tareas.*',
+                        'tarea_estado.descripcion_larga as tarea_estado',
+                        'tipo_tarea.descripcion_larga as tipo_tarea'
+                    )
+                    ->get();
+
+                    return response()->json(['success'=>$tareas]);
+
+
+    }
+
 
 }

@@ -53,7 +53,7 @@
                             $fechaI = new DateTime();
                             $fechaI->modify('first day of this month');
                             $fechaF = new DateTime();
-                            $fechaF->modify('last day of this month'); 
+                            $fechaF->modify('last day of this month');
                         @endphp
 
                         <div class="col-sm-6">
@@ -106,13 +106,12 @@
     <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
         <div class="card">
             <div class="header">
-                <h2>Mis tareas</h2>
+                <h2>Mis tareas <a data-toggle='modal' data-target='#Crear_t' style='color:blue;cursor:pointer' ><i class='material-icons' style='font-size:20px;color:#00c2db'>add_alert</i></a>
+                <a data-toggle='modal' data-target='#Crear_te' style='color:blue;cursor:pointer' ><i class='material-icons' style='font-size:20px;color:#00b33f'>notifications_active</i></a>
+                </h2>
             </div>
-            <div class="body" style="padding: 10px;">
-                <blockquote style="font-size:14px;padding: 5px 5px;">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                    <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-                </blockquote>
+            <div class="body" style="padding: 10px;" id="tareas">
+
             </div>
         </div>
     </div>
@@ -205,6 +204,7 @@
 <script>
 
     tareasComromisos();
+    mis_tareas();
 
     function tareasComromisos()
     {
@@ -217,8 +217,6 @@
         var ff=$('#ff').val();
 
         var url="{{ url('tareasComromisos') }}/"+p+"/"+d+"/"+fi+"/"+ff;
-
-        console.log(url);
 
         $.getJSON(url, function( data ) {
 
@@ -237,6 +235,39 @@
             $('#cargando').hide();
         });
     }
+
+    function mis_tareas()
+    {
+        $("#tareas_comites").empty();
+        $('#cargando').show();
+
+        var p=$('#Proyectos').val();
+        var d=$('#direciones_areas').val();
+        var fi=$('#fi').val();
+        var ff=$('#ff').val();
+
+
+        var url="{{ url('mis_tareas') }}/"+p+"/"+d+"/"+fi+"/"+ff;
+
+        console.log(url);
+
+        $.getJSON(url, function( data ) {
+
+            $.each( data.success, function( key, val )
+            {
+
+                    //var variables='fn_porcentage("'+"t1-"+id+'","'+"t2-"+v.id+'","'+"p-"+v.id+'",'+c+',"'+"total_p-"+id+'","'+id+'","'+"pp-"+id+'","'+v.id+'","'+"es-"+v.id+'")';
+                    $("#tareas").append("<blockquote style='font-size:14px;padding: 5px 5px;border-left: 3px solid #00bfd8;background: #dedede78;'>"+
+                        "<p><span><a onclick='Delete_t("+val.id+")' style='color:red;cursor:pointer'><i class='material-icons' style='font-size:12px'>close</i></a></span>"+"<span style='font-size:16px'>"+val.descripcion_taera+"</span></p>"+
+                        "<footer>Fecha propuesta "+val.fecha_propuesta_entrega+" <span>"+val.tarea_estado+"</span> Porcentage <span>"+val.porcentage+"</span></footer>"+
+                        "<input type='range' min='0' max='100' id='tarea_p-"+val.id+"' value='"+val.porcentage+"' onchange='' class='slider'>"+
+                        "</blockquote>");
+
+            });
+            $('#cargando').hide();
+        });
+    }
+
 
     function cargar(id)
     {
@@ -291,12 +322,14 @@
             $('#'+t1).text(d.success+'%');
             $('#'+t1).css("width",d.success+'%')
         })
-        
+
     }
 
 
 </script>
 
+@include('tareas.modales_save')
+@include('tareas.scripts_crear')
 @include('compromiso_tarea.scripts_crear')
 @include('compromiso_tarea.scripts_borrar')
 
