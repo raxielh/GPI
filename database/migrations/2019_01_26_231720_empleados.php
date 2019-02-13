@@ -21,6 +21,7 @@ class Empleados extends Migration
             $table->integer('empleado_estados_id')->unsigned();
             $table->integer('empleados_tipos_id')->unsigned();
             $table->timestamps();
+            $table->unique('persona_id');
             $table->foreign('persona_id')->references('id')->on('personas');
             $table->foreign('cargos_id')->references('id')->on('cargos');
             $table->foreign('empleado_estados_id')->references('id')->on('empleado_estados');
