@@ -42,7 +42,7 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
                                     {!! Form::select('proyecto_id',$Pro, null,
@@ -106,16 +106,15 @@
                 <div class="modal-body">
 
 
-                            <div class="col-sm-6">
+                        <div class="col-sm-12">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text"
-                                        class="form-control"
-                                        name="descripcion_taera"
-                                        autofocus
-                                        value="">
+                                        <textarea
+                                            class="form-control"
+                                            name="descripcion_taera"
+                                            autofocus></textarea>
                                         <label class="form-label">
-                                        descripcion_taera
+                                        Tarea
                                         </label>
                                     </div>
                                 </div>
@@ -124,103 +123,64 @@
                             <div class="col-sm-6">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text"
-                                        class="form-control"
-                                        name="fecha_entrega"
-                                        autofocus
-                                        value="">
-                                        <label class="form-label">
-                                        fecha_entrega
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text"
+                                        <input type="date"
                                         class="form-control"
                                         name="fecha_propuesta_entrega"
                                         autofocus
-                                        value="">
+                                        value="{{ date('Y-m-d') }}">
                                         <label class="form-label">
-                                        fecha_propuesta_entrega
+                                        Fecha propuesta
                                         </label>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text"
-                                        class="form-control"
-                                        name="porcentage"
-                                        autofocus
-                                        value="">
-                                        <label class="form-label">
-                                        porcentage
-                                        </label>
+                                            {!! Form::select('proyecto_id',$Pro, null,
+                                            [
+                                                'class' => 'form-control show-tick',
+                                                'data-show-subtext'=>"true",
+                                                'data-live-search'=>"true",
+                                            ]) !!}
+                                            <label class="form-label">
+                                            Proyectos
+                                            </label>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text"
-                                        class="form-control"
-                                        name="proyecto_id"
-                                        autofocus
-                                        value="">
-                                        <label class="form-label">
-                                        proyecto_id
-                                        </label>
+                                            {!! Form::select('tipo_tarea_id',$TipoTareas, null,
+                                            [
+                                                'class' => 'form-control show-tick',
+                                                'data-show-subtext'=>"true",
+                                                'data-live-search'=>"true",
+                                            ]) !!}
+
+                                            <label class="form-label">
+                                            Tipo tarea
+                                            </label>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text"
-                                        class="form-control"
-                                        name="tarea_estado_id"
-                                        autofocus
-                                        value="">
-                                        <label class="form-label">
-                                        tarea_estado_id
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-sm-6">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text"
-                                        class="form-control"
-                                        name="tipo_tarea_id"
-                                        autofocus
-                                        value="">
-                                        <label class="form-label">
-                                        tipo_tarea_id
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
+                                        {!! Form::select('users_id',$TipoTareas, null,
+                                        [
+                                            'class' => 'form-control show-tick',
+                                            'data-show-subtext'=>"true",
+                                            'data-live-search'=>"true",
+                                        ]) !!}
 
-                            <div class="col-sm-6">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text"
-                                        class="form-control"
-                                        name="users_id"
-                                        autofocus
-                                        value="">
                                         <label class="form-label">
-                                        users_id
+                                        Usuario
                                         </label>
                                     </div>
                                 </div>
