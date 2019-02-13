@@ -50,7 +50,7 @@ class HomeController extends Controller
         return response()->json(['success'=>'Data is successfully']);
     }
 
-    public function tareasComromisos()
+    public function tareasComromisos($p,$d,$fi,$ff)
     {
         $e=DB::table('users')
         ->join('empleados', 'users.personas_id', '=', 'empleados.persona_id')
@@ -63,7 +63,7 @@ class HomeController extends Controller
 
 
 
-                        $compromisos=DB::table('compromisos')
+                    $compromisos=DB::table('compromisos')
                         ->join('compromisos_maestros', 'compromisos.compromisos_maestros_id', '=', 'compromisos_maestros.id')
                         ->join('direciones_areas', 'compromisos_maestros.direciones_areas_id', '=', 'direciones_areas.id')
                         ->join('proyecto', 'compromisos.proyecto_id', '=', 'proyecto.id')
@@ -71,6 +71,10 @@ class HomeController extends Controller
                         ->join('personas', 'empleados.persona_id', '=', 'personas.id')
                         ->join('estado_compromiso', 'compromisos.estado_compromiso_id', '=', 'estado_compromiso.id')
                         ->where('compromisos.responsable_id',$e[0]->id)
+                        ->where('compromisos.proyecto_id',$p)
+                        ->where('compromisos.estado_compromiso_id', '<>', 2)
+                        ->whereBetween('fecha_inicio_compromiso', array($fi, $ff))
+                        ->whereBetween('fecha_fin_compromiso', array($fi, $ff))
                         ->select(
                             'direciones_areas.descripcion_larga as area',
                             'compromisos.*',

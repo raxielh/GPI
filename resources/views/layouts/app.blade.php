@@ -70,7 +70,7 @@
             font-size: 1.5em;
         }
         .form-group .form-line.focused .form-label {
-            z-index: 999;
+            z-index: 992;
         }
 
     </style>
@@ -118,7 +118,7 @@
     @include('layouts.search_form')
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
-    <nav class="navbar">
+    <nav class="navbar" style="z-index: 999;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>

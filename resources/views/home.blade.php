@@ -2,35 +2,6 @@
 
 @section('content')
 
-<div class="row clearfix">
-    <div class="col-xs-3 col-sm-3 col-md-3">
-
-        <div class="info-box bg-pink hover-expand-effect">
-            <div class="icon">
-                <i class="material-icons">playlist_add_check</i>
-            </div>
-            <div class="content">
-                <div class="text">Tareas pendientes este mes</div>
-                <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20">0</div>
-            </div>
-        </div>
-
-
-    </div>
-    <div class="col-xs-3 col-sm-3 col-md-3">
-
-            <div class="info-box bg-light-green hover-expand-effect">
-                <div class="icon">
-                    <i class="material-icons">playlist_add_check</i>
-                </div>
-                <div class="content">
-                    <div class="text">Tareas terminadas este mes</div>
-                    <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20">0</div>
-                </div>
-            </div>
-
-        </div>
-</div>
 
 <div class="row clearfix">
 
@@ -38,8 +9,91 @@
 
     <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
         <div class="card">
-            <div class="header">
-                <h2>Tareas de comite</h2>
+            <div class="header" style="padding:0px;padding-left: 15px;padding-right: 15px">
+
+                <div class="row">
+                    <div class="col-sm-12" style="margin:1em;margin-left:0px">
+                        <h2>Tareas de comite</h2>
+                    </div>
+
+                    <div class="col-sm-12" style="margin-top:5px">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                {!! Form::select('Proyectos',$Proyectos, null,
+                                    [
+                                        'id' => 'Proyectos',
+                                        'class' => 'form-control show-tick',
+                                        'data-show-subtext'=>"true",
+                                        'data-live-search'=>"true",
+                                        'onchange'=>"tareasComromisos()"
+                                    ]) !!}
+                                <label class="form-label">Proyectos</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--
+                    <div class="col-sm-6" style="margin-top:5px" style="display:none">
+                            <div class="form-group form-float"  style="display:none">
+                                <div class="form-line"  style="display:none">
+                                    {!! Form::select('direciones_areas',$direciones_areas, null,
+                                        [
+                                            'id' => 'direciones_areas',
+                                            'class' => 'form-control show-tick',
+                                            'data-show-subtext'=>"true",
+                                            'data-live-search'=>"true",
+                                            'onchange'=>"doSomething(this)"
+                                        ]) !!}
+                                    <label class="form-label">Direciones ó Areas</label>
+                                </div>
+                            </div>
+                        </div>
+                        --->
+                        @php
+                            $fechaI = new DateTime();
+                            $fechaI->modify('first day of this month');
+                            $fechaF = new DateTime();
+                            $fechaF->modify('last day of this month'); 
+                        @endphp
+
+                        <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="date"
+                                        class="form-control"
+                                        id="fi"
+                                        autofocus
+                                        onchange="tareasComromisos()"
+                                        value="{{ $fechaI->format('Y-m-d') }}">
+                                        <label class="form-label">
+                                            Desde
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="date"
+                                            class="form-control"
+                                            id="ff"
+                                            autofocus
+                                            onchange="tareasComromisos()"
+                                            value="{{ $fechaF->format('Y-m-d') }}">
+                                            <label class="form-label">
+                                                Hasta
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                </div>
+
+
+
+
             </div>
             <div class="body" style="padding: 0px;" id="tareas_comites">
 
@@ -157,7 +211,16 @@
         $("#tareas_comites").empty();
         $('#cargando').show();
 
-        $.getJSON( "{{ route('tareasComromisos') }}", function( data ) {
+        var p=$('#Proyectos').val();
+        var d=$('#direciones_areas').val();
+        var fi=$('#fi').val();
+        var ff=$('#ff').val();
+
+        var url="{{ url('tareasComromisos') }}/"+p+"/"+d+"/"+fi+"/"+ff;
+
+        console.log(url);
+
+        $.getJSON(url, function( data ) {
 
             $.each( data.success, function( key, val )
             {
@@ -191,9 +254,7 @@
                 var variables='fn_porcentage("'+"t1-"+id+'","'+"t2-"+v.id+'","'+"p-"+v.id+'",'+c+',"'+"total_p-"+id+'","'+id+'","'+"pp-"+id+'","'+v.id+'","'+"es-"+v.id+'")';
                 $("#t-"+id).append("<blockquote style='font-size:14px;padding: 5px 5px;border-left: 3px solid #00bfd8;background: #dedede78;'>"+
                         "<p><span><a onclick='Delete("+v.id+")' style='color:red;cursor:pointer'><i class='material-icons' style='font-size:12px'>close</i></a></span>"+"<span style='font-size:16px'>"+v.descripcion_taera+"</span></p>"+
-                        "<footer><cite>Fecha Propuesta "+v.fecha_propuesta_entrega+"</cite></footer>"+
-                        "<footer>Porcentage <span id='t2-"+v.id+"' class='pp-"+id+"'>"+v.porcentage+"</span></footer>"+
-                        "<footer><span id='es-"+v.id+"'>"+v.estado+"</span></footer>"+
+                        "<footer>Fecha propuesta "+v.fecha_propuesta_entrega+" <span id='es-"+v.id+"'>"+v.estado+"</span> Porcentage <span id='t2-"+v.id+"' class='pp-"+id+"'>"+v.porcentage+"</span></footer>"+
                         "<input type='range' min='0' max='100' id='p-"+v.id+"' value='"+v.porcentage+"' onchange='"+variables+"' class='slider'>"+
                         "</blockquote>");
 
