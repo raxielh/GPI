@@ -73,6 +73,18 @@ class HomeController extends Controller
 
     }
 
+    public function cambiar_porcentaje($id,$por,$c)
+    {
+
+        DB::table('compromisos')
+        ->where('id',$id)
+        ->update(['porcentage' => number_format($por/$c,1)]);
+
+       return response()->json(['success'=>'ok' ]);
+
+
+    }
+
 
 
 }

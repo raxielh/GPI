@@ -10,7 +10,7 @@
                 <i class="material-icons">playlist_add_check</i>
             </div>
             <div class="content">
-                <div class="text">Tareas pendientes</div>
+                <div class="text">Tareas pendientes este mes</div>
                 <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20">0</div>
             </div>
         </div>
@@ -24,7 +24,7 @@
                     <i class="material-icons">playlist_add_check</i>
                 </div>
                 <div class="content">
-                    <div class="text">Tareas terminadas</div>
+                    <div class="text">Tareas terminadas este mes</div>
                     <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20">0</div>
                 </div>
             </div>
@@ -162,8 +162,9 @@
             $.each( data.success, function( key, val )
             {
 
-                $("#tareas_comites").append("<blockquote style='font-size:14px;padding: 5px 5px;border-left: 3px solid #fd0062;' id='t-"+val.id+"'>"+
+                $("#tareas_comites").append("<input type='text' id='total_p-"+val.id+"' value='"+val.porcentage+"'><blockquote style='font-size:14px;padding: 5px 5px;border-left: 3px solid #fd0062;' id='t-"+val.id+"'>"+
                                             "<p style='font-weight: bold;'><a onclick='cargar("+val.id+")' data-toggle='modal' data-target='#Crear_tarea1' style='color:blue;cursor:pointer' ><i class='material-icons' style='font-size:20px;color:#00c2db'>add_alert</i></a> "+val.compromisos_laborales+"</p>"+
+                                            "<div class='progress'><div class='progress-bar bg-green' role='progressbar' aria-valuenow='62' aria-valuemin='0' aria-valuemax='100' id='t1-"+val.id+"' style='width: "+val.porcentage+"%'>"+val.porcentage+"%</div></div>"+
                                             "<footer>Area "+val.area+"</footer>"+
                                             "<footer>Proyecto "+val.proyecto+"</footer>"+
                                             "<footer><cite>Fecha Inicio "+val.fecha_inicio_compromiso+" fin "+val.fecha_fin_compromiso+"</cite></footer>"+
@@ -183,17 +184,44 @@
     {
         $.getJSON( '{{ url("compromiso_tarea") }}/'+id+'', function( d ) {
 
+            var c=(d.success.length);
+
             $.each( d.success, function( key, v )
             {
+                var variables='fn_porcentage("'+"t1-"+id+'","'+"t2-"+v.id+'","'+"p-"+v.id+'",'+c+',"'+"total_p-"+id+'","'+id+'","'+"pp-"+id+'")';
                 $("#t-"+id).append("<blockquote style='font-size:14px;padding: 5px 5px;border-left: 3px solid #00bfd8;background: #dedede78;'>"+
                         "<p><span><a onclick='Delete("+v.id+")' style='color:red;cursor:pointer'><i class='material-icons' style='font-size:12px'>close</i></a></span>"+"<span style='font-size:16px'>"+v.descripcion_taera+"</span></p>"+
                         "<footer><cite>Fecha Propuesta "+v.fecha_propuesta_entrega+"</cite></footer>"+
+                        "<footer>Porcentage <span id='t2-"+v.id+"' class='pp-"+id+"'>"+v.porcentage+"</span></footer>"+
+                        "<input type='range' min='0' max='100' id='p-"+v.id+"' value='"+v.porcentage+"' onchange='"+variables+"' class='slider'>"+
                         "</blockquote>");
 
             })
         })
 
         return '';
+    }
+
+    function fn_porcentage(t1,t2,p,c,total_p,id,pp)
+    {
+        var t=$('#'+total_p).val();
+        $('#'+total_p).val( parseInt( $('#'+p).val() ) );
+        tp=100/c;
+        $('#'+t2).text( $('#'+p).val() );
+
+        var data=$('.'+pp);
+
+        var x=0;
+
+        $.each( data, function( key, v )
+        {
+            x=x+parseInt(v.innerText );
+        });
+
+        $.getJSON( '{{ url("tareasComromisos") }}/'+id+'/'+x+'/'+c, function( d ) {
+            console.log(d);
+        })
+        
     }
 
 
