@@ -220,6 +220,24 @@
 
         });
 
+
+
+        setInterval(function(){
+
+            $.getJSON( "{{ route('mis_tareas_comites_pendientes') }}", function( data ) {
+                $("#mis_tareas_comites_pendientes").text(data.success);
+            });
+
+            $.getJSON( "{{ route('mis_tareas_pendientes') }}", function( data ) {
+                $("#mis_tareas_pendientes").text(data.success);
+            });
+
+        }, 1000);
+
+
+
+
+
     });
 
     </script>

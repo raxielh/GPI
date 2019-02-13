@@ -154,6 +154,40 @@ class HomeController extends Controller
 
     }
 
+    public function mis_tareas_comites_pendientes()
+    {
+        $e=DB::table('users')
+        ->join('empleados', 'users.personas_id', '=', 'empleados.persona_id')
+        ->where('empleados.persona_id',Auth::id())
+        ->select(
+            'empleados.id'
+        )
+        ->take(1)
+        ->get();
+
+                    $compromisos=DB::table('compromisos')
+                        ->join('compromisos_maestros', 'compromisos.compromisos_maestros_id', '=', 'compromisos_maestros.id')
+                        ->join('direciones_areas', 'compromisos_maestros.direciones_areas_id', '=', 'direciones_areas.id')
+                        ->join('proyecto', 'compromisos.proyecto_id', '=', 'proyecto.id')
+                        ->join('empleados', 'compromisos.responsable_id', '=', 'empleados.id')
+                        ->join('personas', 'empleados.persona_id', '=', 'personas.id')
+                        ->join('estado_compromiso', 'compromisos.estado_compromiso_id', '=', 'estado_compromiso.id')
+                        ->where('compromisos.responsable_id',$e[0]->id)
+                        ->where('compromisos.estado_compromiso_id', '<>', 2)
+                        ->where('compromisos.estado_compromiso_id', '<>', 4)
+                        ->select(
+                            'direciones_areas.descripcion_larga as area',
+                            'compromisos.*',
+                            'proyecto.descripcion_larga as proyecto',
+                            DB::raw("concat(personas.primer_nombre, ' ', personas.primer_apellido) as responsable"),
+                            'estado_compromiso.descripcion_larga as estado'
+                        )
+                        ->count();
+
+                        return response()->json(['success'=>$compromisos]);
+
+
+    }
 
 
 }

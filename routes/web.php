@@ -7,6 +7,9 @@ Route::get('/tareasComromisos/{p}/{d}/{fi}/{ff}', 'HomeController@tareasComromis
 Route::get('/tareasComromisos/{id}/{p}/{c}', 'HomeController@cambiar_porcentaje')->name('cambiar_porcentaje');
 Route::get('/tareasComromisos/{id}/{p}', 'HomeController@cambiar_porcentaje_tarea')->name('cambiar_porcentaje_tarea');
 Route::get('/tareasComromisos/{id}', 'HomeController@tareasComromisospp')->name('tareasComromisospp');
+Route::get('/mis_tareas_comites_pendientes/', 'HomeController@mis_tareas_comites_pendientes')->name('mis_tareas_comites_pendientes');
+Route::get('/mis_tareas_pendientes/', 'HomeController@mis_tareas_pendientes')->name('mis_tareas_pendientes');
+
 
 Route::post('/cambiar_tema', 'HomeController@cambiar_tema')->name('cambiar_tema');
 

@@ -1,8 +1,9 @@
 <li class="dropdown">
         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
             <i class="material-icons">notifications</i>
-            <span class="label-count">1</span>
+            <span class="label-count" id="mis_tareas_comites_pendientes"></span>
         </a>
+    <!--
         <ul class="dropdown-menu">
             <li class="header">Mis Notificaciones</li>
             <li class="body">
@@ -28,4 +29,5 @@
                 <a href="javascript:void(0);">Ver todas</a>
             </li>
         </ul>
+    -->
 </li>
