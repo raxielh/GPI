@@ -1,7 +1,7 @@
 $(function () {
     //Taken from http://ionden.com/a/plugins/ion.rangeSlider/demo.html
-
-    $("#range_01").ionRangeSlider();
+alert();
+    $(".slider").ionRangeSlider();
 
     $("#range_02").ionRangeSlider({
         min: 100,

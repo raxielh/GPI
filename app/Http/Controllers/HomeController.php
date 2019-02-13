@@ -91,6 +91,25 @@ class HomeController extends Controller
 
     }
 
+
+    public function tareasComromisospp($id)
+    {
+
+        $compromiso_tarea=DB::table('compromiso_tarea')
+        ->join('tarea_estado', 'compromiso_tarea.tarea_estado_id', '=', 'tarea_estado.id')
+        ->where('compromisos_id',$id)
+        ->select(
+            'compromiso_tarea.*',
+            'tarea_estado.descripcion_larga as estado'
+        )
+        ->orderBy("compromiso_tarea.id","desc")
+        ->get();
+
+        return response()->json(['success'=>$compromiso_tarea]);
+
+    }
+
+
     public function cambiar_porcentaje($id,$por,$c)
     {
 
