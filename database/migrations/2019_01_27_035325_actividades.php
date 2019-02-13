@@ -20,8 +20,10 @@ class Actividades extends Migration
             $table->date('fecha_ini');
             $table->date('fecha_fin');
             $table->integer('proyecto_id')->unsigned();
+            $table->integer('actividades_categoria_id')->unsigned();
             $table->timestamps();
             $table->foreign('proyecto_id')->references('id')->on('proyecto');
+            $table->foreign('actividades_categoria_id')->references('id')->on('actividades_categoria');
         });
     }
 
