@@ -24,6 +24,12 @@ class Proyecto extends Migration
             $table->foreign('estado_proyecto_id')->references('id')->on('estado_proyecto');
         });
 
+        DB::table('proyecto')->insert([
+            'descripcion_larga' => 'General',
+            'descripcion_corta' => 'General',
+            'sede_id' => 1,
+            'estado_proyecto_id' => 1,
+        ]);
 
         DB::table('proyecto')->insert([
             'descripcion_larga' => 'San Ventto',

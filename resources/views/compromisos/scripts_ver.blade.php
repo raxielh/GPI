@@ -83,6 +83,17 @@
             $.each( data.success, function( key, val )
             {
                 $("#d_compromiso").val(val.compromisos_laborales);
+                $("#d_fecha_fin_compromiso").val(val.fecha_fin_compromiso);
+                $("#d_fecha_inicio_compromiso").val(val.fecha_inicio_compromiso);
+                $("#d_fecha_real_entrega").val(val.fecha_real_entrega);
+                $("#d_proyecto").val(val.proyecto);
+                $("#d_responsable").val(val.responsable);
+                $("#d_porcentage").css("width",val.porcentage+'%');
+                $("#d_porcentage").text(val.porcentage+'%');
+                $("#d_nro_seguimientos").val(val.nro_seguimientos);
+                $("#d_estado").val(val.estado);
+                $("#d_dias_avance_retraso").val(val.dias_avance_retraso);
+
             });
 
             $('#cargando').hide();

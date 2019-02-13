@@ -20,7 +20,7 @@ class CompromisoTarea extends Migration
             $table->integer('tipo_tarea_id')->unsigned();
             $table->integer('users_id')->unsigned();
             $table->date('fecha_propuesta_entrega');
-            $table->date('fecha_entrega');
+            $table->date('fecha_entrega')->nullable();
             $table->integer('porcentage')->unsigned();
             $table->string('descripcion_taera')->nullable();
             $table->timestamps();

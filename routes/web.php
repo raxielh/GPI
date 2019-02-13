@@ -3,6 +3,7 @@ Auth::routes();
 
 Route::get('/', function () { return redirect('/login'); });
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/tareasComromisos', 'HomeController@tareasComromisos')->name('tareasComromisos');
 
 Route::post('/cambiar_tema', 'HomeController@cambiar_tema')->name('cambiar_tema');
 
@@ -86,4 +87,13 @@ Route::resource('estado_compromiso', 'Estado_compromisosController');
 Route::get('/listado_estado_compromiso', 'Estado_compromisosController@listado')->name('listado_estado_compromiso');
 
 Route::get('/reporte', 'ReportesController@index')->name('reportes');
+
+Route::resource('tipo_tarea', 'TipoTareasController');
+Route::get('/listado_tipo_tarea', 'TipoTareasController@listado')->name('listado_tipo_tarea');
+
+Route::resource('tarea_estado', 'TareaEstadoController');
+Route::get('/listado_tarea_estado', 'TareaEstadoController@listado')->name('listado_tarea_estado');
+
+Route::resource('compromiso_tarea', 'CompromisoTareaController');
+Route::get('/listado_compromiso_tarea', 'CompromisoTareaController@listado')->name('listado_compromiso_tarea');
 

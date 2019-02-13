@@ -56,7 +56,7 @@
                         <div class="col-xs-8 p-t-5">
                         </div>
                         <div class="col-xs-4">
-                            <button class="btn btn-block bg-pink waves-effect" type="submit">Entrar</button>
+                            <button class="btn btn-block bg-cyan waves-effect" type="submit">Entrar</button>
                         </div>
                     </div>
                     <div class="row m-t-15 m-b--20">

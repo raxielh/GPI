@@ -76,19 +76,130 @@
                     <h4 class="modal-title" id="defaultModalLabel">Ver Compromiso</h4>
                 </div>
 
-                <div class="modal-body">
+                <div class="modal-body" style="padding-top: 0px;">
                     <input type="hidden" id="id_comp">
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <h6 class="card-inside-title" style="margin-top: 0px;margin-bottom: 0px;color:#333">Compromiso</h6>
-                                <div class="form-line">
-                                    <input type="text" class="form-control" id="d_compromiso" disabled>
-                                </div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#home_with_icon_title" data-toggle="tab" aria-expanded="true" style="padding-top: 0px !important">
+                                <i class="material-icons">info</i> Información
+                            </a>
+                        </li>
+                        <li role="presentation" class="">
+                            <a href="#profile_with_icon_title" data-toggle="tab" aria-expanded="false" style="padding-top: 0px !important">
+                                <i class="material-icons">subject</i> Tareas
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active in" id="home_with_icon_title">
+                                <p>
+                                    <div class="row">
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h6 class="card-inside-title" style="margin-top: 0px;margin-bottom: 0px;color:#333">Porcentaje</h6>
+                                                <div class="progress-bar bg-green" role="progressbar" id="d_porcentage" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="height:20px"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h6 class="card-inside-title" style="margin-top: 0px;margin-bottom: 0px;color:#333">Compromiso</h6>
+                                                <div class="form-line">
+                                                    <textarea class="form-control" id="d_compromiso" disabled></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <h6 class="card-inside-title" style="margin-top: 0px;margin-bottom: 0px;color:#333">Fecha inicio compromiso</h6>
+                                                <div class="form-line">
+                                                    <input type="text" class="form-control" id="d_fecha_inicio_compromiso" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <h6 class="card-inside-title" style="margin-top: 0px;margin-bottom: 0px;color:#333">Fecha fin compromiso</h6>
+                                                <div class="form-line">
+                                                    <input type="text" class="form-control" id="d_fecha_fin_compromiso" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <h6 class="card-inside-title" style="margin-top: 0px;margin-bottom: 0px;color:#333">Fecha real</h6>
+                                                <div class="form-line">
+                                                    <input type="date" class="form-control" id="d_fecha_real_entrega">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <h6 class="card-inside-title" style="margin-top: 0px;margin-bottom: 0px;color:#333">Proyecto</h6>
+                                                <div class="form-line">
+                                                    <input type="text" class="form-control" id="d_proyecto" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                                <h6 class="card-inside-title" style="margin-top: 0px;margin-bottom: 0px;color:#333">Responsable</h6>
+                                                <div class="form-line">
+                                                    <input type="text" class="form-control" id="d_responsable" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <h6 class="card-inside-title" style="margin-top: 0px;margin-bottom: 0px;color:#333"># Seguimientos</h6>
+                                                <div class="form-line">
+                                                    <input type="text" class="form-control" id="d_nro_seguimientos" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <h6 class="card-inside-title" style="margin-top: 0px;margin-bottom: 0px;color:#333">Dias avance ó retraso</h6>
+                                                <div class="form-line">
+                                                    <input type="text" class="form-control" id="d_dias_avance_retraso" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <h6 class="card-inside-title" style="margin-top: 0px;margin-bottom: 0px;color:#333">Estado</h6>
+                                                <div class="form-line">
+                                                    <input type="text" class="form-control" id="d_estado" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </p>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="profile_with_icon_title">
+                                <p>
+
+                                    <blockquote>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                        <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                                    </blockquote>
+
+                                </p>
                             </div>
                         </div>
-                    </div>
+
 
                 </div>
 
