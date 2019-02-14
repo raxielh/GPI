@@ -102,6 +102,7 @@ Route::resource('estado_compromiso', 'Estado_compromisosController');
 Route::get('/listado_estado_compromiso', 'Estado_compromisosController@listado')->name('listado_estado_compromiso');
 
 Route::get('/reporte', 'ReportesController@index')->name('reportes');
+Route::post('/reporte', 'ReportesController@realizar')->name('realizar');
 
 Route::resource('tipo_tarea', 'TipoTareasController');
 Route::get('/listado_tipo_tarea', 'TipoTareasController@listado')->name('listado_tipo_tarea');

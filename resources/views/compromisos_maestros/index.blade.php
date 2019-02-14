@@ -17,6 +17,7 @@
 
                             <tr>
                                 <th>Area</th>
+                                <th>Descripcion</th>
 <th>Responsable</th>
 <th>Responsable Revision</th>
 <th>Periodo Inicial</th>

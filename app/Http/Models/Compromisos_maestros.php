@@ -15,6 +15,7 @@ class Compromisos_maestros extends Model
 'cargo_respon_revi_id',
 'fecha_inicio',
 'fecha_final',
+'descripcion_larga',
 
     ];
 

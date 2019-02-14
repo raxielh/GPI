@@ -20,9 +20,9 @@
             ajax: '{{ $url_table }}',
             columns: [
                         { data: 'direciones_areas_id', name: 'direciones_areas_id' },
+                        { data: 'descripcion_larga', name: 'descripcion_larga' },
 { data: 'respon_id', name: 'respon_id' },
 { data: 'respon_revi_id', name: 'respon_revi_id' },
-//{ data: 'cargo_respon_revi_id', name: 'cargo_respon_revi_id' },
 //{ data: 'fecha_compromiso', name: 'fecha_compromiso' },
 { data: 'fecha_inicio', name: 'fecha_inicio' },
 { data: 'fecha_final', name: 'fecha_final' },

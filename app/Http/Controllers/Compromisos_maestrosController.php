@@ -60,6 +60,7 @@ class Compromisos_maestrosController extends Controller
                 ->join('cargos', 'e.cargos_id', '=', 'cargos.id')
                 ->select(
                     'compromisos_maestros.id',
+                    'compromisos_maestros.descripcion_larga',
                     'direciones_areas.descripcion_corta as direciones_areas_id',
                     DB::raw("concat(personas.identificacion, ' ', personas.primer_nombre, ' ', personas.primer_apellido) as respon_id"),
                     DB::raw("concat(p2.identificacion, ' ', p2.primer_nombre, ' ', p2.primer_apellido) as respon_revi_id"),

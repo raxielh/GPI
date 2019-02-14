@@ -12,6 +12,29 @@
 
 <div class="row clearfix">
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-teal hover-expand-effect" data-toggle="modal" data-target="#Crear" onclick="cual(111)">
+                    <div class="icon">
+                        <i class="material-icons">playlist_add_check</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">Calcular</div>
+                        <div class="number count-to">Estadistica evaluación desempeño</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-teal hover-expand-effect" data-toggle="modal" data-target="#Crear" onclick="cual(112)">
+                        <div class="icon">
+                            <i class="material-icons">playlist_add_check</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">Calcular</div>
+                            <div class="number count-to">Estadistica asistencia</div>
+                        </div>
+                    </div>
+                </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="info-box bg-pink hover-expand-effect" data-toggle="modal" data-target="#Crear" onclick="cual(1)">
                 <div class="icon">
                     <i class="material-icons">playlist_add_check</i>
@@ -85,19 +108,19 @@
 
                     <div class="modal-body">
 
-                        <input type="text" id="cual">
+                        <input type="hidden" id="cual" name="cual">
 
                         <div class="col-sm-12" id="o_p">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                            {!! Form::select('proyecto',$Proyectos, null,
+                                            {!! Form::select('proyectos',$Proyectos, null,
                                             [
                                                 'class' => 'form-control show-tick',
                                                 'data-show-subtext'=>"true",
                                                 'data-live-search'=>"true"
                                             ]) !!}
                                             <label class="form-label">
-                                                Proyecto
+                                                Proyectos
                                             </label>
                                     </div>
                                 </div>
@@ -106,7 +129,7 @@
                         <div class="col-sm-12" id="o_c">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                            {!! Form::select('proyecto_id',$Proyectos, null,
+                                            {!! Form::select('compromisos',$Compromisos_maestros, null,
                                             [
                                                 'class' => 'form-control show-tick',
                                                 'data-show-subtext'=>"true",
@@ -119,7 +142,7 @@
                                 </div>
                         </div>
 
-                        <div class="col-sm-12" id="o_ano">
+                        <div class="col-sm-6" id="o_ano">
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                             <select class="form-control show-tick" data-show-subtext="true" data-live-search="true" name="ano">
@@ -137,7 +160,7 @@
                                 </div>
                         </div>
 
-                        <div class="col-sm-12" id="o_mes">
+                        <div class="col-sm-6" id="o_mes">
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                             <select class="form-control show-tick" data-show-subtext="true" data-live-search="true" name="mes">
@@ -171,9 +194,50 @@
 </div>
 
 <script>
-    function cual(i){
+
+    function cual(i)
+    {
+        console.log(i);
         $('#cual').val(i);
+        $('#o_p').hide();
+        $('#o_c').hide();
+        $('#o_ano').hide();
+        $('#o_mes').hide();
+
+        if(i==111)
+        {
+            console.log(i);
+            $('#o_p').hide();
+            $('#o_c').show();
+            $('#o_ano').show();
+            $('#o_mes').show();
+        }
+
+        if(i==112)
+        {
+            console.log(i);
+            $('#o_p').show();
+            $('#o_c').hide();
+            $('#o_ano').show();
+            $('#o_mes').show();
+        }
+
     }
+
+    $('#generar').click(function(){
+        var url = "{{ route('realizar') }}";
+        $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#frm").serialize(),
+           success: function(data)
+           {
+               console.log(data.success)
+               Notificacion(data.success,'glyphicon glyphicon-thumbs-up','success');
+           }
+       });
+    });
+
 </script>
 
 

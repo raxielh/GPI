@@ -95,6 +95,21 @@
                             </div>
                         </div>
 
+                        <div class="col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text"
+                                        class="form-control"
+                                        name="descripcion_larga"
+                                        autofocus
+                                        value="">
+                                        <label class="form-label">
+                                        Descripcion
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
 
             </div>
 
