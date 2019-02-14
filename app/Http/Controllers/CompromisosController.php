@@ -154,17 +154,67 @@ class CompromisosController extends Controller
 
         }
 
-        public function fecha_real($id,$fr,$f,$s,$op)
+        public function fecha_real($id,$fr,$s,$por)
         {
 
-            return response()->json([ 'success'=>'holis' ]);
+            $por=str_replace("%","",$por);
 
+            DB::table('compromisos')
+            ->where('id',$id)
+            ->update(['porcentage' => $por,'nro_seguimientos' => $s,'fecha_real_entrega' => $fr]);
 
+            $c=DB::table('compromisos')
+            ->where('id',$id)
+            ->get();
 
+            if($c[0]->porcentage==100 && $c[0]->nro_seguimientos==0){
+                DB::table('compromisos')
+                ->where('id',$id)
+                ->update(['estado_compromiso_id' => 2]);
+            }
+
+            if($c[0]->porcentage<100){
+                DB::table('compromisos')
+                ->where('id',$id)
+                ->update(['estado_compromiso_id' => 3]);
+            }
+
+            if($c[0]->porcentage==100 && $c[0]->nro_seguimientos>0){
+                DB::table('compromisos')
+                ->where('id',$id)
+                ->update(['estado_compromiso_id' => 4]);
+            }
+
+            $c=DB::table('compromisos')
+            ->join('estado_compromiso', 'compromisos.estado_compromiso_id', '=', 'estado_compromiso.id')
+            ->where('compromisos.id',$id)
+            ->select(
+                'estado_compromiso.descripcion_larga'
+            )
+            ->get();
+
+            return response()->json([ 'success'=>$c[0]->descripcion_larga ]);
 
 
         }
 
+        public function compromisos_fecha_atraso($id,$f,$fr,$s)
+        {
+            $c=DB::table('compromisos')
+            ->where('id',$id)
+            ->get();
+
+            DB::table('compromisos')
+            ->where('id',$id)
+            ->update([  'nro_seguimientos' => $c[0]->nro_seguimientos+1,
+                        'fecha_real_entrega' => $fr,
+                        'fecha_fin_compromiso' => $f]
+                    );
+
+            return response()->json([ 'success'=> $c[0]->nro_seguimientos+1 ]);
+
+
+        }
 
 
 

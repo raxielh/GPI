@@ -203,13 +203,13 @@
 
                 <div class="modal-footer">
                     <div class="col-sm-12">
+                        <button type="button" class="btn btn-link waves-effect" onclick="verificar()" style="color:green">Revisado</button>
+
                         <button type="button" class="btn btn-link waves-effect" onclick="atraso()" style="color:#ff8903">Contar Atraso</button>
 
-                        <button type="button" class="btn btn-link waves-effect" onclick="verificar()" style="color:green">Revisar</button>
+                        <button type="button" class="btn btn-link waves-effect" onclick="borrar_compromiso()" style="color:red">Borrar</button>
 
                         <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Cancelar</button>
-
-                        <button type="button" class="btn btn-link waves-effect" onclick="borrar_compromiso()" style="color:red">Borrar</button>
                     </div>
                 </div>
 
@@ -225,14 +225,67 @@ $url_integrantes=url('compromisos_maestros/vinculados');
 
     function verificar()
     {
+        Swal({
+            title: 'Estas seguro?',
+            text: "",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si!'
+          }).then((result) => {
+            if (result.value) {
+                var o_d_fecha_fin_compromiso=$('#o_d_fecha_fin_compromiso').val();
+                var d_fecha_real_entrega=$('#d_fecha_real_entrega').val();
+                var d_porcentage=$('#d_porcentage').text();
+                var id=$('#id_comp').val();
+                var s=$('#d_nro_seguimientos').val();
 
+                url="{{ url('compromisos_fecha_real') }}/"+id+"/"+d_fecha_real_entrega+"/"+s+"/"+d_porcentage;
+                console.log("1 "+url);
 
+                $.getJSON(url, function( data ) {
+                    console.log(data);
+                    $('#d_estado').val(data.success);
+                    Notificacion('Compromiso verificado','glyphicon glyphicon-thumbs-up','success');
+
+                });
+            }
+
+          })
     }
 
     function atraso()
     {
+        Swal({
+            title: 'Estas seguro?',
+            text: "",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si!'
+          }).then((result) => {
+            if (result.value) {
+                $('#d_fecha_real_entrega').val($('#d_fecha_fin_compromiso').val());
+                var o_d_fecha_fin_compromiso=$('#d_fecha_fin_compromiso').val();
+                var d_fecha_real_entrega=$('#d_fecha_fin_compromiso').val();
+                var d_porcentage=$('#d_porcentage').text();
+                var id=$('#id_comp').val();
+                var s=$('#d_nro_seguimientos').val();
 
+                url="{{ url('compromisos_fecha_atraso') }}/"+id+"/"+d_fecha_real_entrega+"/"+o_d_fecha_fin_compromiso+"/"+s;
+                console.log("2 "+url);
 
+                $.getJSON(url, function( data ) {
+                    console.log(data);
+                    $('#d_nro_seguimientos').val(data.success);
+                    Notificacion('Compromiso atrasado','glyphicon glyphicon-thumbs-up','success');
+
+                });
+            }
+
+        })
     }
 
 
