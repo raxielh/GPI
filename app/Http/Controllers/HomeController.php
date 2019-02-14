@@ -33,9 +33,14 @@ class HomeController extends Controller
     {
         $TipoTareas = TipoTareas::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id');
         $Proyectos = ['0'=>'Todos'] + Proyectos::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id')->toArray();
+
+        $Usuarios = Usuarios::select( 'id',"username" )
+        ->where('id', '<>', Auth::id())
+        ->pluck('username', 'id');
+
         $Pro = Proyectos::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id');
         $direciones_areas = direciones_areas::select( 'id',"descripcion_larga" )->pluck('descripcion_larga', 'id');
-        return view('home',compact("TipoTareas","Proyectos","Pro","direciones_areas"));
+        return view('home',compact("TipoTareas","Proyectos","Pro","direciones_areas","Usuarios"));
     }
 
     public function cambiar_tema(Request $request)
@@ -240,9 +245,11 @@ class HomeController extends Controller
                     ->join('tarea_estado', 'tareas.tarea_estado_id', '=', 'tarea_estado.id')
                     ->join('tipo_tarea', 'tareas.tipo_tarea_id', '=', 'tipo_tarea.id')
                     ->join('proyecto', 'tareas.proyecto_id', '=', 'proyecto.id')
+                    ->join('users', 'tareas.users_id_quien', '=', 'users.id')
                     ->where('tareas.users_id',Auth::id())
                     ->where('tareas.tarea_estado_id',1)
                     ->select(
+                        'users.username as user',
                         'tareas.*',
                         'tarea_estado.descripcion_larga as tarea_estado',
                         'tipo_tarea.descripcion_larga as tipo_tarea',

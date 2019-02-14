@@ -172,7 +172,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
 
-                                        {!! Form::select('users_id',$TipoTareas, null,
+                                        {!! Form::select('users_id',$Usuarios, null,
                                         [
                                             'class' => 'form-control show-tick',
                                             'data-show-subtext'=>"true",
@@ -191,7 +191,7 @@
 
                 <div class="modal-footer">
                     <div class="col-sm-12">
-                        <button type="button" class="btn btn-link waves-effect" id="save_crear_t">Guardar</button>
+                        <button type="button" class="btn btn-link waves-effect" id="save_crear_ta">Guardar</button>
                         <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Cancelar</button>
                     </div>
                 </div>

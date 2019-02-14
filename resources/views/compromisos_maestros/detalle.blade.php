@@ -126,7 +126,8 @@
                                             <div class="form-group">
                                                 <h6 class="card-inside-title" style="margin-top: 0px;margin-bottom: 0px;color:#333">Fecha fin compromiso</h6>
                                                 <div class="form-line">
-                                                    <input type="text" class="form-control" id="d_fecha_fin_compromiso" disabled>
+                                                    <input type="date" class="form-control" id="d_fecha_fin_compromiso">
+                                                    <input type="hidden" class="form-control" id="o_d_fecha_fin_compromiso">
                                                 </div>
                                             </div>
                                         </div>
@@ -180,7 +181,7 @@
                                             <div class="form-group">
                                                 <h6 class="card-inside-title" style="margin-top: 0px;margin-bottom: 0px;color:#333">Estado</h6>
                                                 <div class="form-line">
-                                                    <input type="text" class="form-control" id="d_estado" disabled>
+                                                    <input type="text" class="form-control" id="d_estado" >
                                                 </div>
                                             </div>
                                         </div>
@@ -202,8 +203,13 @@
 
                 <div class="modal-footer">
                     <div class="col-sm-12">
-                        <button type="button" class="btn btn-link waves-effect" onclick="borrar_compromiso()" style="color:red">Borrar</button>
+                        <button type="button" class="btn btn-link waves-effect" onclick="atraso()" style="color:#ff8903">Contar Atraso</button>
+
+                        <button type="button" class="btn btn-link waves-effect" onclick="verificar()" style="color:green">Revisar</button>
+
                         <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Cancelar</button>
+
+                        <button type="button" class="btn btn-link waves-effect" onclick="borrar_compromiso()" style="color:red">Borrar</button>
                     </div>
                 </div>
 
@@ -216,6 +222,20 @@
 $url_integrantes=url('compromisos_maestros/vinculados');
 @endphp
 <script>
+
+    function verificar()
+    {
+
+
+    }
+
+    function atraso()
+    {
+
+
+    }
+
+
     function CargarIntegrantes(id)
     {
         $('#cargando').show();

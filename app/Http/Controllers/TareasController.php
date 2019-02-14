@@ -63,7 +63,9 @@ class TareasController extends Controller
         public function store(Request $request)
         {
 
-            $rules = array();
+            $rules = array(
+                'descripcion_taera'=>'required|max:155',
+            );
 
             $validator = Validator::make($request->all(),$rules);
 
@@ -72,8 +74,19 @@ class TareasController extends Controller
                 return response()->json(['error'=>$validator->getMessageBag()->toArray()]);
             }
 
+
+            if(is_null($request["users_id"]))
+            {
+                $request["users_id"]=Auth::id();
+                $request["users_id_quien"]=Auth::id();
+            }
+            else{
+                $request["users_id"]=$request->users_id;
+                $request["users_id_quien"]=Auth::id();
+            }
+
             $request["tarea_estado_id"]=1;
-            $request["users_id"]=Auth::id();
+
             $request["porcentage"]=0;
 
             Tareas::create($request->all());

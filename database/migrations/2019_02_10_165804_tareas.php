@@ -16,6 +16,7 @@ class Tareas extends Migration
         Schema::create('tareas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('users_id')->unsigned();
+            $table->integer('users_id_quien')->unsigned();
             $table->integer('tipo_tarea_id')->unsigned();
             $table->integer('tarea_estado_id')->unsigned();
             $table->integer('proyecto_id')->unsigned();
@@ -25,6 +26,7 @@ class Tareas extends Migration
             $table->string('descripcion_taera')->nullable();
             $table->timestamps();
             $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('users_id_quien')->references('id')->on('users');
             $table->foreign('tipo_tarea_id')->references('id')->on('tipo_tarea');
             $table->foreign('proyecto_id')->references('id')->on('proyecto');
             $table->foreign('tarea_estado_id')->references('id')->on('tarea_estado');

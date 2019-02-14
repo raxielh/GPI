@@ -213,6 +213,7 @@
 
     function tareasComromisos()
     {
+        //console.log(0);
         $("#tareas_comites").empty();
         $('#cargando').show();
 
@@ -227,7 +228,6 @@
 
             $.each( data.success, function( key, val )
             {
-
                 $("#tareas_comites").append("<input type='hidden' id='total_p-"+val.id+"' value='"+val.porcentage+"'><blockquote style='font-size:14px;padding: 5px 5px;border-left: 3px solid #fd0062;' id='t-"+val.id+"'>"+
                                             "<p style='font-weight: bold;'><a onclick='cargar("+val.id+")' data-toggle='modal' data-target='#Crear_tarea1' style='color:blue;cursor:pointer' ><i class='material-icons' style='font-size:20px;color:#00c2db'>add_alert</i></a> "+val.compromisos_laborales+"</p>"+
                                             "<div class='progress'><div class='progress-bar bg-green' role='progressbar' aria-valuenow='62' aria-valuemin='0' aria-valuemax='100' id='t1-"+val.id+"' style='width: "+val.porcentage+"%'>"+val.porcentage+"%</div></div>"+
@@ -267,12 +267,13 @@
                 }else{
                     visible2='style="display:block"';
                 }
-                console.log(val.porcentage);
+                //console.log(val.porcentage);
                     var variables='fn_porcentage_tarea("'+"tarea_p-"+val.id+'","'+val.id+'","'+"mi_tarea_estado-"+val.id+'","'+"mi_tarea_por-"+val.id+'")';
                     $("#tareas").append("<blockquote style='font-size:14px;padding: 5px 5px;border-left: 3px solid #00bfd8;background: #dedede78;'>"+
                         "<p><span><a onclick='Delete_t("+val.id+")' style='color:red;cursor:pointer'><i class='material-icons' style='font-size:12px'>close</i></a></span>"+"<span style='font-size:16px'>"+val.descripcion_taera+"</span></p>"+
                         "<footer>Fecha propuesta "+val.fecha_propuesta_entrega+" <span id='mi_tarea_estado-"+val.id+"'>"+val.tarea_estado+"</span> Porcentage <span id='mi_tarea_por-"+val.id+"'>"+val.porcentage+"</span></footer>"+
                         "<footer>Proyecto "+val.proyecto+"</footer>"+
+                        "<footer>Asignado por "+val.user+"</footer>"+
                         "<input type='range' min='0' max='100' id='tarea_p-"+val.id+"' value='"+val.porcentage+"' "+visible2+" onchange='"+variables+"' class='slider'>"+
                         "</blockquote>");
 
@@ -360,7 +361,7 @@
         }
 
         var url='{{ url("mis_tareas_por") }}/'+id+'/'+$('#'+p).val();
-        console.log(url);
+        //console.log(url);
 
         $.getJSON(url, function( d ) {
             console.log(d);

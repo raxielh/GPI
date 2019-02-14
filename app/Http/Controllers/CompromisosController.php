@@ -154,6 +154,20 @@ class CompromisosController extends Controller
 
         }
 
+        public function fecha_real($id,$fr,$f,$s,$op)
+        {
+
+            return response()->json([ 'success'=>'holis' ]);
+
+
+
+
+
+        }
+
+
+
+
 
 
 }

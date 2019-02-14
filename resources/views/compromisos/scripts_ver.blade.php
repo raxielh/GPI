@@ -84,6 +84,7 @@
             {
                 $("#d_compromiso").val(val.compromisos_laborales);
                 $("#d_fecha_fin_compromiso").val(val.fecha_fin_compromiso);
+                $("#o_d_fecha_fin_compromiso").val(val.fecha_fin_compromiso);
                 $("#d_fecha_inicio_compromiso").val(val.fecha_inicio_compromiso);
                 $("#d_fecha_real_entrega").val(val.fecha_real_entrega);
                 $("#d_proyecto").val(val.proyecto);
