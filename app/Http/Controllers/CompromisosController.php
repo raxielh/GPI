@@ -204,12 +204,21 @@ class CompromisosController extends Controller
             ->where('id',$id)
             ->get();
 
+            DB::table('log_oportunidades')->insert(
+                [
+                    'compromisos_id' => $id,
+                    'fecha_fin_compromiso' => $f,
+                    'fecha_real_entrega' => $fr
+                ]
+            );
+
             DB::table('compromisos')
             ->where('id',$id)
             ->update([  'nro_seguimientos' => $c[0]->nro_seguimientos+1,
                         'fecha_real_entrega' => $fr,
                         'fecha_fin_compromiso' => $f]
                     );
+
 
             return response()->json([ 'success'=> $c[0]->nro_seguimientos+1 ]);
 

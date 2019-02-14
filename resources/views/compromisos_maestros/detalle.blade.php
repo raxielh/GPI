@@ -248,6 +248,7 @@ $url_integrantes=url('compromisos_maestros/vinculados');
                     console.log(data);
                     $('#d_estado').val(data.success);
                     Notificacion('Compromiso verificado','glyphicon glyphicon-thumbs-up','success');
+                    Ver({{ $compromisos_maestros[0]->id }});
 
                 });
             }
@@ -281,6 +282,7 @@ $url_integrantes=url('compromisos_maestros/vinculados');
                     console.log(data);
                     $('#d_nro_seguimientos').val(data.success);
                     Notificacion('Compromiso atrasado','glyphicon glyphicon-thumbs-up','success');
+                    Ver({{ $compromisos_maestros[0]->id }});
 
                 });
             }
