@@ -194,8 +194,6 @@ class CompromisosController extends Controller
             ->get();
 
             return response()->json([ 'success'=>$c[0]->descripcion_larga ]);
-
-
         }
 
         public function compromisos_fecha_atraso($id,$f,$fr,$s)
@@ -208,7 +206,9 @@ class CompromisosController extends Controller
                 [
                     'compromisos_id' => $id,
                     'fecha_fin_compromiso' => $f,
-                    'fecha_real_entrega' => $fr
+                    'fecha_real_entrega' => $fr,
+                    'created_at' => date("Y-m-d h:i:sa"),
+                    'updated_at' => date("Y-m-d h:i:sa"),
                 ]
             );
 
@@ -221,12 +221,17 @@ class CompromisosController extends Controller
 
 
             return response()->json([ 'success'=> $c[0]->nro_seguimientos+1 ]);
-
-
         }
 
 
+        public function log_oportunidades($id)
+        {
+            $c=DB::table('log_oportunidades')
+            ->where('compromisos_id',$id)
+            ->get();
 
+            return response()->json([ 'success'=> $c ]);
+        }
 
 
 }

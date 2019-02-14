@@ -73,6 +73,7 @@
     function ver_compromiso(i)
     {
         console.log(i);
+
         $('#cargando').show();
         $('#ver_compro').modal('show');
         $('#id_comp').val(i);
@@ -98,6 +99,7 @@
             });
 
             $('#cargando').hide();
+            histo();
 
         });
 

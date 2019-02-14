@@ -92,7 +92,7 @@ Route::get('/listado_compromisos', 'CompromisosController@listado')->name('lista
 Route::get('/compromisos/detalle/{id}', 'CompromisosController@ver_detalle')->name('ver_detalle');
 Route::get('/compromisos_fecha_real/{id}/{fr}/{s}/{por}', 'CompromisosController@fecha_real')->name('fecha_real');
 Route::get('/compromisos_fecha_atraso/{id}/{fr}/{f}/{s}', 'CompromisosController@compromisos_fecha_atraso')->name('compromisos_fecha_atraso');
-
+Route::get('/log_oportunidades/{id}', 'CompromisosController@log_oportunidades')->name('log_oportunidades');
 
 
 

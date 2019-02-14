@@ -81,13 +81,18 @@
 
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active">
-                            <a href="#home_with_icon_title" data-toggle="tab" aria-expanded="true" style="padding-top: 0px !important">
+                            <a href="#home_with_icon_title" data-toggle="tab" aria-expanded="true" style="padding-top: 0px !important" onclick="ocultar()">
                                 <i class="material-icons">info</i> Información
                             </a>
                         </li>
                         <li role="presentation" class="">
-                            <a href="#profile_with_icon_title" data-toggle="tab" aria-expanded="false" style="padding-top: 0px !important">
+                            <a href="#profile_with_icon_title" data-toggle="tab" aria-expanded="false" style="padding-top: 0px !important" onclick="ocultar()">
                                 <i class="material-icons">subject</i> Tareas
+                            </a>
+                        </li>
+                        <li role="presentation" class="">
+                            <a href="#profile_with_icon_title_" data-toggle="tab" aria-expanded="false" style="padding-top: 0px !important" onclick="mostrar()">
+                                <i class="material-icons">history</i> Historico de oportunidades
                             </a>
                         </li>
                     </ul>
@@ -196,6 +201,21 @@
                                     </div>
                                 </p>
                             </div>
+                            <div role="tabpanel" class="tab-pane fade active in" style="display:none" id="profile_with_icon_title_">
+                                <p>
+                                    <table id="mainTable" class="table table-striped" style="cursor: pointer;">
+                                        <thead>
+                                            <tr>
+                                                <th>Fecha Oportunidad</th>
+                                                <th>Fecha fin compromiso</th>
+                                                <th>Fecha real entrega</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="histo">
+                                        </tbody>
+                                    </table>
+                                </p>
+                            </div>
                         </div>
 
 
@@ -222,6 +242,30 @@
 $url_integrantes=url('compromisos_maestros/vinculados');
 @endphp
 <script>
+
+    function mostrar(){
+        $('#profile_with_icon_title_').show();
+    }
+    function ocultar(){
+        $('#profile_with_icon_title_').hide();
+    }
+    function histo(){
+        //$('#histo');
+        $("#histo").empty();
+        var id=$('#id_comp').val();
+		$.getJSON("{{ url('log_oportunidades') }}/"+id, function(data) {
+            var n=0;
+            $.each( data.success, function( key, val )
+            {
+                n=n+1;
+                $("#histo").append("<tr>"+
+                                        "<td>"+val.created_at+"</td>"+
+                                        "<td style='text-align:center;'>"+ val.fecha_fin_compromiso +"</td>"+
+                                        "<td style='text-align:center;'>"+ val.fecha_real_entrega +"</td>"+
+                                    "</tr>'");
+            });
+        });
+    }
 
     function verificar()
     {
@@ -285,6 +329,7 @@ $url_integrantes=url('compromisos_maestros/vinculados');
                     Ver({{ $compromisos_maestros[0]->id }});
 
                 });
+                histo();
             }
 
         })
