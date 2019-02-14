@@ -1793,6 +1793,30 @@ class Dual extends Migration
           );
 
 
+
+           INSERT INTO public.empleados (id, persona_id, cargos_id, empleado_estados_id, empleados_tipos_id, created_at, updated_at, direciones_areas_id) VALUES (1, 1, 1, 1, 1, NULL, NULL, 1);
+          INSERT INTO public.empleados (id, persona_id, cargos_id, empleado_estados_id, empleados_tipos_id, created_at, updated_at, direciones_areas_id) VALUES (2, 2, 2, 1, 1, NULL, NULL, 1);
+
+
+          INSERT INTO public.actividades (id, descripcion_larga, descripcion_corta, fecha_ini, fecha_fin, proyecto_id, created_at, updated_at, actividades_categoria_id) VALUES (1, 'PRELIMINARES', 'PRELIMINARES', '2019-02-01', '2019-02-28', 1, NULL, NULL, 1);
+          INSERT INTO public.actividades (id, descripcion_larga, descripcion_corta, fecha_ini, fecha_fin, proyecto_id, created_at, updated_at, actividades_categoria_id) VALUES (2, 'EXCAV. RETIROS LLENOS Y SOLADO', 'EXCAV. RETIROS LLENOS Y SOLADO', '2019-02-01', '2019-02-28', 1, NULL, NULL, 1);
+          INSERT INTO public.actividades (id, descripcion_larga, descripcion_corta, fecha_ini, fecha_fin, proyecto_id, created_at, updated_at, actividades_categoria_id) VALUES (3, 'Director de obra', 'Director de obra', '2019-02-01', '2019-02-28', 1, NULL, NULL, 2);
+          INSERT INTO public.actividades (id, descripcion_larga, descripcion_corta, fecha_ini, fecha_fin, proyecto_id, created_at, updated_at, actividades_categoria_id) VALUES (4, 'Ingeniero residente', 'Ingeniero residente', '2019-02-01', '2019-02-14', 1, NULL, NULL, 2);
+
+
+
+          INSERT INTO public.actividades_registro (id, actividades_id, actividades_tipo_id, empleados_id, fecha, hora, observacion, created_at, updated_at) VALUES (1, 1, 1, 1, '2019-02-01', '08:00:00', 'ninguna', NULL, NULL);
+          INSERT INTO public.actividades_registro (id, actividades_id, actividades_tipo_id, empleados_id, fecha, hora, observacion, created_at, updated_at) VALUES (2, 1, 1, 2, '2019-02-01', '08:00:00', NULL, NULL, NULL);
+          INSERT INTO public.actividades_registro (id, actividades_id, actividades_tipo_id, empleados_id, fecha, hora, observacion, created_at, updated_at) VALUES (3, 2, 1, 1, '2019-02-14', '08:00:00', NULL, NULL, NULL);
+          INSERT INTO public.actividades_registro (id, actividades_id, actividades_tipo_id, empleados_id, fecha, hora, observacion, created_at, updated_at) VALUES (4, 3, 1, 2, '2019-02-14', '07:00:00', NULL, NULL, NULL);
+          INSERT INTO public.actividades_registro (id, actividades_id, actividades_tipo_id, empleados_id, fecha, hora, observacion, created_at, updated_at) VALUES (5, 4, 1, 2, '2019-02-05', '13:00:00', NULL, NULL, NULL);
+          INSERT INTO public.actividades_registro (id, actividades_id, actividades_tipo_id, empleados_id, fecha, hora, observacion, created_at, updated_at) VALUES (6, 1, 1, 1, '2018-02-01', '08:00:00', 'ninguna', NULL, NULL);
+          INSERT INTO public.actividades_registro (id, actividades_id, actividades_tipo_id, empleados_id, fecha, hora, observacion, created_at, updated_at) VALUES (8, 2, 1, 1, '2018-02-14', '08:00:00', NULL, NULL, NULL);
+          INSERT INTO public.actividades_registro (id, actividades_id, actividades_tipo_id, empleados_id, fecha, hora, observacion, created_at, updated_at) VALUES (10, 4, 1, 2, '2018-02-05', '13:00:00', NULL, NULL, NULL);
+          INSERT INTO public.actividades_registro (id, actividades_id, actividades_tipo_id, empleados_id, fecha, hora, observacion, created_at, updated_at) VALUES (9, 3, 1, 2, '2018-02-13', '07:00:00', NULL, NULL, NULL);
+          INSERT INTO public.actividades_registro (id, actividades_id, actividades_tipo_id, empleados_id, fecha, hora, observacion, created_at, updated_at) VALUES (7, 1, 1, 2, '2018-02-02', '08:00:00', NULL, NULL, NULL);
+
+
           ");
 
     }

@@ -21,13 +21,13 @@ class ActividadesCategoria extends Migration
         });
 
         DB::table('actividades_categoria')->insert([
-            'id' => 0,
+            'id' => 1,
             'descripcion_larga' => 'Otros',
             'descripcion_corta' => 'Otros',
         ]);
 
         DB::table('actividades_categoria')->insert([
-            'id' => 1,
+            'id' => 2,
             'descripcion_larga' => 'ADMINISTRACION',
             'descripcion_corta' => 'ADMINISTRACION',
         ]);
