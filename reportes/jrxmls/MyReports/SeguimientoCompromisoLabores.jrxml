@@ -56,8 +56,8 @@ FROM  compromisos_maestros cm,
        personas p3,
        estado_compromiso ec
 where cm.id=  $P{compromisomaestro} 
-            and to_char( c.fecha_inicio_compromiso  , 'MM')::integer=mes
-            and to_char( c.fecha_inicio_compromiso  , 'yyyy')::integer=anno
+            and to_char( c.fecha_inicio_compromiso  , 'MM')::integer= $P{mes} 
+            and to_char( c.fecha_inicio_compromiso  , 'yyyy')::integer= $P{anno} 
  and cm.cargo_respon_revi_id=ca.id
   and cm.direciones_areas_id=da.id
   and cm.respon_id=emp1.id
