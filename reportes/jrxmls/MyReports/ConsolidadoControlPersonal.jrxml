@@ -29,6 +29,9 @@
 	<parameter name="anno" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[2019]]></defaultValueExpression>
 	</parameter>
+	<parameter name="rutaimag" class="java.lang.String">
+		<defaultValueExpression><![CDATA["D:/laravel/GPI/reportes/jrxmls/MyReports/"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT  
   am.actividad_id,
@@ -196,7 +199,7 @@ where    am.anno in (  $P{anno},  $P{anno}-1 )
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<imageExpression><![CDATA["logo.png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{rutaimag}+"logo.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="169" y="8" width="1151" height="32" uuid="ea400106-4f6b-41cb-85ce-01554d63985c"/>

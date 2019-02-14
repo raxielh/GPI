@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7ba42f2b-b1ac-425b-ad62-fee53ae12f5f">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<property name="ireport.jasperserver.reportUnit" value="/Explore/FontColorBasedOnCondition"/>
 	<property name="ireport.jasperserver.url" value="http://localhost:8080/jasperserver-pro/services/repository"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="gpi_postgres"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<style name="style1">
 		<conditionalStyle>
 			<conditionExpression><![CDATA[$F{storesales}>=30]]></conditionExpression>
@@ -16,11 +19,11 @@
 		</conditionalStyle>
 	</style>
 	<queryString>
-		<![CDATA[select customer_id,sum(store_sales) StoreSales,sum(store_cost) StoreCost from sales_fact_1997 group by customer_id limit 10]]>
+		<![CDATA[select * from dual]]>
 	</queryString>
-	<field name="customer_id" class="java.lang.Integer"/>
-	<field name="storesales" class="java.math.BigDecimal"/>
-	<field name="storecost" class="java.math.BigDecimal"/>
+	<field name="x" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="x"/>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -57,19 +60,7 @@
 			<textField>
 				<reportElement x="0" y="0" width="185" height="20" uuid="085668e3-b5c2-4b7e-ad69-c9cadefb6e3d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{customer_id}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="style1" x="185" y="0" width="282" height="20" uuid="e79bec6e-9289-4f62-99f8-66e457cff742"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{storesales}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="467" y="0" width="88" height="20" uuid="9ecd6c67-3b8e-43e5-b873-f2376fd694e4"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{storecost}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{x}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -32,6 +32,9 @@
 	<parameter name="mes" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[2]]></defaultValueExpression>
 	</parameter>
+	<parameter name="rutaimag" class="java.lang.String">
+		<defaultValueExpression><![CDATA["D:/laravel/GPI/reportes/jrxmls/MyReports/"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT 
   am.anno,
@@ -679,8 +682,7 @@ $V{dia16_am}.floatValue()+$V{dia17_am}.floatValue()+$V{dia18_am}.floatValue()+$V
 $V{dia21_am}.floatValue()+$V{dia22_am}.floatValue()+$V{dia23_am}.floatValue()+$V{dia24_am}.floatValue()+$V{dia25_am}.floatValue()+
 $V{dia26_am}.floatValue()+$V{dia27_am}.floatValue()+$V{dia28_am}.floatValue()+$V{dia29_am}.floatValue()+$V{dia30_am}.floatValue()+
 $V{dia31_am}.floatValue()
-)/$F{numero_dias_mes}.floatValue()
-]]></variableExpression>
+)/$F{numero_dias_mes}.floatValue()]]></variableExpression>
 	</variable>
 	<variable name="diapromedio_pm" class="java.lang.Float">
 		<variableExpression><![CDATA[(
@@ -691,8 +693,7 @@ $V{dia16_pm}.floatValue()+$V{dia17_pm}.floatValue()+$V{dia18_pm}.floatValue()+$V
 $V{dia21_pm}.floatValue()+$V{dia22_pm}.floatValue()+$V{dia23_pm}.floatValue()+$V{dia24_pm}.floatValue()+$V{dia25_pm}.floatValue()+
 $V{dia26_pm}.floatValue()+$V{dia27_pm}.floatValue()+$V{dia28_pm}.floatValue()+$V{dia29_pm}.floatValue()+$V{dia30_pm}.floatValue()+
 $V{dia31_pm}.floatValue()
-)/$F{numero_dias_mes}.floatValue()
-]]></variableExpression>
+)/$F{numero_dias_mes}.floatValue()]]></variableExpression>
 	</variable>
 	<variable name="diapromedio" class="java.lang.Float">
 		<variableExpression><![CDATA[(
@@ -727,8 +728,7 @@ $V{dia31_pm}.floatValue()
 (($V{dia29_am}.floatValue()+$V{dia29_pm}.floatValue())/2)+
 (($V{dia30_am}.floatValue()+$V{dia30_pm}.floatValue())/2)+
 (($V{dia31_am}.floatValue()+$V{dia31_pm}.floatValue())/2)
-)/$F{numero_dias_mes}.floatValue()
-]]></variableExpression>
+)/$F{numero_dias_mes}.floatValue()]]></variableExpression>
 	</variable>
 	<group name="G_categoria" minHeightToStartNewPage="10">
 		<groupExpression><![CDATA[$F{actividades_categoria_desc}]]></groupExpression>
@@ -1192,7 +1192,7 @@ $V{dia31_pm}.floatValue()
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<imageExpression><![CDATA["logo.png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{rutaimag}+"logo.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="169" y="8" width="1282" height="52" uuid="ea400106-4f6b-41cb-85ce-01554d63985c"/>
@@ -2542,7 +2542,7 @@ $V{dia31_pm}.floatValue()
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[ $V{dia1_am}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{dia1_am}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="300" y="20" width="30" height="21" uuid="70ec735d-8827-46b0-aa8e-5f92f05080cb"/>

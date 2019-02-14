@@ -49,7 +49,40 @@ class ReportesController extends Controller
         )->execute();
 
         */
+/*
+        $file='ControlPersonal'.'.jasper';
+        $options = [
+            'format' => [
+                            'pdf'
+                        ],
+            'params' => [
+                            'proyecto_id' => 1,
+                            'anno' => 2019,
+                            'mes' => 2
+                        ],
+            'db_connection' => [
+                            'driver' => 'postgres',
+                            'username' => env('DB_USERNAME'),
+                            'password' => env('DB_PASSWORD'),
+                            'host' => env('DB_HOST'),
+                            'database' => env('DB_DATABASE'),
+                            'port' => env('DB_PORT'),
+            ]
+        ];
 
+        $input = base_path('reportes/jaspers/'.$file);
+        $name='ControlPersonal'.'-'.time();
+        $output = base_path('public/pdfs/'.$name);
+        $descargar =url('pdfs/'.$name.'.pdf');
+
+        $jasper = new PHPJasper;
+
+        $jasper->process(
+            $input,
+            $output,
+            $options
+        )->execute();
+ */
     }
 
     public function realizar(Request $request)
@@ -89,7 +122,8 @@ class ReportesController extends Controller
                 'params' => [
                                 'compromisomaestro' => $request->compromisos,
                                 'anno' => $request->ano,
-                                'mes' => $request->mes
+                                'mes' => $request->mes,
+                                'rutaimag' => 'D:/laravel/GPI/reportes/jrxmls/MyReports/'
                             ],
                 'db_connection' => [
                                 'driver' => 'postgres',
@@ -125,13 +159,16 @@ class ReportesController extends Controller
                 'params' => [
                                 'compromisomaestro' => $request->compromisos,
                                 'anno' => $request->ano,
-                                'mes' => $request->mes
+                                'mes' => $request->mes,
+                                'rutaimag' => 'D:/laravel/GPI/reportes/jrxmls/MyReports/'
                             ],
                 'db_connection' => [
                                 'driver' => 'postgres',
-                                'username' => env('DB_USERNAME'),
-                                'password' => env('DB_PASSWORD'),
-                                'host' => env('DB_HOST'),
+                            //    'username' => env('DB_USERNAME'),
+                                'username' => 'postgres',
+                                //'password' => env('DB_PASSWORD'),
+                                'password' => 'camila',
+                                'host' => 'localhost',
                                 'database' => env('DB_DATABASE'),
                                 'port' => env('DB_PORT'),
                 ]
@@ -161,7 +198,8 @@ class ReportesController extends Controller
                 'params' => [
                                 'proyecto_id' => $request->proyectos,
                                 'anno' => $request->ano,
-                                'mes' => $request->mes
+                                'mes' => $request->mes,
+                                'rutaimag' => 'D:/laravel/GPI/reportes/jrxmls/MyReports/'
                             ],
                 'db_connection' => [
                                 'driver' => 'postgres',
