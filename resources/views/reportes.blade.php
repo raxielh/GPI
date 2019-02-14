@@ -240,6 +240,15 @@
             $('#o_mes').show();
         }
 
+        if(i==3)
+        {
+            console.log(i);
+            $('#o_p').show();
+            $('#o_c').hide();
+            $('#o_ano').show();
+            $('#o_mes').show();
+        }
+
     }
 
     $('#generar').click(function(){

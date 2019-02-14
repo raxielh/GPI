@@ -63,10 +63,10 @@ class CreateMenusTable extends Migration
         INSERT INTO public.menus VALUES (31, 2, 'Modulo Tareas', 'notifications', 'javascript:void(0)', 1, 10, '2019-02-13 03:33:33', '2019-02-13 05:32:11');
         INSERT INTO public.menus VALUES (32, 31, 'Tipo', 'link', 'tipo_tarea', 2, 0, '2019-02-13 03:33:57', '2019-02-13 03:33:57');
         INSERT INTO public.menus VALUES (33, 31, 'Estado', 'link', 'tarea_estado', 2, 1, '2019-02-13 03:34:18', '2019-02-13 03:34:18');
+        INSERT INTO public.menus VALUES (34, 2, 'Reportes', 'picture_as_pdf', 'reporte', 2, 5, '2019-02-13 03:34:18', '2019-02-13 03:34:18');
 
 
-
-        ALTER SEQUENCE menus_id_seq RESTART WITH 34;
+        ALTER SEQUENCE menus_id_seq RESTART WITH 35;
 
         ");
 

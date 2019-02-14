@@ -102,7 +102,7 @@ class ReportesController extends Controller
             ];
 
             $input = base_path('reportes/jaspers/'.$file);
-            $name=time();
+            $name='Evaluaciondelperiodo'.'-'.time();
             $output = base_path('public/pdfs/'.$name);
             $descargar =url('pdfs/'.$name.'.pdf');
 
@@ -138,7 +138,43 @@ class ReportesController extends Controller
             ];
 
             $input = base_path('reportes/jaspers/'.$file);
-            $name=time();
+            $name='SeguimientoCompromisoLabores'.'-'.time();
+            $output = base_path('public/pdfs/'.$name);
+            $descargar =url('pdfs/'.$name.'.pdf');
+
+            $jasper = new PHPJasper;
+
+            $jasper->process(
+                $input,
+                $output,
+                $options
+            )->execute();
+        }
+
+        if($request->cual==3)
+        {
+            $file='ControlPersonal'.'.jasper';
+            $options = [
+                'format' => [
+                                'pdf'
+                            ],
+                'params' => [
+                                'proyecto_id' => $request->proyectos,
+                                'anno' => $request->ano,
+                                'mes' => $request->mes
+                            ],
+                'db_connection' => [
+                                'driver' => 'postgres',
+                                'username' => env('DB_USERNAME'),
+                                'password' => env('DB_PASSWORD'),
+                                'host' => env('DB_HOST'),
+                                'database' => env('DB_DATABASE'),
+                                'port' => env('DB_PORT'),
+                ]
+            ];
+
+            $input = base_path('reportes/jaspers/'.$file);
+            $name='ControlPersonal'.'-'.time();
             $output = base_path('public/pdfs/'.$name);
             $descargar =url('pdfs/'.$name.'.pdf');
 
