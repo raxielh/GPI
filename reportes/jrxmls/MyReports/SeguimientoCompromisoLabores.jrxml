@@ -8,11 +8,18 @@
 	<parameter name="compromisomaestro" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
+	<parameter name="anno" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[2019]]></defaultValueExpression>
+	</parameter>
+	<parameter name="mes" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[2]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT 
 row_number() over() as nro,
   cm.id,
   cm.direciones_areas_id,
+   cm.descripcion_larga nombre_comite,
   da.descripcion_larga d_direciones_areas,
   cm.respon_id,
   fn_nvl(p1.primer_nombre)||' '||fn_nvl(p1.segundo_nombre)||' '||fn_nvl(p1.primer_apellido)||' '||fn_nvl(p1.segundo_apellido) Responsable,
@@ -49,6 +56,8 @@ FROM  compromisos_maestros cm,
        personas p3,
        estado_compromiso ec
 where cm.id=  $P{compromisomaestro} 
+            and to_char( c.fecha_inicio_compromiso  , 'MM')::integer=mes
+            and to_char( c.fecha_inicio_compromiso  , 'yyyy')::integer=anno
  and cm.cargo_respon_revi_id=ca.id
   and cm.direciones_areas_id=da.id
   and cm.respon_id=emp1.id
@@ -69,6 +78,9 @@ where cm.id=  $P{compromisomaestro}
 	</field>
 	<field name="direciones_areas_id" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="direciones_areas_id"/>
+	</field>
+	<field name="nombre_comite" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombre_comite"/>
 	</field>
 	<field name="d_direciones_areas" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="d_direciones_areas"/>
@@ -265,7 +277,7 @@ where cm.id=  $P{compromisomaestro}
 				<text><![CDATA[Responsable]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="889" y="111" width="868" height="30" backcolor="#F2F2F2" uuid="f5e97c0d-dfd4-4beb-9311-c858513644ef"/>
+				<reportElement mode="Transparent" x="889" y="111" width="361" height="30" backcolor="#F2F2F2" uuid="f5e97c0d-dfd4-4beb-9311-c858513644ef"/>
 				<box leftPadding="2">
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
@@ -489,6 +501,29 @@ where cm.id=  $P{compromisomaestro}
 					<font size="14"/>
 				</textElement>
 				<text><![CDATA[Realizado]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="1380" y="111" width="377" height="30" backcolor="#F2F2F2" uuid="174ea160-7b1a-4584-bd50-79faffff883c"/>
+				<box leftPadding="2">
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_comite}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="1250" y="111" width="130" height="30" backcolor="#F2F2F2" uuid="f47bbbe5-cce9-4cda-9f71-37f2302bbdb2"/>
+				<box leftPadding="2">
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Descripción Comite]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
