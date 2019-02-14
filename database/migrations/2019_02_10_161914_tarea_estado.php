@@ -31,11 +31,6 @@ class TareaEstado extends Migration
                     'descripcion_corta' => 'Fibalizado',
                 ]);
 
-                DB::table('tarea_estado')->insert([
-                    'descripcion_larga' => 'Cancelado',
-                    'descripcion_corta' => 'Cancelado',
-                ]);
-
 
     }
 

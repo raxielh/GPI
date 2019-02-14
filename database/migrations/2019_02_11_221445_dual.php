@@ -616,15 +616,6 @@ class Dual extends Migration
 
 
 
-          CREATE FUNCTION public.last_day(date) RETURNS date
-              LANGUAGE sql IMMUTABLE STRICT
-              AS $_$
-            SELECT (date_trunc('MONTH', $1) + INTERVAL '1 MONTH - 1 day')::DATE;
-          $_$;
-
-
-
-
           CREATE FUNCTION public.pro_calcula_estadist_actividades(s_proyecto_id integer, s_mes integer, s_anno integer) RETURNS character varying
               LANGUAGE plpgsql
               AS $$
@@ -1530,27 +1521,6 @@ class Dual extends Migration
 
 
                  --********************************************************
-               /*
-                  =SI.ERROR
-                  (
-                  (
-                  (rec.porcen_cumpli)-
-                  SI(
-                    (rec.ccr/nro_activi)=0;0;
-                   SI((rec.ccr/rec.nro_activi)<0,02;rec.porcen_cumpli*0,02;
-                   SI((rec.ccr/rec.nro_activi)<0,05;rec.porcen_cumpli*0,03;
-                   SI((rec.ccr/rec.nro_activi)<0,07;rec.porcen_cumpli*0,05;
-                   SI((rec.ccr/rec.nro_activi)>0,07;rec.porcen_cumpli*0,07))))
-                   )
-                   -
-                   SI((rec.cnc/rec.nro_activi)=0;0;
-                   SI((rec.cnc/rec.nro_activi)<0,02;rec.porcen_cumpli*0,03;
-          		 SI((rec.cnc/rec.nro_activi)<0,05;rec.porcen_cumpli*0,04;
-          		 SI((rec.cnc/rec.nro_activi)<0,07;rec.porcen_cumpli*0,06;
-          		 SI((rec.cnc/rec.nro_activi)>0,07;rec.porcen_cumpli*0,08)))))
-                   );""
-                   );
-                   */
 
                      s_calculo2=0;
                        s_calculo1=0;
@@ -1591,15 +1561,6 @@ class Dual extends Migration
 
                 --************************INICIO********************************
 
-                /*
-                      =SI(
-                      s_porcen_cumpli_total=100%;100;
-                      SI(Y(s_porcen_cumpli_total>=95%;s_porcen_cumpli_total<100%);90;
-                      SI(Y(s_porcen_cumpli_total>=80%;s_porcen_cumpli_total<95%);80;
-                      SI(Y(s_porcen_cumpli_total>=60%;s_porcen_cumpli_total<80%);60;
-                      SI(s_porcen_cumpli_total<60%;40;""))))
-                      )
-                 */
                  if (s_porcen_cumpli_total::real>=100) then  s_calificaion_mensual=100;
                    elsif( s_porcen_cumpli_total::real>=95 and s_porcen_cumpli_total::real<100 ) then  s_calificaion_mensual=90;
                    elsif( s_porcen_cumpli_total::real>=80 and s_porcen_cumpli_total::real<95 ) then  s_calificaion_mensual=80;
@@ -1608,15 +1569,6 @@ class Dual extends Migration
                  end if;
 
                 --************************FIN********************************
-                /*
-
-                  --************************INICIO********************************
-                    =SI(N11=100%;"Excelente";
-                    SI(Y(N11>=95%;N11<100%);"sobresaliente";
-                    SI(Y(N11>=80%;N11<95%);"Aceptable";
-                    SI(Y(N11>=60%;N11<80%);"Insuficiente";
-                    SI(N11<60%;"Deficiente";"")))))
-          	*/
 
                 s_clasificacion='Pediente';
                   if (s_porcen_cumpli_total::real>=100) then  s_clasificacion='Excelente';
