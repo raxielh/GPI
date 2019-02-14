@@ -64,7 +64,7 @@ class ReportesController extends Controller
                 'ano' => $request->ano
             ]);
             $results=$results[0]->salida;
-            return response()->json(['success'=>$results]);
+            return response()->json(['msg'=>$results]);
         }
 
         if($request->cual==112)
@@ -76,7 +76,7 @@ class ReportesController extends Controller
                 'ano' => $request->ano
             ]);
             $results=$results[0]->salida;
-            return response()->json(['success'=>$results]);
+            return response()->json(['msg'=>$results]);
         }
 
         if($request->cual==1)
