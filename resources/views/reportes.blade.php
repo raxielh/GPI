@@ -260,8 +260,9 @@
            data: $("#frm").serialize(),
            success: function(data)
            {
-               //console.log(data.success)
-               window.open(data.success, "Reporte generador", "width=950, height=600");
+               if(data.success){
+                    window.open(data.success, "Reporte generador", "width=950, height=600");
+               }
                Notificacion(data.msg,'glyphicon glyphicon-thumbs-up','success');
                $('#cargando').hide();
 
