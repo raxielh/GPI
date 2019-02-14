@@ -38,6 +38,7 @@
   cm.direciones_areas_id,
   da.descripcion_larga d_direciones_areas,
   cm.respon_id,
+  cm.descripcion_larga nombre_comite,
   fn_nvl(p1.primer_nombre)||' '||fn_nvl(p1.segundo_nombre)||' '||fn_nvl(p1.primer_apellido)||' '||fn_nvl(p1.segundo_apellido) Responsable,
   cm.respon_revi_id,
    fn_nvl(p2.primer_nombre)||' '||fn_nvl(p2.segundo_nombre)||' '||fn_nvl(p2.primer_apellido)||' '||fn_nvl(p2.segundo_apellido) Responsable_revis,
@@ -86,8 +87,7 @@ where cm.cargo_respon_revi_id=ca.id
   and ce.id_compromiso_maestro= $P{compromisomaestro} 
   and ce.anno=  $P{anno} 
   and ce.mes= $P{mes} 
-  order by   ce.secuencia
- ]]>
+  order by   ce.secuencia]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
@@ -100,6 +100,9 @@ where cm.cargo_respon_revi_id=ca.id
 	</field>
 	<field name="respon_id" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="respon_id"/>
+	</field>
+	<field name="nombre_comite" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombre_comite"/>
 	</field>
 	<field name="responsable" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="responsable"/>
@@ -314,7 +317,7 @@ where cm.cargo_respon_revi_id=ca.id
 				<text><![CDATA[Responsable]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="889" y="111" width="868" height="30" backcolor="#F2F2F2" uuid="f5e97c0d-dfd4-4beb-9311-c858513644ef"/>
+				<reportElement mode="Transparent" x="889" y="111" width="361" height="30" backcolor="#F2F2F2" uuid="f5e97c0d-dfd4-4beb-9311-c858513644ef"/>
 				<box leftPadding="2">
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
@@ -563,6 +566,29 @@ where cm.cargo_respon_revi_id=ca.id
 				</textElement>
 				<text><![CDATA[Calificación]]></text>
 			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1250" y="111" width="130" height="30" backcolor="#F2F2F2" uuid="3fcefa82-84e1-4cac-8f15-1cf7cda4c79e"/>
+				<box leftPadding="2">
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Descripción Comite]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="1380" y="111" width="377" height="30" backcolor="#F2F2F2" uuid="378bf43b-d2f7-496b-a3ca-2169ccafe502"/>
+				<box leftPadding="2">
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_comite}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<detail>

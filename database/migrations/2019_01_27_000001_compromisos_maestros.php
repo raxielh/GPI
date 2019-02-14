@@ -15,6 +15,7 @@ class CompromisosMaestros extends Migration
     {
         Schema::create('compromisos_maestros', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('descripcion_larga')->unique();
             $table->integer('direciones_areas_id')->unsigned();
             $table->integer('respon_id')->unsigned();
             $table->integer('respon_revi_id')->unsigned();

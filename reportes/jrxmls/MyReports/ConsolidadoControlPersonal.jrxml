@@ -27,9 +27,6 @@
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
 	<parameter name="anno1" class="java.lang.Integer">
-		<defaultValueExpression><![CDATA[2018]]></defaultValueExpression>
-	</parameter>
-	<parameter name="anno2" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[2019]]></defaultValueExpression>
 	</parameter>
 	<queryString>
@@ -50,7 +47,7 @@ FROM  actividades_estaditica_am am,
       actividades ac,
       actividades_categoria acc,
       proyecto pr
-where    am.anno in (  $P{anno1},  $P{anno2} )
+where    am.anno in (  $P{anno1},  $P{anno1}-1 )
      and am.proyecto_id=  $P{proyecto_id} 
      and am.proyecto_id=pr.id
      and am.actividad_id=ac.id
@@ -101,47 +98,12 @@ where    am.anno in (  $P{anno1},  $P{anno2} )
 	<field name="count" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="count"/>
 	</field>
-	<variable name="diapromedio" class="java.lang.Float">
-		<variableExpression><![CDATA[(
-(($V{dia1_am}.floatValue()+$V{dia1_pm}.floatValue())/2)+
-(($V{dia2_am}.floatValue()+$V{dia2_pm}.floatValue())/2)+
-(($V{dia3_am}.floatValue()+$V{dia3_pm}.floatValue())/2)+
-(($V{dia4_am}.floatValue()+$V{dia4_pm}.floatValue())/2)+
-(($V{dia5_am}.floatValue()+$V{dia5_pm}.floatValue())/2)+
-(($V{dia6_am}.floatValue()+$V{dia6_pm}.floatValue())/2)+
-(($V{dia7_am}.floatValue()+$V{dia7_pm}.floatValue())/2)+
-(($V{dia8_am}.floatValue()+$V{dia8_pm}.floatValue())/2)+
-(($V{dia9_am}.floatValue()+$V{dia9_pm}.floatValue())/2)+
-(($V{dia10_am}.floatValue()+$V{dia10_pm}.floatValue())/2)+
-(($V{dia11_am}.floatValue()+$V{dia11_pm}.floatValue())/2)+
-(($V{dia12_am}.floatValue()+$V{dia12_pm}.floatValue())/2)+
-(($V{dia13_am}.floatValue()+$V{dia13_pm}.floatValue())/2)+
-(($V{dia14_am}.floatValue()+$V{dia14_pm}.floatValue())/2)+
-(($V{dia15_am}.floatValue()+$V{dia15_pm}.floatValue())/2)+
-(($V{dia16_am}.floatValue()+$V{dia16_pm}.floatValue())/2)+
-(($V{dia17_am}.floatValue()+$V{dia17_pm}.floatValue())/2)+
-(($V{dia18_am}.floatValue()+$V{dia18_pm}.floatValue())/2)+
-(($V{dia19_am}.floatValue()+$V{dia19_pm}.floatValue())/2)+
-(($V{dia20_am}.floatValue()+$V{dia20_pm}.floatValue())/2)+
-(($V{dia21_am}.floatValue()+$V{dia21_pm}.floatValue())/2)+
-(($V{dia22_am}.floatValue()+$V{dia22_pm}.floatValue())/2)+
-(($V{dia23_am}.floatValue()+$V{dia23_pm}.floatValue())/2)+
-(($V{dia24_am}.floatValue()+$V{dia24_pm}.floatValue())/2)+
-(($V{dia25_am}.floatValue()+$V{dia25_pm}.floatValue())/2)+
-(($V{dia26_am}.floatValue()+$V{dia26_pm}.floatValue())/2)+
-(($V{dia27_am}.floatValue()+$V{dia27_pm}.floatValue())/2)+
-(($V{dia28_am}.floatValue()+$V{dia28_pm}.floatValue())/2)+
-(($V{dia29_am}.floatValue()+$V{dia29_pm}.floatValue())/2)+
-(($V{dia30_am}.floatValue()+$V{dia30_pm}.floatValue())/2)+
-(($V{dia31_am}.floatValue()+$V{dia31_pm}.floatValue())/2)
-)/$F{numero_dias_mes}.floatValue()]]></variableExpression>
-	</variable>
 	<group name="G_categoria" minHeightToStartNewPage="10">
 		<groupExpression><![CDATA[$F{actividades_categoria_desc}]]></groupExpression>
 		<groupHeader>
-			<band height="19">
+			<band height="40">
 				<textField>
-					<reportElement mode="Opaque" x="13" y="-1" width="1597" height="20" backcolor="#FFE600" uuid="5320c295-aecf-47c1-911f-d6850a48bbd2"/>
+					<reportElement mode="Opaque" x="13" y="-1" width="1466" height="40" backcolor="#FFE600" uuid="5320c295-aecf-47c1-911f-d6850a48bbd2"/>
 					<box leftPadding="4">
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
@@ -154,7 +116,7 @@ where    am.anno in (  $P{anno1},  $P{anno2} )
 					<textFieldExpression><![CDATA[$F{actividades_categoria_desc}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="450" y="0" width="150" height="19" uuid="49621347-8781-4061-bd9e-e638d47ce268"/>
+					<reportElement x="300" y="-1" width="120" height="41" uuid="f7c9cb32-2180-40e0-a72e-3f2651b97bf6"/>
 					<box>
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
@@ -162,12 +124,51 @@ where    am.anno in (  $P{anno1},  $P{anno2} )
 						<rightPen lineWidth="1.0"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="9"/>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[FECHA INICIO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="420" y="-1" width="120" height="41" uuid="e44e9eeb-6ed5-4b6f-940a-7dac28fb52c4"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[FECHA FINAL]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="540" y="-1" width="170" height="41" uuid="d24fa68c-d96d-4608-8fdb-161a256886cf"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DURACIÓN REAL (Mes)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="710" y="-1" width="170" height="41" uuid="97572487-88c7-4fe9-a45d-01c0445d4734"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[TRABAJADORES PROMEDIO DIA]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="600" y="0" width="120" height="19" uuid="b9c7c06e-19e6-46b1-9eac-cfbab29f2ce4"/>
+					<reportElement x="880" y="-1" width="170" height="41" uuid="9b7e51ef-1e76-49c6-9a0f-fee477dd05ec"/>
 					<box>
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
@@ -175,9 +176,9 @@ where    am.anno in (  $P{anno1},  $P{anno2} )
 						<rightPen lineWidth="1.0"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="9"/>
+						<font size="12" isBold="true"/>
 					</textElement>
-					<text><![CDATA[CANTIDAD DE JORNALES]]></text>
+					<text><![CDATA[TRABAJADORES PROMEDIO DIA]]></text>
 				</staticText>
 			</band>
 		</groupHeader>
@@ -186,7 +187,7 @@ where    am.anno in (  $P{anno1},  $P{anno2} )
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="120" splitType="Stretch">
+		<band height="125" splitType="Stretch">
 			<image>
 				<reportElement x="13" y="7" width="157" height="96" uuid="4a4ef1da-cebf-4e41-acec-f2c5accec161"/>
 				<box>
@@ -198,7 +199,7 @@ where    am.anno in (  $P{anno1},  $P{anno2} )
 				<imageExpression><![CDATA["logo.png"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="169" y="8" width="1282" height="52" uuid="ea400106-4f6b-41cb-85ce-01554d63985c"/>
+				<reportElement x="169" y="8" width="1151" height="32" uuid="ea400106-4f6b-41cb-85ce-01554d63985c"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -211,7 +212,7 @@ where    am.anno in (  $P{anno1},  $P{anno2} )
 				<text><![CDATA[PROCESO  DE EJECUCIÓN DE OBRA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1451" y="8" width="159" height="32" uuid="571d5f67-09f4-4045-8ba1-e747a948fa98"/>
+				<reportElement x="1320" y="8" width="159" height="32" uuid="571d5f67-09f4-4045-8ba1-e747a948fa98"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -224,7 +225,7 @@ where    am.anno in (  $P{anno1},  $P{anno2} )
 				<text><![CDATA[Código: PEO-F-001]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="169" y="60" width="1282" height="43" uuid="c3eb98fa-5d4c-4f22-bbfb-776b12df2428"/>
+				<reportElement x="169" y="40" width="1151" height="20" uuid="c3eb98fa-5d4c-4f22-bbfb-776b12df2428"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -234,10 +235,10 @@ where    am.anno in (  $P{anno1},  $P{anno2} )
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[CUADRO DE CONTROL DE PERSONAL EN  OBRA]]></text>
+				<text><![CDATA[TABLA RESUMEN CONTROL DE PERSONAL EN OBRA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1451" y="40" width="159" height="29" uuid="cc10b03a-46cc-495b-a1ec-75a5098d99ea"/>
+				<reportElement x="1320" y="40" width="159" height="29" uuid="cc10b03a-46cc-495b-a1ec-75a5098d99ea"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -250,7 +251,7 @@ where    am.anno in (  $P{anno1},  $P{anno2} )
 				<text><![CDATA[Versión: 001]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="1451" y="69" width="159" height="34" uuid="7b165067-9c29-47c3-9859-ddbb974e0fa2"/>
+				<reportElement x="1320" y="69" width="159" height="34" uuid="7b165067-9c29-47c3-9859-ddbb974e0fa2"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -263,7 +264,7 @@ where    am.anno in (  $P{anno1},  $P{anno2} )
 				<textFieldExpression><![CDATA["Fecha: "+new SimpleDateFormat("dd/MM/yyyy").format(new Date().getTime() - 1* 24 * 60 * 60 * 1000)]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="13" y="104" width="287" height="16" uuid="ebe0f365-6561-41cc-b9b8-8f5c01944500"/>
+				<reportElement x="13" y="103" width="287" height="22" uuid="ebe0f365-6561-41cc-b9b8-8f5c01944500"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -273,14 +274,27 @@ where    am.anno in (  $P{anno1},  $P{anno2} )
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Actividades]]></text>
+				<text><![CDATA[ACTIVIDAD]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="170" y="60" width="1150" height="43" uuid="2a3838e7-d96c-466e-bce2-ef7c5e484105"/>
+				<box leftPadding="3">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Proyecto: "+$F{nomproyecto}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="30" splitType="Stretch">
+		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement x="13" y="0" width="287" height="30" uuid="163d7f7a-7e01-40ff-b5f2-d15021244351"/>
+				<reportElement x="13" y="0" width="287" height="29" uuid="163d7f7a-7e01-40ff-b5f2-d15021244351"/>
 				<box leftPadding="3">
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -291,6 +305,71 @@ where    am.anno in (  $P{anno1},  $P{anno2} )
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{actividad_desc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="-1" width="120" height="30" uuid="9120ad86-cc12-42de-b0a1-1cbe169c1621"/>
+				<box leftPadding="3">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_ini}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="-1" width="120" height="30" uuid="30e50977-a032-48b2-a760-2154425a93a1"/>
+				<box leftPadding="3">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_fin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="540" y="-1" width="170" height="30" uuid="e6bb36b4-58fd-497d-bee6-dd365e4959dd"/>
+				<box leftPadding="3">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{duracion_real}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="710" y="-1" width="170" height="30" uuid="f1723595-25f5-4de8-b551-fff959b58b36"/>
+				<box leftPadding="3">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{trabajado_promedio_dia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="880" y="-1" width="170" height="30" uuid="a1f2cf84-7227-4ab3-b71e-c0c24e38b7b5"/>
+				<box leftPadding="3">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad_jornales}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
