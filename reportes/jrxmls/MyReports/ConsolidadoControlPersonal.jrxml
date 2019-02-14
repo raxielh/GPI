@@ -26,11 +26,11 @@
 	<parameter name="proyecto_id" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
-	<parameter name="anno1" class="java.lang.Integer">
+	<parameter name="anno" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[2019]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[     SELECT  
+		<![CDATA[SELECT  
   am.actividad_id,
   ac.descripcion_larga actividad_desc,
    ac.fecha_ini,
@@ -47,7 +47,7 @@ FROM  actividades_estaditica_am am,
       actividades ac,
       actividades_categoria acc,
       proyecto pr
-where    am.anno in (  $P{anno1},  $P{anno1}-1 )
+where    am.anno in (  $P{anno},  $P{anno}-1 )
      and am.proyecto_id=  $P{proyecto_id} 
      and am.proyecto_id=pr.id
      and am.actividad_id=ac.id
@@ -60,7 +60,7 @@ where    am.anno in (  $P{anno1},  $P{anno1}-1 )
  acc.descripcion_larga ,
   am.proyecto_id,
    pr.descripcion_larga  
-   order by acc.descripcion_larga,ac.descripcion_larga  ]]>
+   order by acc.descripcion_larga,ac.descripcion_larga]]>
 	</queryString>
 	<field name="actividad_id" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="actividad_id"/>
