@@ -63,6 +63,8 @@ class ReportesController extends Controller
                 'mes' => $request->mes,
                 'ano' => $request->ano
             ]);
+            $results=$results[0]->salida;
+            return response()->json(['success'=>$results]);
         }
 
         if($request->cual==112)
@@ -73,17 +75,21 @@ class ReportesController extends Controller
                 'mes' => $request->mes,
                 'ano' => $request->ano
             ]);
+            $results=$results[0]->salida;
+            return response()->json(['success'=>$results]);
         }
 
         if($request->cual==1)
         {
-            $file='hola'.'.jasper';
+            $file='Evaluaciondelperiodo'.'.jasper';
             $options = [
                 'format' => [
                                 'pdf'
                             ],
                 'params' => [
-                                'myString' => 'hola mundo'
+                                'compromisomaestro' => $request->compromisos,
+                                'anno' => $request->ano,
+                                'mes' => $request->mes
                             ],
                 'db_connection' => [
                                 'driver' => 'postgres',
@@ -94,25 +100,59 @@ class ReportesController extends Controller
                                 'port' => env('DB_PORT'),
                 ]
             ];
+
+            $input = base_path('reportes/jaspers/'.$file);
+            $name=time();
+            $output = base_path('public/pdfs/'.$name);
+            $descargar =url('pdfs/'.$name.'.pdf');
+
+            $jasper = new PHPJasper;
+
+            $jasper->process(
+                $input,
+                $output,
+                $options
+            )->execute();
         }
 
-        $results=$results[0]->salida;
+        if($request->cual==2)
+        {
+            $file='SeguimientoCompromisoLabores'.'.jasper';
+            $options = [
+                'format' => [
+                                'pdf'
+                            ],
+                'params' => [
+                                'compromisomaestro' => $request->compromisos,
+                                'anno' => $request->ano,
+                                'mes' => $request->mes
+                            ],
+                'db_connection' => [
+                                'driver' => 'postgres',
+                                'username' => env('DB_USERNAME'),
+                                'password' => env('DB_PASSWORD'),
+                                'host' => env('DB_HOST'),
+                                'database' => env('DB_DATABASE'),
+                                'port' => env('DB_PORT'),
+                ]
+            ];
+
+            $input = base_path('reportes/jaspers/'.$file);
+            $name=time();
+            $output = base_path('public/pdfs/'.$name);
+            $descargar =url('pdfs/'.$name.'.pdf');
+
+            $jasper = new PHPJasper;
+
+            $jasper->process(
+                $input,
+                $output,
+                $options
+            )->execute();
+        }
 
 
-        $input = base_path('reportes/jaspers/'.$file);
-        $output = base_path('reportes/pdfs/'.time());
-
-        $jasper = new PHPJasper;
-
-        $jasper->process(
-            $input,
-            $output,
-            $options
-        )->execute();
-
-
-
-        return response()->json(['success'=>$results]);
+        return response()->json(['msg'=>'Generado','success'=>$descargar]);
     }
 
 }

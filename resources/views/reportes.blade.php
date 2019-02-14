@@ -222,9 +222,28 @@
             $('#o_mes').show();
         }
 
+        if(i==1)
+        {
+            console.log(i);
+            $('#o_p').hide();
+            $('#o_c').show();
+            $('#o_ano').show();
+            $('#o_mes').show();
+        }
+
+        if(i==2)
+        {
+            console.log(i);
+            $('#o_p').hide();
+            $('#o_c').show();
+            $('#o_ano').show();
+            $('#o_mes').show();
+        }
+
     }
 
     $('#generar').click(function(){
+        $('#cargando').show();
         var url = "{{ route('realizar') }}";
         $.ajax({
            type: "POST",
@@ -232,8 +251,11 @@
            data: $("#frm").serialize(),
            success: function(data)
            {
-               console.log(data.success)
-               Notificacion(data.success,'glyphicon glyphicon-thumbs-up','success');
+               //console.log(data.success)
+               window.open(data.success, "Reporte generador", "width=950, height=600");
+               Notificacion(data.msg,'glyphicon glyphicon-thumbs-up','success');
+               $('#cargando').hide();
+
            }
        });
     });
